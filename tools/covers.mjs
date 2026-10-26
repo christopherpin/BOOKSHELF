@@ -1,7 +1,8 @@
 // Finds a cover for every book on the list and every book you own, and saves it to covers/<id>.jpg
 // (500px wide), then writes covers.js listing them for the site. Looks in Apple Books first (clean,
 // large art), then Open Library, then Google Books; data/cover-overrides.json ({ id: imageUrl }) wins
-// over all of them, for any book that comes out wrong.
+// over all of them, for any book that comes out wrong. A cover once saved is kept: only an override or a
+// run by hand with "refresh" ticked replaces it.
 import fs from "node:fs";
 import sharp from "sharp";
 import crypto from "node:crypto";
@@ -48,6 +49,13 @@ async function openLibrary(b){
   const hit = (j?.docs || []).find(d => d.cover_i && titleOk(b.title, d.title) && (d.author_name || []).some(a => authorOk(b.author, a)));
   return hit && `https://covers.openlibrary.org/b/id/${hit.cover_i}-L.jpg?default=false`;
 }
+// last of all, the same Open Library lookup the site does live for a book with no saved cover, so whatever
+// cover you've been seeing for it gets saved and stays put
+async function asOnSite(b){
+  const j = await json("https://openlibrary.org/search.json?" + new URLSearchParams({ title: b.title, author: b.author, fields: "cover_i", limit: "5" }));
+  const hit = (j?.docs || []).find(d => d.cover_i);
+  return hit && `https://covers.openlibrary.org/b/id/${hit.cover_i}-L.jpg?default=false`;
+}
 async function google(b){
   const j = await json("https://www.googleapis.com/books/v1/volumes?" + new URLSearchParams({ q: `intitle:${b.title} inauthor:${surname(b.author)}`, maxResults: "10" }));
   const hit = (j?.items || []).map(i => i.volumeInfo).find(v => v.imageLinks?.thumbnail && titleOk(b.title, v.title) && (v.authors || []).some(a => authorOk(b.author, a)));
@@ -68,7 +76,7 @@ for (const b of books){
   const file = `covers/${b.id}.jpg`;
   if (fs.existsSync(file) && !refresh && !overrides[b.id]) continue;
   let done = false;
-  for (const find of [async () => overrides[b.id], apple, openLibrary, google]){
+  for (const find of [async () => overrides[b.id], apple, openLibrary, google, async () => asOnSite(b)]){
     const url = await find(searchable(b)).catch(() => null);
     if (url && await save(url, file)){ console.log("✓", b.title, "←", url); done = true; break; }
   }
