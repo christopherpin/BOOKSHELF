@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T17:33:23.734Z",
+ "updated": "2026-10-26T17:34:09.560Z",
  "books": {
   "the-flamethrowers-rachel-kushner": {
    "checked": "2026-10-26T17:31:08.175Z",
@@ -124,6 +124,10 @@
   },
   "say-nothing-patrick-radden-keefe": {
    "checked": "2026-10-26T17:33:23.734Z",
+   "offers": []
+  },
+  "the-warmth-of-other-suns-isabel-wilkerson": {
+   "checked": "2026-10-26T17:34:09.560Z",
    "offers": []
   }
  }
