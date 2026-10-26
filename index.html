@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Books</title>
 <style>
-:root{ --rank:#ffd400; --bg:#0b0b0c; --tile:#161618; --text:#e9e9ea; --muted:#8a8a90; }
+:root{ --rank:#ffd400; --green:#34c759; --accent:var(--rank); --bg:#0b0b0c; --tile:#161618; --text:#e9e9ea; --muted:#8a8a90; }
+/* the List view swaps the yellow for green (READ stays yellow) */
+body.listmode{--accent:var(--green)}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .hidden{display:none !important}
@@ -58,9 +60,9 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .lrow{border-radius:6px;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .lrow:hover{background:var(--tile)}
 /* click Title, Author or Year to sort by it (again to reverse, a third time or # for the usual order); the column it's sorted by turns yellow */
-.lhead [data-sort]{cursor:pointer;user-select:none;-webkit-user-select:none}
+.lhead [data-sort]{white-space:nowrap;cursor:pointer;user-select:none;-webkit-user-select:none}
 .lhead [data-sort]:hover{color:var(--text)}
-.lhead [data-sort].on{color:var(--rank)}
+.lhead [data-sort].on{color:var(--accent)}
 .lhead [data-sort].on::after{content:" ↑"}
 .lhead [data-sort].on.desc::after{content:" ↓"}
 .lrow .n,.lhead .n{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -90,7 +92,7 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .ghost{position:fixed;z-index:30;pointer-events:none;cursor:grabbing;object-fit:cover;box-shadow:0 18px 40px rgba(0,0,0,.6);transform:scale(1.04);transition:transform .12s}
 
 /* the menu for a book, on every tab */
-.menu{position:fixed;z-index:40;padding:4px;border-radius:8px;background:var(--rank);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.menu{position:fixed;z-index:40;padding:4px;border-radius:8px;background:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .menu button{display:block;width:100%;text-align:left;font:600 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#000;background:none;border:0;border-radius:5px;padding:10px 14px;cursor:pointer;white-space:nowrap}
 .menu button:hover{background:rgba(0,0,0,.1)}
 .menu button.on::after{content:"✓";margin-left:14px}
@@ -103,11 +105,18 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
    bigger selected label (the hidden ::after), so switching tabs never nudges the others. */
 .views button{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;height:33px}
 .views button::after{content:attr(data-label);height:0;overflow:hidden;visibility:hidden;font-size:14px;font-weight:700}
-.views button.on{color:var(--rank);background:#000;font-size:14px;font-weight:700}
+.views button.on{color:var(--accent);background:#000;font-size:14px;font-weight:700}
 .views button{-webkit-touch-callout:none}
 /* thin white lines between the groups: NYT Shelf | Pantheon */
 .views .sep{flex:0 0 1px;align-self:stretch;margin:7px 3px;background:rgba(255,255,255,.7)}
 .views.dock-left .sep,.views.dock-right .sep{flex-basis:1px;margin:3px 10px}
+/* the Grid / List switch after Pantheon: knob right on a yellow track for Grid, knob left on a green track for List */
+.views .toggle{flex:none;position:relative;width:38px;height:22px;margin:0 8px 0 4px;border-radius:999px;background:var(--rank);cursor:pointer;transition:background .2s}
+.views .toggle::before{content:"";position:absolute;top:3px;left:19px;width:16px;height:16px;border-radius:50%;background:#000;transition:left .2s}
+.views .toggle[aria-checked="false"]{background:var(--green)}
+.views .toggle[aria-checked="false"]::before{left:3px}
+.views .toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.views.dock-left .toggle,.views.dock-right .toggle{align-self:center;margin:4px 0 6px}
 @media (max-width:520px){.views button{padding:8px 7px;font-size:11px}}
 /* the bar can be dragged to any edge; it snaps to the nearest one and stays there (books.dock) */
 .views{touch-action:none;user-select:none;-webkit-user-select:none}
@@ -174,15 +183,13 @@ body.phone .views button{padding:0 10px;border-radius:8px}
   <button data-act="own">Add to Shelf</button>
   <button data-act="pantheon">Send To Pantheon</button>
 </div>
-<div class="menu hidden" id="tabmenu">
-  <button data-mode="grid">Grid</button>
-  <button data-mode="list">List</button>
-</div>
 <nav class="views" id="views">
-  <button data-view="wall" data-label="NYT" title="Right-click for Grid or List">NYT</button>
-  <button data-view="owned" data-label="Shelf" title="Right-click for Grid or List">Shelf</button>
+  <button data-view="wall" data-label="NYT">NYT</button>
+  <button data-view="owned" data-label="Shelf">Shelf</button>
   <span class="sep"></span>
-  <button data-view="pantheon" data-label="Pantheon" title="Right-click for Grid or List">Pantheon</button>
+  <button data-view="pantheon" data-label="Pantheon">Pantheon</button>
+  <span class="sep"></span>
+  <span class="toggle" id="mode" role="switch" tabindex="0"></span>
 </nav>
 <div class="sync hidden" id="sync"></div>
 <div class="setup hidden" id="setup">
@@ -278,7 +285,7 @@ const renderWall = () => fillGrid($("#wall"), BOOKS, true);
 // Shelf, as covers or rows, keeping only the books that match the search; true when the search hides them all
 function renderOwned(){
   const list = matching(shelf.owned);
-  if (modes.owned === "list") fillRows($("#ownedRows"), list); else fillGrid($("#owned"), list);
+  if (mode === "list") fillRows($("#ownedRows"), list); else fillGrid($("#owned"), list);
   $("#ownedNone").classList.toggle("hidden", view !== "owned" || shelf.owned.length > 0);
   return shelf.owned.length > 0 && !list.length;
 }
@@ -470,35 +477,15 @@ function togglePantheon(id){
 }
 
 /* ---------- the menu: right-click a book anywhere ---------- */
-const menu = $("#menu"), tabMenu = $("#tabmenu");
-let menuFor = null, tabFor = null, heldAt = 0;
-function closeMenu(){ menu.classList.add("hidden"); tabMenu.classList.add("hidden"); menuFor = tabFor = null; }
+const menu = $("#menu");
+let menuFor = null, heldAt = 0;
+function closeMenu(){ menu.classList.add("hidden"); menuFor = null; }
 function place(m, x, y){
   m.classList.remove("hidden");
   const w = m.offsetWidth, h = m.offsetHeight;
   m.style.left = Math.max(4, Math.min(x, innerWidth - w - 4)) + "px";
   m.style.top = Math.max(4, Math.min(y, innerHeight - h - 4)) + "px";
 }
-// right-click (or hold) a tab to show it as a grid of covers or as a list
-function openTabMenu(btn, x, y){
-  tabFor = btn.dataset.view;
-  for (const b of tabMenu.querySelectorAll("button")) b.classList.toggle("on", b.dataset.mode === modes[tabFor]);
-  const r = btn.getBoundingClientRect();
-  tabMenu.classList.remove("hidden");
-  // open beside the bar, toward the middle of the window
-  const h = tabMenu.offsetHeight, w = tabMenu.offsetWidth, d = side();
-  if (d === "bottom") place(tabMenu, r.left, r.top - h - 8);
-  else if (d === "top") place(tabMenu, r.left, r.bottom + 8);
-  else if (d === "left") place(tabMenu, r.right + 8, r.top);
-  else place(tabMenu, r.left - w - 8, r.top);
-}
-tabMenu.onclick = e => {
-  const mode = e.target.closest("button")?.dataset.mode, t = tabFor;
-  if (!mode || !t) return;
-  closeMenu();
-  modes[t] = mode; LS.set("modes", modes);
-  setView(t);
-};
 function openMenu(e){
   const el = e.target.closest(".book, .lrow, #pantheon img");
   if (!el || pdrag || Date.now() - droppedAt < 300) return;
@@ -513,21 +500,16 @@ function openMenu(e){
 }
 // the tap that ends a hold shouldn't close the menu it just opened
 const justHeld = () => Date.now() - heldAt < 600;
-document.addEventListener("click", e => { if (!menu.contains(e.target) && !tabMenu.contains(e.target) && !justHeld()) closeMenu(); });
-document.addEventListener("contextmenu", e => {
-  const tab = e.target.closest("#views button");
-  if (tab){ e.preventDefault(); closeMenu(); openTabMenu(tab); }
-  else if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); }
-});
-// phones have no right-click: holding a book, or a tab, opens its menu instead
+document.addEventListener("click", e => { if (!menu.contains(e.target) && !justHeld()) closeMenu(); });
+document.addEventListener("contextmenu", e => { if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); } });
+// phones have no right-click: holding a book opens its menu instead
 let hold = null;
 document.addEventListener("pointerdown", e => {
-  if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow, #views button")) return;
+  if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow")) return;
   const { clientX, clientY, target } = e;
   hold = { x: clientX, y: clientY, timer: setTimeout(() => {
     hold = null; heldAt = Date.now(); closeMenu();
-    const tab = target.closest("#views button");
-    if (tab) openTabMenu(tab); else openMenu({ target, clientX, clientY, preventDefault(){}, stopPropagation(){} });
+    openMenu({ target, clientX, clientY, preventDefault(){}, stopPropagation(){} });
   }, 500) };
 });
 const unhold = () => { if (hold){ clearTimeout(hold.timer); hold = null; } };
@@ -554,19 +536,29 @@ menu.onclick = e => {
 };
 
 /* ---------- views ---------- */
-// three tabs, each shown as a grid or a list (books.modes); the List tab of the first version is NYT as a list
+// three tabs, all shown as grids or all as lists (books.mode, set by the switch after Pantheon);
+// the List tab of the first version is NYT as a list
 const VIEWS = ["wall", "owned", "pantheon"];
-const modes = { wall: "grid", owned: "grid", pantheon: "grid", ...LS.get("modes", {}) };
-if (LS.get("view") === "list"){ modes.wall = "list"; LS.set("modes", modes); LS.set("view", "wall"); }
+let mode = LS.get("mode") || (LS.get("view") === "list" || LS.get("modes", {}).wall === "list" ? "list" : "grid");
+if (LS.get("view") === "list") LS.set("view", "wall");
+LS.del("modes");
+function setMode(m){
+  mode = m; LS.set("mode", m);
+  setView(view);
+}
 let view = VIEWS.includes(LS.get("view")) ? LS.get("view") : "wall";
-const searching = () => view === "owned" || (view === "wall" && modes.wall === "list");
+const searching = () => view === "owned" || (view === "wall" && mode === "list");
 function setView(v){
   view = v; LS.set("view", v);
   for (const x of VIEWS){
-    $("#" + x).classList.toggle("hidden", x !== v || modes[x] !== "grid");
-    $("#" + x + "List").classList.toggle("hidden", x !== v || modes[x] !== "list");
+    $("#" + x).classList.toggle("hidden", x !== v || mode !== "grid");
+    $("#" + x + "List").classList.toggle("hidden", x !== v || mode !== "list");
   }
   for (const b of document.querySelectorAll("#views button")) b.classList.toggle("on", b.dataset.view === v);
+  document.body.classList.toggle("listmode", mode === "list");
+  $("#mode").setAttribute("aria-checked", mode === "grid");
+  $("#mode").setAttribute("aria-label", mode === "grid" ? "Grid view (switch to List)" : "List view (switch to Grid)");
+  $("#mode").title = mode === "grid" ? "Grid · click for List" : "List · click for Grid";
   $("#lbar").classList.toggle("hidden", !searching());
   $("#lq").value = queries[v] || "";
   closeMenu();
@@ -577,14 +569,20 @@ function setView(v){
 function drawAll(){
   let none = false;
   $("#ownedNone").classList.toggle("hidden", view !== "owned" || shelf.owned.length > 0);
-  if (view === "wall"){ if (modes.wall === "list") none = renderWallList(); else showMarks($("#wall")); }
+  if (view === "wall"){ if (mode === "list") none = renderWallList(); else showMarks($("#wall")); }
   if (view === "owned") none = renderOwned();
-  if (view === "pantheon"){ if (modes.pantheon === "list") renderPantheonList(); else renderPantheon(); }
+  if (view === "pantheon"){ if (mode === "list") renderPantheonList(); else renderPantheon(); }
   $("#lnone").classList.toggle("hidden", !none);
   for (const h of document.querySelectorAll(".lhead")) h.classList.toggle("hidden", none);
   showSort();
 }
-$("#views").onclick = e => { const b = e.target.closest("button"); if (b && !barMoved && !justHeld()) setView(b.dataset.view); };
+$("#views").onclick = e => {
+  if (barMoved) return;
+  if (e.target.closest("#mode")) return setMode(mode === "grid" ? "list" : "grid");
+  const b = e.target.closest("button");
+  if (b) setView(b.dataset.view);
+};
+$("#mode").onkeydown = e => { if (e.key === " " || e.key === "Enter"){ e.preventDefault(); setMode(mode === "grid" ? "list" : "grid"); } };
 
 /* ---------- tab bar: drag it to any edge, it snaps to the nearest and remembers ---------- */
 const bar = $("#views");
