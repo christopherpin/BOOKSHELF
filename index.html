@@ -77,7 +77,7 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .views button{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;height:33px}
 .views button::after{content:attr(data-label);height:0;overflow:hidden;visibility:hidden;font-size:14px;font-weight:700}
 .views button.on{color:var(--rank);background:#000;font-size:14px;font-weight:700}
-/* thin white lines between the groups: List Wall Shelf | Pantheon */
+/* thin white lines between the groups: List NYT Shelf | Pantheon */
 .views .sep{flex:0 0 1px;align-self:stretch;margin:7px 3px;background:rgba(255,255,255,.7)}
 .views.dock-left .sep,.views.dock-right .sep{flex-basis:1px;margin:3px 10px}
 @media (max-width:520px){.views button{padding:8px 7px;font-size:11px}}
@@ -122,7 +122,7 @@ body.phone .views button{padding:0 10px;border-radius:8px}
   <p class="lnote hidden" id="lnone">No books match</p>
 </main>
 <main class="wall hidden" id="owned"></main>
-<p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on the Wall or List and choose Add to Shelf.</p>
+<p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on NYT or List and choose Add to Shelf.</p>
 <main class="pantheon hidden" id="pantheon"></main>
 <div class="menu hidden" id="menu">
   <button data-act="read">Mark As Read</button>
@@ -132,7 +132,7 @@ body.phone .views button{padding:0 10px;border-radius:8px}
 </div>
 <nav class="views" id="views">
   <button data-view="list" data-label="List">List</button>
-  <button data-view="wall" data-label="Wall">Wall</button>
+  <button data-view="wall" data-label="NYT">NYT</button>
   <button data-view="owned" data-label="Shelf">Shelf</button>
   <span class="sep"></span>
   <button data-view="pantheon" data-label="Pantheon">Pantheon</button>
@@ -425,7 +425,7 @@ function openMenu(e){
 }
 document.addEventListener("click", e => { if (!menu.contains(e.target)) closeMenu(); });
 document.addEventListener("contextmenu", e => { if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); } });
-// phones have no right-click: holding a book on the Wall, List or Shelf opens the menu instead
+// phones have no right-click: holding a book on NYT, List or Shelf opens the menu instead
 let hold = null;
 document.addEventListener("pointerdown", e => {
   if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow")) return;

@@ -24,6 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: npm install --no-save --no-package-lock sharp@0.33.5
       - run: node tools/covers.mjs
         env:
           REFRESH: ${{ inputs.refresh && '1' || '' }}

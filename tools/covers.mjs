@@ -3,7 +3,7 @@
 // large art), then Open Library, then Google Books; data/cover-overrides.json ({ id: imageUrl }) wins
 // over all of them, for any book that comes out wrong.
 import fs from "node:fs";
-import { execFileSync } from "node:child_process";
+import sharp from "sharp";
 import crypto from "node:crypto";
 
 const BOOKS = new Function(fs.readFileSync("books.js", "utf8") + "; return BOOKS;")();
@@ -53,9 +53,8 @@ async function save(url, file){
   if (!r?.ok) return false;
   const buf = Buffer.from(await r.arrayBuffer());
   if (buf.length < 4000) return false; // a blank placeholder, not a cover
-  fs.writeFileSync(file + ".src", buf);
-  try{ execFileSync("convert", [file + ".src", "-resize", "500x", "-strip", "-quality", "82", file]); }
-  finally{ fs.rmSync(file + ".src", { force: true }); }
+  try{ await sharp(buf).resize({ width: 500, withoutEnlargement: true }).jpeg({ quality: 82, mozjpeg: true }).toFile(file); }
+  catch{ return false; }
   return true;
 }
 
