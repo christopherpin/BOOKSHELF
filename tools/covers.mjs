@@ -21,19 +21,23 @@ fs.mkdirSync("covers", { recursive: true });
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 // each service allows only so many searches a minute (Apple Books about 20), so searches to one host are
-// spaced out, and a "slow down" answer (403/429) waits longer before trying again; failures are logged
-const lastCall = {}, gap = { "itunes.apple.com": 3200 };
+// spaced out; a host that says "slow down" (403/429) is left alone for the rest of the run. A book whose
+// lookup failed (rather than found nothing) isn't counted as not found, so the next run tries it again.
+const lastCall = {}, gap = { "itunes.apple.com": 3200 }, down = new Set();
+let failed = false;
 async function json(url){
   const host = new URL(url).host;
-  for (let i = 0; i < 3; i++){
+  for (let i = 0; i < 3 && !down.has(host); i++){
     const wait = (lastCall[host] || 0) + (gap[host] || 1000) - Date.now();
     if (wait > 0) await sleep(wait);
     lastCall[host] = Date.now();
     const r = await fetch(url, { headers: { "User-Agent": "bookshelf-covers (github.com/christopherpin/BOOKSHELF)" } }).catch(e => ({ ok: false, status: e.message }));
-    if (r.ok) return r.json().catch(() => null);
+    if (r.ok){ const j = await r.json().catch(() => null); if (j) return j; }
     console.log("  ", host, r.status);
-    await sleep(r.status === 403 || r.status === 429 ? 30000 : 1500 * (i + 1));
+    if (r.status === 403 || r.status === 429){ down.add(host); console.log("  ", host, "is refusing searches; skipping it for the rest of this run"); }
+    else await sleep(1500 * (i + 1));
   }
+  failed = true;
   return null;
 }
 // the main part of a title, without a subtitle, so "Frederick Douglass: Prophet of Freedom" matches "Frederick Douglass"
@@ -89,11 +93,12 @@ for (const b of books){
   if (fs.existsSync(file) && !refresh && !overrides[b.id]) continue;
   if (notFound[b.id] === version && !overrides[b.id]){ missing.push(b.title + " · " + b.author); continue; }
   let done = false;
+  failed = false;
   for (const find of [async () => overrides[b.id], apple, openLibrary, google, async () => asOnSite(b)]){
     const url = await find(searchable(b)).catch(() => null);
     if (url && await save(url, file)){ console.log("✓", b.title, "←", url); done = true; break; }
   }
-  if (!done){ missing.push(b.title + " · " + b.author); notFound[b.id] = version; }
+  if (!done){ missing.push(b.title + " · " + b.author); if (!failed) notFound[b.id] = version; }
   else delete notFound[b.id];
   await sleep(300);
 }
