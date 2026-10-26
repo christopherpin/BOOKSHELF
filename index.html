@@ -147,7 +147,8 @@ body.phone .views button{padding:0 10px;border-radius:8px}
       choose Only select repositories, pick BOOKSHELF, then paste it above. It stays in this browser.</p>
   </form>
 </div>
-<script src="books.js?v=2026-10-26c"></script>
+<script src="books.js?v=2026-10-26d"></script>
+<script src="covers.js"></script>
 <script>
 "use strict";
 const $ = s => document.querySelector(s);
@@ -198,10 +199,14 @@ function change(key, value){
 const ownedIds = () => new Set(shelf.owned.map(b => b.id));
 const byId = id => BOOKS.find(b => b.id === id) || shelf.owned.find(b => b.id === id);
 
-/* ---------- covers: looked up once on Open Library and remembered in this browser ---------- */
-// A few lookups at a time so Open Library isn't flooded; a book with no cover keeps its title tile
-// and is tried again on a later visit (books.cover.<id> is only saved when a cover is found).
-const coverUrl = b => { const c = LS.get("cover." + b.id); return c ? `https://covers.openlibrary.org/b/id/${c}-L.jpg` : null; };
+/* ---------- covers: saved in the site (covers.js, made by tools/covers.mjs) ---------- */
+// A book without a saved cover yet (one you've just added to Owned) is looked up on Open Library, a few
+// at a time so it isn't flooded, and remembered in this browser (books.cover.<id>) until its cover is saved.
+const coverUrl = b => {
+  if (COVERS[b.id]) return COVERS[b.id];
+  const c = LS.get("cover." + b.id);
+  return c ? `https://covers.openlibrary.org/b/id/${c}-L.jpg` : null;
+};
 for (const b of BOOKS){ const old = LS.get("cover." + b.rank); if (old){ LS.set("cover." + b.id, old); LS.del("cover." + b.rank); } }
 async function findCover(b){
   const q = new URLSearchParams({ title: b.title, author: b.author, fields: "cover_i", limit: "5" });
@@ -213,7 +218,7 @@ async function findCover(b){
 const coverQueue = [], looking = new Set();
 let workers = 0;
 function wantCover(b){
-  if (LS.get("cover." + b.id) || looking.has(b.id)) return;
+  if (COVERS[b.id] || LS.get("cover." + b.id) || looking.has(b.id)) return;
   looking.add(b.id); coverQueue.push(b);
   while (workers < 4 && coverQueue.length) work();
 }
@@ -237,6 +242,7 @@ function addImg(tile, b, url){
   const img = new Image();
   img.alt = b.title; img.draggable = false;
   img.onload = () => img.classList.add("in");
+  img.decoding = "async";
   img.src = url;
   tile.appendChild(img);
 }
