@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Books</title>
+<style>
+:root{ --rank:#ffd400; --bg:#0b0b0c; --tile:#161618; --text:#e9e9ea; --muted:#8a8a90; }
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+/* the wall: the hundred books in rank order, covers edge to edge with thin gaps, like the album wall */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px;padding:4px}
+@media (max-width:520px){.wall{grid-template-columns:repeat(3,1fr)}}
+.book{position:relative;aspect-ratio:2/3;background:var(--tile);overflow:hidden;user-select:none;-webkit-user-select:none}
+/* until (or unless) a cover turns up, the tile shows the title and author */
+.book i{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;text-align:center;
+  font:600 13px/1.3 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-style:normal;color:var(--muted)}
+.book i small{font-weight:400;font-size:12px;color:#5d5d62}
+.book img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;-webkit-user-drag:none}
+.book img.in{opacity:1}
+.book span{position:absolute;top:5px;left:6px;z-index:1;color:#fff;font:700 clamp(10px,1.1vw,14px)/1 "Helvetica Neue",Helvetica,Arial,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.9)}
+</style>
+</head>
+<body>
+<main class="wall" id="wall"></main>
+<script src="books.js?v=2026-10-26a"></script>
+<script>
+const $ = s => document.querySelector(s);
+const LS = {
+  get(k, d=null){ try{ const v = localStorage.getItem("books."+k); return v==null ? d : JSON.parse(v); }catch{ return d; } },
+  set(k, v){ try{ localStorage.setItem("books."+k, JSON.stringify(v)); }catch{} }
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" })[c]);
+
+/* ---------- the wall ---------- */
+function renderWall(){
+  $("#wall").innerHTML = BOOKS.map(b =>
+    `<div class="book" data-rank="${b.rank}" title="${esc(b.rank + ". " + b.title + " · " + b.author + " (" + b.year + ")")}">` +
+    `<i>${esc(b.title)}<small>${esc(b.author)}</small></i><span>${b.rank}</span></div>`).join("");
+  for (const b of BOOKS) showCover(b);
+}
+function showCover(b){
+  const url = coverUrl(LS.get("cover." + b.rank));
+  if (!url) return;
+  const tile = $(`.book[data-rank="${b.rank}"]`);
+  if (tile.querySelector("img")) return;
+  const img = new Image();
+  img.alt = b.title;
+  img.onload = () => img.classList.add("in");
+  img.src = url;
+  tile.appendChild(img);
+}
+const coverUrl = id => id ? `https://covers.openlibrary.org/b/id/${id}-L.jpg` : null;
+
+/* ---------- covers: looked up once on Open Library and remembered in this browser ---------- */
+// A few lookups at a time so Open Library isn't flooded; a book with no cover keeps its title tile
+// and is tried again on a later visit (books.cover.N is only saved when a cover is found).
+async function findCover(b){
+  const q = new URLSearchParams({ title: b.title, author: b.author, fields: "cover_i", limit: "5" });
+  const r = await fetch("https://openlibrary.org/search.json?" + q);
+  if (!r.ok) throw new Error("Open Library " + r.status);
+  const hit = ((await r.json()).docs || []).find(d => d.cover_i);
+  return hit ? hit.cover_i : null;
+}
+async function fillCovers(){
+  const todo = BOOKS.filter(b => !LS.get("cover." + b.rank));
+  const work = async () => {
+    for (let b; (b = todo.shift()); ){
+      try{ const id = await findCover(b); if (id){ LS.set("cover." + b.rank, id); showCover(b); } }
+      catch{}
+    }
+  };
+  await Promise.all([work(), work(), work(), work()]);
+}
+
+renderWall();
+fillCovers();
+</script>
+</body>
+</html>
