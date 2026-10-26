@@ -94,6 +94,28 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .pq img,.pslot img{cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
 .pq img.placeholder,.pslot img.placeholder{opacity:.15}
 .pslot.over,.pqueue.over{outline:2px solid var(--rank);outline-offset:-2px}
+/* cart: the books you mean to buy, in your order (drag to change it), each with its three cheapest buying options,
+   dearest on the left and cheapest on the right */
+.cart{padding:4px 4px 72px}
+.cbar{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:14px 12px 10px}
+.cbar p{flex:1;margin:0;color:var(--muted);font-size:12px}
+.cbar button{font:600 12px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#000;background:var(--accent);border:0;border-radius:999px;padding:9px 14px;cursor:pointer;white-space:nowrap}
+.cbar button:disabled{opacity:.6;cursor:default}
+.cart .lrow{grid-template-columns:14px minmax(0,1fr) repeat(3,92px);gap:12px;padding:8px 12px;cursor:grab}
+.cart .lrow:hover{background:none}
+.cart .grip{color:#3a3a40;font-size:13px;letter-spacing:-3px;cursor:grab;touch-action:none}
+.cart .cb{min-width:0}
+.cart .cb .t,.cart .cb .a{display:block}
+.cart .cb .a{font-size:12px}
+.offer{display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:0;padding:6px 8px;border-radius:6px;background:var(--tile);color:var(--text);text-decoration:none}
+a.offer:hover{background:#222226}
+.offer .op{font:700 14px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+.offer .os{max-width:100%;font-size:10px;line-height:1.2;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.offer.none{align-items:center;justify-content:center;background:none;color:#3a3a40}
+.offer.best .op{color:var(--accent)}
+.cart .lrow.lifted{visibility:hidden}
+.rghost{position:fixed;z-index:30;pointer-events:none;margin:0;background:var(--tile);box-shadow:0 18px 40px rgba(0,0,0,.6);cursor:grabbing}
+@media (max-width:520px){.cart .lrow{grid-template-columns:16px minmax(0,1fr) repeat(3,62px);gap:6px;padding:8px 4px}.cart .grip{font-size:16px;padding:10px 0}.offer{padding:5px}.offer .op{font-size:12px}.cbar{padding-left:6px;padding-right:6px}}
 .ghost{position:fixed;z-index:30;pointer-events:none;cursor:grabbing;object-fit:cover;box-shadow:0 18px 40px rgba(0,0,0,.6);transform:scale(1.04);transition:transform .12s}
 
 /* the menu for a book, on every tab */
@@ -120,6 +142,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .views .toggle::before{content:"";position:absolute;top:3px;left:19px;width:16px;height:16px;border-radius:50%;background:#000;transition:left .2s}
 .views .toggle[aria-checked="false"]{background:var(--green)}
 .views .toggle[aria-checked="false"]::before{left:3px}
+/* Cart is always a list, so the switch rests while it's showing */
+.views .toggle.off{opacity:.35;cursor:default}
 .views .toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
 .views.dock-left .toggle,.views.dock-right .toggle{align-self:center;margin:4px 0 6px}
 @media (max-width:520px){.views button{padding:8px 7px;font-size:11px}}
@@ -133,18 +157,18 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .views.dragging{transform:none;transition:none;cursor:grabbing;box-shadow:0 18px 40px rgba(0,0,0,.6)}
 .views.dragging button{cursor:grabbing}
 /* keep the edge under the bar clear, so nothing important hides behind it */
-body.dock-top .wall,body.dock-top .pantheon,body.dock-top .list{padding-top:var(--dock)}
+body.dock-top .wall,body.dock-top .pantheon,body.dock-top .list,body.dock-top .cart{padding-top:var(--dock)}
 body.dock-top .lbar{padding-top:var(--dock)}
 body.dock-top .lbar:not(.hidden) ~ main{padding-top:4px}
-body.dock-left .wall,body.dock-left .pantheon,body.dock-left .list{padding-left:var(--dock)}
-body.dock-right .wall,body.dock-right .pantheon,body.dock-right .list{padding-right:var(--dock)}
+body.dock-left .wall,body.dock-left .pantheon,body.dock-left .list,body.dock-left .cart{padding-left:var(--dock)}
+body.dock-right .wall,body.dock-right .pantheon,body.dock-right .list,body.dock-right .cart{padding-right:var(--dock)}
 body.dock-left .lbar{padding-left:calc(var(--dock) + 12px)}
 body.dock-right .lbar{padding-right:calc(var(--dock) + 12px)}
 /* phones: the bar is fixed along the bottom on a solid black strip with its own space, and can't be moved */
 body.phone .views,body.phone .views[class*=dock-]{left:0;right:0;top:auto;bottom:0;transform:none;flex-direction:row;align-items:center;justify-content:space-evenly;
   gap:0;border-radius:0;padding:4px 2px calc(4px + env(safe-area-inset-bottom));background:#000;backdrop-filter:none;-webkit-backdrop-filter:none;touch-action:auto}
 body.phone .wall{padding-bottom:calc(var(--dock) + 4px)}
-body.phone .pantheon,body.phone .list{padding-bottom:calc(var(--dock) + 8px)}
+body.phone .pantheon,body.phone .list,body.phone .cart{padding-bottom:calc(var(--dock) + 8px)}
 body.phone .views button{padding:0 10px;border-radius:8px}
 
 /* syncing: a GitHub token, pasted once per device, lets your marks, books and Pantheon save to the repository */
@@ -182,17 +206,25 @@ body.phone .views button{padding:0 10px;border-radius:8px}
   <ol class="lrows" id="pantheonRows"></ol>
   <p class="lnote hidden" id="pantheonNone">Nothing in the Pantheon yet. Right-click a book and choose Send To Pantheon.</p>
 </main>
+<main class="list cart hidden" id="cartList">
+  <div class="cbar"><button id="cartRefresh" type="button">Refresh prices</button><p id="cartInfo"></p></div>
+  <ol class="lrows" id="cartRows"></ol>
+  <p class="lnote hidden" id="cartNone">Your cart is empty. Right-click a book and choose Send To Cart.</p>
+</main>
 <div class="menu hidden" id="menu">
   <button data-act="read">Mark As Read</button>
   <button data-act="want">Want To Read</button>
   <button data-act="own">Add to Shelf</button>
   <button data-act="pantheon">Send To Pantheon</button>
+  <button data-act="cart">Send To Cart</button>
 </div>
 <nav class="views" id="views">
   <button data-view="wall" data-label="NYT">NYT</button>
   <button data-view="owned" data-label="Shelf">Shelf</button>
   <span class="sep"></span>
   <button data-view="pantheon" data-label="Pantheon">Pantheon</button>
+  <span class="sep"></span>
+  <button data-view="cart" data-label="Cart">Cart</button>
   <span class="sep"></span>
   <span class="toggle" id="mode" role="switch" tabindex="0"></span>
 </nav>
@@ -225,11 +257,11 @@ const bookId = (title, author) => fold(title + " " + author).replace(/[^a-z0-9]+
 for (const b of BOOKS) b.id = bookId(b.title, b.author);
 
 /* ---------- your shelf: marks, books you own and the Pantheon ---------- */
-// shelf = { marks: { id: "read" | "want" }, owned: [{ id, title, author, year, copies? }], pantheon: { slots: [100 ids or null], queue: [ids] } }
+// shelf = { marks: { id: "read" | "want" }, owned: [{ id, title, author, year, copies? }], pantheon: { slots: [100 ids or null], queue: [ids] }, cart: [ids] }
 // It lives in data/shelf.json in the repository, so every device shows the same; this browser keeps a copy
 // (books.shelf) to draw straight away, and books.changes holds what hasn't been saved yet ("marks.<id>",
-// "owned" or "pantheon"), so nothing is lost offline or before a token is pasted.
-const blank = () => ({ marks: {}, owned: [], pantheon: { slots: Array(100).fill(null), queue: [] } });
+// "owned", "pantheon" or "cart"), so nothing is lost offline or before a token is pasted.
+const blank = () => ({ marks: {}, owned: [], pantheon: { slots: Array(100).fill(null), queue: [] }, cart: [] });
 let shelf = tidy(LS.get("shelf") || { ...blank(), marks: LS.get("marks", {}) });
 let changes = LS.get("changes") || Object.fromEntries(Object.entries(LS.get("pending", {})).map(([k, v]) => ["marks." + k, v]));
 LS.del("marks"); LS.del("pending");
@@ -238,6 +270,7 @@ function tidy(s){
   s = { ...blank(), ...s };
   s.marks = Object.fromEntries(Object.entries(s.marks || {}).map(([k, v]) => [/^\d+$/.test(k) ? BOOKS[k - 1]?.id || k : k, v]));
   if (!Array.isArray(s.owned)) s.owned = [];
+  if (!Array.isArray(s.cart)) s.cart = [];
   const p = s.pantheon || {};
   s.pantheon = { slots: Array.isArray(p.slots) && p.slots.length === 100 ? p.slots : Array(100).fill(null), queue: Array.isArray(p.queue) ? p.queue : [] };
   return s;
@@ -481,6 +514,138 @@ function togglePantheon(id){
   savePantheon(p);
 }
 
+/* ---------- cart: books to buy, in your order, with prices ---------- */
+// shelf.cart is the order; prices come from data/cart-prices.json, made by tools/prices.mjs in the Prices
+// workflow: { updated, books: { id: { checked, offers: [{ store, price, url, note }] } } }. Refresh prices saves
+// data/cart-refresh.json, which sets the workflow off; a book newly sent to the cart gets its prices the same way.
+let prices = LS.get("prices", { books: {} }), pricePoll = null;
+function toggleCart(id){
+  shelf.cart = shelf.cart.includes(id) ? shelf.cart.filter(x => x !== id) : [...shelf.cart, id];
+  change("cart", shelf.cart);
+}
+const money = n => "$" + n.toFixed(2);
+const ago = t => { const m = Math.round((Date.now() - new Date(t)) / 60000);
+  return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : Math.round(m / 1440) + " d ago"; };
+// the cheapest offer from each shop, the three cheapest of those, dearest first
+function offers(id){
+  const best = {};
+  for (const o of prices.books?.[id]?.offers || []) if (!best[o.store] || o.price < best[o.store].price) best[o.store] = o;
+  return Object.values(best).sort((a, b) => a.price - b.price).slice(0, 3).reverse();
+}
+function offerHtml(o, cheapest){
+  if (!o) return `<span class="offer none">—</span>`;
+  if (!/^https?:\/\//.test(o.url)) o = { ...o, url: "#" };
+  return `<a class="offer${cheapest ? " best" : ""}" href="${esc(o.url)}" target="_blank" rel="noopener" title="${esc(o.store + (o.note ? " · " + o.note : "") + " · " + money(o.price))}">` +
+    `<span class="op">${money(o.price)}</span><span class="os">${esc(o.store)}${o.note ? " · " + esc(o.note) : ""}</span></a>`;
+}
+function renderCart(){
+  const list = shelf.cart.map(byId).filter(Boolean);
+  $("#cartRows").innerHTML = list.map(b => {
+    const os = offers(b.id), cells = [null, null, null].map((_, i) => os[i - (3 - os.length)]);
+    return `<li class="lrow" data-id="${b.id}"><span class="grip">⋮⋮</span><span class="cb"><span class="t">${esc(b.title)}</span>` +
+      `<span class="a">${esc(b.author)}${b.year ? " · " + b.year : ""}</span></span>${cells.map((o, i) => offerHtml(o, i === 2)).join("")}</li>`;
+  }).join("");
+  $("#cartNone").classList.toggle("hidden", list.length > 0);
+  const total = list.reduce((t, b) => t + (offers(b.id).at(-1)?.price || 0), 0);
+  const waiting = list.some(b => !prices.books?.[b.id]);
+  $("#cartInfo").textContent = !list.length ? "" : [list.length + (list.length > 1 ? " books" : " book"), total ? "cheapest total " + money(total) : "",
+    pricePoll ? "checking prices…" : prices.updated ? "prices checked " + ago(prices.updated) : ""].filter(Boolean).join(" · ");
+  $("#cartRefresh").disabled = !!pricePoll || !list.length;
+  $("#cartRefresh").textContent = pricePoll ? "Checking…" : "Refresh prices";
+  if (waiting && !pricePoll && !document.hidden) pollPrices(() => shelf.cart.every(id => !byId(id) || prices.books?.[id]), 12, 20000);
+}
+// the latest prices, straight from the repository (the site itself takes a minute or two to catch up)
+async function loadPrices(){
+  let p;
+  try{ p = JSON.parse(fromBase64((await gh("/contents/data/cart-prices.json?ref=main")).content)); }
+  catch{ try{ p = await (await fetch("data/cart-prices.json?" + Date.now(), { cache: "no-store" })).json(); }catch{} }
+  if (p && p.books){ prices = p; LS.set("prices", p); }
+}
+function pollPrices(done, tries, every){
+  clearTimeout(pricePoll?.timer);
+  const p = pricePoll = { tries };
+  const tick = async () => {
+    await loadPrices();
+    if (pricePoll !== p) return;
+    if (done() || --p.tries <= 0){ pricePoll = null; if (view === "cart") renderCart(); return; }
+    if (view === "cart") renderCart();
+    p.timer = setTimeout(tick, every);
+  };
+  p.timer = setTimeout(tick, every);
+  if (view === "cart") renderCart();
+}
+$("#cartRefresh").onclick = async () => {
+  if (!LS.get("token")) return setup("Refreshing prices needs a GitHub token.");
+  const requested = new Date().toISOString(), path = "/contents/data/cart-refresh.json";
+  pricePoll = { tries: 0 }; renderCart();
+  try{
+    await save(); // the cart has to be in the repository before the prices for it can be looked up
+    let fsha;
+    try{ fsha = (await gh(path + "?ref=main")).sha; }catch(e){ if (e.status !== 404) throw e; }
+    await gh(path, { method: "PUT", body: JSON.stringify({ message: "Refresh cart prices", content: toBase64(JSON.stringify({ requested }, null, 1) + "\n"), sha: fsha, branch: "main" }) });
+    pricePoll = null;
+    pollPrices(() => prices.updated >= requested, 36, 10000);
+  } catch(e){
+    pricePoll = null; renderCart();
+    $("#cartInfo").textContent = e.status === 401 || e.status === 403 || e.status === 404 ? "That token can't save to BOOKSHELF, so prices can't be refreshed." : "Couldn't ask for new prices · try again";
+  }
+};
+document.addEventListener("visibilitychange", () => { if (!document.hidden && view === "cart") loadPrices().then(() => view === "cart" && renderCart()); });
+// drag a row up or down to change the order: with a mouse from anywhere on the row, on a touch screen by its grip
+let cpending = null, cdrag = null;
+$("#cartRows").addEventListener("pointerdown", e => {
+  const row = e.target.closest(".lrow");
+  if (!row || e.button > 0 || cdrag || e.target.closest("a")) return;
+  const grip = !!e.target.closest(".grip");
+  if (e.pointerType !== "mouse" && !grip) return;
+  if (e.pointerType === "mouse") e.preventDefault();
+  cpending = { row, x: e.clientX, y: e.clientY };
+  if (e.pointerType !== "mouse"){ unhold(); cbegin(cpending); }
+});
+addEventListener("pointermove", e => {
+  if (cdrag){ cmove(e.clientY); return; }
+  if (cpending && Math.hypot(e.clientX - cpending.x, e.clientY - cpending.y) > 6) cbegin(cpending, e.clientY);
+});
+addEventListener("pointerup", cend);
+addEventListener("pointercancel", cend);
+document.addEventListener("touchmove", e => { if (cdrag) e.preventDefault(); }, { passive: false });
+function cbegin(p, y = p.y){
+  cpending = null; closeMenu();
+  const r = p.row.getBoundingClientRect(), ghost = p.row.cloneNode(true);
+  ghost.classList.add("rghost");
+  Object.assign(ghost.style, { left: r.left + "px", width: r.width + "px" });
+  $("#cartList").appendChild(ghost);
+  p.row.classList.add("lifted");
+  cdrag = { row: p.row, ghost, dy: y - r.top, h: r.height };
+  cmove(y);
+  const edge = () => {
+    if (!cdrag) return;
+    const y = cdrag.y, m = 70;
+    if (y < m) scrollBy(0, -Math.ceil((m - y) / 4));
+    else if (y > innerHeight - m) scrollBy(0, Math.ceil((y - innerHeight + m) / 4));
+    cmove(cdrag.y);
+    requestAnimationFrame(edge);
+  };
+  requestAnimationFrame(edge);
+}
+// the lifted row follows the pointer, and the gap it left moves to where it would land
+function cmove(y){
+  cdrag.y = y;
+  cdrag.ghost.style.top = y - cdrag.dy + "px";
+  const rows = [...$("#cartRows").children].filter(r => r !== cdrag.row);
+  const next = rows.find(r => { const b = r.getBoundingClientRect(); return y < b.top + b.height / 2; });
+  if (next !== cdrag.row.nextElementSibling) $("#cartRows").insertBefore(cdrag.row, next || null);
+}
+function cend(){
+  cpending = null;
+  if (!cdrag) return;
+  const { row, ghost } = cdrag;
+  cdrag = null; droppedAt = Date.now();
+  ghost.remove(); row.classList.remove("lifted");
+  const order = [...$("#cartRows").children].map(r => r.dataset.id);
+  if (order.join() !== shelf.cart.join()){ shelf.cart = order; change("cart", order); }
+}
+
 /* ---------- the menu: right-click a book anywhere ---------- */
 const menu = $("#menu");
 let menuFor = null, heldAt = 0;
@@ -493,7 +658,7 @@ function place(m, x, y){
 }
 function openMenu(e){
   const el = e.target.closest(".book, .lrow, #pantheon img");
-  if (!el || pdrag || Date.now() - droppedAt < 300) return;
+  if (!el || pdrag || cdrag || Date.now() - droppedAt < 300) return;
   e.preventDefault(); e.stopPropagation();
   const id = el.dataset.id, m = shelf.marks[id];
   menuFor = id;
@@ -501,6 +666,7 @@ function openMenu(e){
   menu.querySelector('[data-act="want"]').textContent = m === "want" ? "Don't Want To Read" : "Want To Read";
   menu.querySelector('[data-act="own"]').textContent = ownedIds().has(id) ? "Remove From Shelf" : "Add to Shelf";
   menu.querySelector('[data-act="pantheon"]').textContent = inPantheon(id) ? "Remove From Pantheon" : "Send To Pantheon";
+  menu.querySelector('[data-act="cart"]').textContent = shelf.cart.includes(id) ? "Remove From Cart" : "Send To Cart";
   place(menu, e.clientX, e.clientY);
 }
 // the tap that ends a hold shouldn't close the menu it just opened
@@ -519,7 +685,7 @@ document.addEventListener("contextmenu", e => { if (e.target.closest(".book, .lr
 // phones have no right-click: holding a book opens its menu instead
 let hold = null;
 document.addEventListener("pointerdown", e => {
-  if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow")) return;
+  if (e.pointerType === "mouse" || cdrag || !e.target.closest(".book, .lrow")) return;
   const { clientX, clientY, target } = e;
   hold = { x: clientX, y: clientY, timer: setTimeout(() => {
     hold = null; heldAt = Date.now(); closeMenu();
@@ -547,12 +713,14 @@ menu.onclick = e => {
     change("owned", shelf.owned);
   }
   if (act === "pantheon") togglePantheon(id);
+  if (act === "cart") toggleCart(id);
 };
 
 /* ---------- views ---------- */
-// three tabs, all shown as grids or all as lists (books.mode, set by the switch after Pantheon);
-// the List tab of the first version is NYT as a list
-const VIEWS = ["wall", "owned", "pantheon"];
+// the tabs, all shown as grids or all as lists (books.mode, set by the switch at the end), except Cart,
+// which is always a list; the List tab of the first version is NYT as a list
+const VIEWS = ["wall", "owned", "pantheon", "cart"];
+const asList = v => mode === "list" || v === "cart";
 let mode = LS.get("mode") || (LS.get("view") === "list" || LS.get("modes", {}).wall === "list" ? "list" : "grid");
 if (LS.get("view") === "list") LS.set("view", "wall");
 LS.del("modes");
@@ -565,11 +733,12 @@ const searching = () => view === "owned" || (view === "wall" && mode === "list")
 function setView(v){
   view = v; LS.set("view", v);
   for (const x of VIEWS){
-    $("#" + x).classList.toggle("hidden", x !== v || mode !== "grid");
-    $("#" + x + "List").classList.toggle("hidden", x !== v || mode !== "list");
+    $("#" + x)?.classList.toggle("hidden", x !== v || asList(x));
+    $("#" + x + "List").classList.toggle("hidden", x !== v || !asList(x));
   }
   for (const b of document.querySelectorAll("#views button")) b.classList.toggle("on", b.dataset.view === v);
-  document.body.classList.toggle("listmode", mode === "list");
+  document.body.classList.toggle("listmode", asList(v));
+  $("#mode").classList.toggle("off", v === "cart");
   $("#mode").setAttribute("aria-checked", mode === "grid");
   $("#mode").setAttribute("aria-label", mode === "grid" ? "Grid view (switch to List)" : "List view (switch to Grid)");
   $("#mode").title = mode === "grid" ? "Grid · click for List" : "List · click for Grid";
@@ -577,6 +746,7 @@ function setView(v){
   $("#lq").value = queries[v] || "";
   closeMenu();
   drawAll();
+  if (v === "cart") loadPrices().then(() => view === "cart" && renderCart());
   if (searching() && matchMedia("(pointer: fine)").matches) $("#lq").focus({ preventScroll: true });
 }
 // redraws whichever tab is showing; the others are drawn when they're opened
@@ -586,17 +756,18 @@ function drawAll(){
   if (view === "wall"){ if (mode === "list") none = renderWallList(); else showMarks($("#wall")); }
   if (view === "owned") none = renderOwned();
   if (view === "pantheon"){ if (mode === "list") renderPantheonList(); else renderPantheon(); }
+  if (view === "cart") renderCart();
   $("#lnone").classList.toggle("hidden", !none);
   for (const h of document.querySelectorAll(".lhead")) h.classList.toggle("hidden", none);
   showSort();
 }
 $("#views").onclick = e => {
   if (barMoved) return;
-  if (e.target.closest("#mode")) return setMode(mode === "grid" ? "list" : "grid");
+  if (e.target.closest("#mode")) return view === "cart" || setMode(mode === "grid" ? "list" : "grid");
   const b = e.target.closest("button");
   if (b) setView(b.dataset.view);
 };
-$("#mode").onkeydown = e => { if (e.key === " " || e.key === "Enter"){ e.preventDefault(); setMode(mode === "grid" ? "list" : "grid"); } };
+$("#mode").onkeydown = e => { if ((e.key === " " || e.key === "Enter") && view !== "cart"){ e.preventDefault(); setMode(mode === "grid" ? "list" : "grid"); } };
 
 /* ---------- tab bar: drag it to any edge, it snaps to the nearest and remembers ---------- */
 const bar = $("#views");
