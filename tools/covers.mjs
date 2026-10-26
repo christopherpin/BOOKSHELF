@@ -68,6 +68,13 @@ async function asOnSite(b){
   const hit = (j?.docs || []).find(d => d.cover_i);
   return hit && `https://covers.openlibrary.org/b/id/${hit.cover_i}-L.jpg?default=false`;
 }
+// Open Library's everyday search ("q"), which forgives the punctuation and joint authors the title/author
+// fields choke on: the plain title and the first author's surname, matched on the title
+async function openLibraryLoose(b){
+  const j = await json("https://openlibrary.org/search.json?" + new URLSearchParams({ q: b.title + " " + surname(b.author), fields: "title,cover_i", limit: "10" }));
+  const hit = (j?.docs || []).find(d => d.cover_i && titleOk(b.title, d.title));
+  return hit && `https://covers.openlibrary.org/b/id/${hit.cover_i}-L.jpg?default=false`;
+}
 async function google(b){
   const j = await json("https://www.googleapis.com/books/v1/volumes?" + new URLSearchParams({ q: `intitle:${b.title} inauthor:${surname(b.author)}`, maxResults: "10" }));
   const hit = (j?.items || []).map(i => i.volumeInfo).find(v => v.imageLinks?.thumbnail && titleOk(b.title, v.title) && (v.authors || []).some(a => authorOk(b.author, a)));
@@ -94,7 +101,7 @@ for (const b of books){
   if (notFound[b.id] === version && !overrides[b.id]){ missing.push(b.title + " · " + b.author); continue; }
   let done = false;
   failed = false;
-  for (const find of [async () => overrides[b.id], apple, openLibrary, google, async () => asOnSite(b)]){
+  for (const find of [async () => overrides[b.id], apple, openLibrary, google, openLibraryLoose, async () => asOnSite(b)]){
     const url = await find(searchable(b)).catch(() => null);
     if (url && await save(url, file)){ console.log("✓", b.title, "←", url); done = true; break; }
   }
