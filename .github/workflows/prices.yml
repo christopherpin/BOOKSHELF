@@ -5,7 +5,7 @@ name: Prices
 on:
   push:
     branches: [main]
-    paths: [data/shelf.json, data/cart-refresh.json, tools/prices.mjs]
+    paths: [data/shelf.json, data/cart-refresh.json, tools/prices.mjs, .github/workflows/prices.yml]
   workflow_dispatch:
     inputs:
       refresh:
@@ -21,7 +21,10 @@ jobs:
   prices:
     runs-on: ubuntu-latest
     steps:
+      # the latest main, not the commit that set this run off, so prices saved by the run before are kept
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -35,5 +38,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update cart prices"
-          for i in 1 2 3; do git pull --rebase -q origin main && git push -q origin main && exit 0; sleep 3; done
+          # if the prices changed on main in between, this run's prices (made from the newer shelf) win
+          cp data/cart-prices.json "$RUNNER_TEMP/prices.json"
+          for i in 1 2 3; do
+            git pull --rebase -q origin main || { git rebase --abort; git reset -q --hard origin/main; cp "$RUNNER_TEMP/prices.json" data/cart-prices.json; git add data/cart-prices.json; git commit -qm "Update cart prices"; }
+            git push -q origin main && exit 0; sleep 3
+          done
           exit 1
