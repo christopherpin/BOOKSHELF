@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Books</title>
 <style>
-:root{ --rank:#ffd400; --green:#10b981; --accent:var(--rank); --bg:#0b0b0c; --tile:#161618; --text:#e9e9ea; --muted:#8a8a90; }
+:root{ --rank:#ffd400; --green:#077431; --accent:var(--rank); --bg:#0b0b0c; --tile:#161618; --text:#e9e9ea; --muted:#8a8a90; }
 /* the List view swaps the yellow for green (READ stays yellow) */
 body.listmode{--accent:var(--green)}
 *{box-sizing:border-box}
@@ -31,8 +31,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book > b{display:none}
 /* how many copies you own, when it's more than one */
 .book em{position:absolute;bottom:6px;right:6px;z-index:1;padding:3px 6px;border-radius:10px;background:rgba(0,0,0,.75);color:#fff;font:700 11px/1 system-ui,sans-serif;font-style:normal}
-/* in the lists, read is an emerald tick and want to read a white Q (for queue) */
-.lrow[data-mark="read"] > b{background:var(--green)}
+/* in the lists, read is a white tick on jersey green and want to read a white Q (for queue) */
+.lrow[data-mark="read"] > b{background:var(--green);color:#fff}
 .lrow[data-mark="want"] > b{background:#fff;color:#000}
 /* on a cover the mark is a solid bar across the top, with the word centred on it a shade off the bar's colour */
 .book[data-mark]::before{position:absolute;top:0;left:0;right:0;height:34px;z-index:1;pointer-events:none;display:flex;align-items:center;justify-content:center;
