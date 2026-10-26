@@ -20,11 +20,19 @@ const refresh = !!process.env.REFRESH;
 fs.mkdirSync("covers", { recursive: true });
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+// each service allows only so many searches a minute (Apple Books about 20), so searches to one host are
+// spaced out, and a "slow down" answer (403/429) waits longer before trying again; failures are logged
+const lastCall = {}, gap = { "itunes.apple.com": 3200 };
 async function json(url){
+  const host = new URL(url).host;
   for (let i = 0; i < 3; i++){
-    const r = await fetch(url, { headers: { "User-Agent": "bookshelf-covers (github.com/christopherpin/BOOKSHELF)" } }).catch(() => null);
-    if (r?.ok) return r.json();
-    await sleep(1500 * (i + 1));
+    const wait = (lastCall[host] || 0) + (gap[host] || 1000) - Date.now();
+    if (wait > 0) await sleep(wait);
+    lastCall[host] = Date.now();
+    const r = await fetch(url, { headers: { "User-Agent": "bookshelf-covers (github.com/christopherpin/BOOKSHELF)" } }).catch(e => ({ ok: false, status: e.message }));
+    if (r.ok) return r.json().catch(() => null);
+    console.log("  ", host, r.status);
+    await sleep(r.status === 403 || r.status === 429 ? 30000 : 1500 * (i + 1));
   }
   return null;
 }
