@@ -32,6 +32,11 @@ const core = t => words(t.split(":")[0]).replace(/^(the|a|an) /, "");
 const titleOk = (want, got) => { const a = core(want), b = core(got || ""); return !!b && (b.startsWith(a) || a.startsWith(b)); };
 const surname = a => words(a).split(" ").pop();
 const authorOk = (want, got) => words(got || "").includes(surname(want));
+// what to search for: the title without notes in brackets, and the first person named, without "(Ed.)" and the like,
+// so "Classics of Free Thought · Paul Blanshard (Ed.)" or "Rethinking the Modular · Alexander & May" can be found
+const plain = t => t.replace(/\s*\([^)]*\)/g, "").trim() || t;
+const firstAuthor = a => a.replace(/\([^)]*\)/g, " ").replace(/\bet al\.?/g, " ").split(/\s*(?:&|\/|;|,|\band\b|\bwith\b)\s*/i).map(s => s.trim()).find(Boolean) || a;
+const searchable = b => ({ ...b, title: plain(b.title), author: firstAuthor(b.author) });
 
 async function apple(b){
   const j = await json("https://itunes.apple.com/search?" + new URLSearchParams({ term: b.title + " " + b.author, media: "ebook", entity: "ebook", limit: "15" }));
@@ -64,7 +69,7 @@ for (const b of books){
   if (fs.existsSync(file) && !refresh && !overrides[b.id]) continue;
   let done = false;
   for (const find of [async () => overrides[b.id], apple, openLibrary, google]){
-    const url = await find(b).catch(() => null);
+    const url = await find(searchable(b)).catch(() => null);
     if (url && await save(url, file)){ console.log("✓", b.title, "←", url); done = true; break; }
   }
   if (!done) missing.push(b.title + " · " + b.author);
