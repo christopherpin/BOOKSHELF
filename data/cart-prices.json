@@ -1,55 +1,37 @@
 {
- "updated": "2026-10-26T17:34:09.560Z",
+ "updated": "2026-10-26T17:45:39.420Z",
  "books": {
   "the-flamethrowers-rachel-kushner": {
-   "checked": "2026-10-26T17:31:08.175Z",
+   "checked": "2026-10-26T17:45:39.420Z",
    "offers": [
     {
      "store": "AbeBooks",
      "price": 4.41,
-     "url": "https://www.abebooks.com/servlet/BookDetailsPL?bi=32196339510&dest=USA&ref_=ps_ms_370713412&cm_mmc=msn-_-comus_shopp_used_trade-_-naa-_-naa&msclkid=f3c351ef411b19ae5fcd3b30cf47d47d",
+     "url": "https://www.abebooks.com/servlet/BookDetailsPL?bi=32527503273&dest=USA&ref_=ps_ms_370713412&cm_mmc=msn-_-comus_shopp_used_trade-_-naa-_-naa&msclkid=14501f52cca51bc189bb758d5d619113",
      "note": "used"
     },
     {
      "store": "eBay",
      "price": 4.52,
-     "url": "https://us.redbrain.shop/redirect/retailer?category=261186&id=52a49c590f0583cc2f3a42e5a787eb9732a2c949&keywords=The+Flamethrowers+-+Paperback&offerid=256150819836&provider=EBAY_PARTNER_NETWORK&rb_itemId=256150819836&rb_pgeo=US&retailer=second.sale&url=aHR0cHM6Ly93d3cuZWJheS5jb20vaXRtLzI1NjE1MDgxOTgzNj92YXI9MCZta2V2dD0xJm1rY2lkPTEmbWtyaWQ9NzExLTUzMjAwLTE5MjU1LTAmY2FtcGlkPTUzMzg1OTA4MzYmdG9vbGlkPTEwMDQ0&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339059267&toolid=10044&customid=2cc451dfae81137697c83b0020dd6d26&accountId=141164998&utm_source=bing&utm_campaign=605796050&campaign_id=605796050&serviceId=ebay_us_bing&trafficChannelId=ebay_us_bing&utm_medium=pla&utm_content=pla&token=2cc451dfae81137697c83b0020dd6d26&msclkid=2cc451dfae81137697c83b0020dd6d26&itemId=52a49c590f0583cc2f3a42e5a787eb9732a2c949&pgId=4587712278152488&rb_geo=US&rb_pgeo=US&rb_plang=EN&rb_css=redbrain&loc_physical_ms=100903&utm_term=4587712278152488",
+     "url": "https://us.redbrain.shop/redirect/retailer?category=261186&id=52a49c590f0583cc2f3a42e5a787eb9732a2c949&keywords=The+Flamethrowers+-+Paperback&offerid=256150819836&provider=EBAY_PARTNER_NETWORK&rb_itemId=256150819836&rb_pgeo=US&retailer=second.sale&url=aHR0cHM6Ly93d3cuZWJheS5jb20vaXRtLzI1NjE1MDgxOTgzNj92YXI9MCZta2V2dD0xJm1rY2lkPTEmbWtyaWQ9NzExLTUzMjAwLTE5MjU1LTAmY2FtcGlkPTUzMzg1OTA4MzYmdG9vbGlkPTEwMDQ0&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339059267&toolid=10044&customid=a9fa4aeaf13a10bd0845203560fed42c&accountId=141164998&utm_source=bing&utm_campaign=605796050&campaign_id=605796050&serviceId=ebay_us_bing&trafficChannelId=ebay_us_bing&utm_medium=pla&utm_content=pla&token=a9fa4aeaf13a10bd0845203560fed42c&msclkid=a9fa4aeaf13a10bd0845203560fed42c&itemId=52a49c590f0583cc2f3a42e5a787eb9732a2c949&pgId=4587712278152488&rb_geo=US&rb_pgeo=US&rb_plang=EN&rb_css=redbrain&loc_physical_ms=100903&utm_term=4587712278152488",
      "note": "used"
     },
     {
      "store": "ThriftBooks",
-     "price": 5.69,
-     "url": "https://www.thriftbooks.com/w/the-flamethrowers_rachel-kushner/285855/item/7261633/?isbn=1439142009&idiq=7261633&mkwid=|dc&pcrid=77447028765180&pkw=&pmt=be&slid=&product=7261633&plc=&pgrid=1239149900900141&ptaid=pla-4581046496384036&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20-%20High%20Vol%20Frontlist%20-%20Under%20%2410&utm_term=&utm_content=|dc|pcrid|77447028765180|pkw||pmt|be|product|7261633|slid||pgrid|1239149900900141|ptaid|pla-4581046496384036|&msclkid=088a1df7715c12049c487728ff001713",
+     "price": 5.99,
+     "url": "https://www.thriftbooks.com/w/the-flamethrowers_rachel-kushner/285855/item/5293006/?isbn=1439142009&idiq=5293006&mkwid=|dc&pcrid=77447028765180&pkw=&pmt=be&slid=&product=5293006&plc=&pgrid=1239149900900141&ptaid=pla-4581046496384036&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20-%20High%20Vol%20Frontlist%20-%20Under%20%2410&utm_term=&utm_content=|dc|pcrid|77447028765180|pkw||pmt|be|product|5293006|slid||pgrid|1239149900900141|ptaid|pla-4581046496384036|&msclkid=bccab1cff5011a130c02db1064c56da5",
      "note": "used"
     },
     {
      "store": "Target",
      "price": 10.83,
-     "url": "https://ad.doubleclick.net/searchads/link/click?lid=58700008955957766&ds_a_cid=405524822&ds_a_caid=23049806812&&ds_e_adid=81776322890594&ds_e_target_id=pla-2333575991432390&ds_e_product_group_id=2333575991432390&ds_e_product_id=15103220&ds_e_product_country=US&ds_e_product_language=EN&ds_e_product_channel=Online&ds_e_network=o&ds_url_v=2&ds_dest_url=https://www.target.com/p/the-flamethrowers-by-rachel-kushner-paperback/-/A-15103220?TCID=PDS-23049806812&gclid=63d876fc66471f3ce9bd1c23e81ba7b3&gclsrc=3p.ds&msclkid=63d876fc66471f3ce9bd1c23e81ba7b3",
+     "url": "https://ad.doubleclick.net/searchads/link/click?lid=58700008955957766&ds_a_cid=405524822&ds_a_caid=23049806812&&ds_e_adid=81776322890594&ds_e_target_id=pla-2333575991432390&ds_e_product_group_id=2333575991432390&ds_e_product_id=15103220&ds_e_product_country=US&ds_e_product_language=EN&ds_e_product_channel=Online&ds_e_network=o&ds_url_v=2&ds_dest_url=https://www.target.com/p/the-flamethrowers-by-rachel-kushner-paperback/-/A-15103220?TCID=PDS-23049806812&gclid=cfe9c70b606517d44d9dadd4f1a1d041&gclsrc=3p.ds&msclkid=cfe9c70b606517d44d9dadd4f1a1d041",
      "note": ""
     },
     {
      "store": "Walmart",
      "price": 10.83,
-     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=333858471482",
-     "note": ""
-    },
-    {
-     "store": "VitalSource",
-     "price": 11.99,
-     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=235065767895",
-     "note": ""
-    },
-    {
-     "store": "Ebooks",
-     "price": 11.99,
-     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=116976389645",
-     "note": ""
-    },
-    {
-     "store": "Audiobooks",
-     "price": 15,
-     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=342561596999",
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=509602138682",
      "note": ""
     },
     {
@@ -77,12 +59,6 @@
      "note": ""
     },
     {
-     "store": "Faire",
-     "price": 18.99,
-     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=298408142559",
-     "note": ""
-    },
-    {
      "store": "iShook Books",
      "price": 18.99,
      "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=446096057534",
@@ -103,32 +79,408 @@
     {
      "store": "Amazon",
      "price": 24.71,
-     "url": "https://www.amazon.com/Flamethrowers-Novel-Rachel-Kushner/dp/1439142009/ref=asc_df_1439142009?tag=bingshoppinga-20&linkCode=df0&hvadid=80264559055695&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=100903&hvtargid=pla-4583864043963465&psc=1&hvocijid=2261776580065873752-1439142009-&hvexpln=0",
-     "note": ""
-    },
-    {
-     "store": "SolutionInn",
-     "price": 42.53,
-     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=530625249606",
+     "url": "https://www.amazon.com/Flamethrowers-Novel-Rachel-Kushner/dp/1439142009/ref=asc_df_1439142009?tag=bingshoppinga-20&linkCode=df0&hvadid=80264559055695&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=100903&hvtargid=pla-4583864043963465&psc=1&hvocijid=5029785801834580002-1439142009-&hvexpln=0",
      "note": ""
     }
    ]
   },
   "the-last-samurai-helen-dewitt": {
-   "checked": "2026-10-26T17:33:23.734Z",
-   "offers": []
+   "checked": "2026-10-26T17:45:39.420Z",
+   "offers": [
+    {
+     "store": "AbeBooks",
+     "price": 7.31,
+     "url": "https://www.abebooks.com/servlet/BookDetailsPL?bi=32245078301&dest=USA&ref_=ps_ms_370713412&cm_mmc=msn-_-comus_shopp_used_trade-_-naa-_-naa&msclkid=5d720c16ce17184bfa1566c95fd1a6ee",
+     "note": "used"
+    },
+    {
+     "store": "ThriftBooks",
+     "price": 8.09,
+     "url": "https://www.thriftbooks.com/w/the-last-samurai-the-life-and-battles-of-saigo-takamori_mark-ravina/349707/item/3066891/?isbn=0471705373&idiq=3066891&mkwid=|dc&pcrid=77447028765180&pkw=&pmt=be&slid=&product=3066891&plc=&pgrid=1239149900900141&ptaid=pla-4581046496384036&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20-%20High%20Vol%20Frontlist%20-%20Under%20%2410&utm_term=&utm_content=|dc|pcrid|77447028765180|pkw||pmt|be|product|3066891|slid||pgrid|1239149900900141|ptaid|pla-4581046496384036|&msclkid=91162abfc8f811be1b9b4060593e50a9",
+     "note": "used"
+    },
+    {
+     "store": "eBay",
+     "price": 8.97,
+     "url": "https://co.buycheapr.com/co?u=ZD1idXljaGVhcHIuY29tJms9VGhlK0xhc3QrU2FtdXJhaStieStIZWxlbitEZVdpdHQlM0ErVXNlZC4rQm9va3MuKzk3ODA3ODY4ODcwMDIuJnM9Z3MmYz1lYiZwPTAmdT1odHRwcyUzQSUyRiUyRnd3dy5lYmF5LmNvbSUyRml0bSUyRjI4NTMxODIxNTY4OSUzRl91bCUzRFVTJTI2bWtldnQlM0QxJTI2bWtjaWQlM0QxJTI2bWtyaWQlM0Q3MTEtNTMyMDAtMTkyNTUtMCUyNmNhbXBpZCUzRDUzMzkwNDY2NDglMjZ0b29saWQlM0QxMDAwMSUyNmN1c3RvbWlkJTNEJTdCR0NMSUQlN0QmYT0wLjI3JmU9dm1zJTNBZWIlM0FwJTNBMjg1MzE4MjE1Njg5&rpgids=7e028d73a06c193bd2bee7ac31aa675d%7C%7C&loc_physical_ms=&loc_interest_ms=52879&msclkid=7e028d73a06c193bd2bee7ac31aa675d&utm_source=bing&utm_medium=cpc&utm_campaign=PMax%20US&utm_term=2324505021064440&utm_content=PMax%20Assets",
+     "note": "used"
+    },
+    {
+     "store": "World of Books: US",
+     "price": 9,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=438869642558",
+     "note": ""
+    },
+    {
+     "store": "Amazon",
+     "price": 13.99,
+     "url": "https://www.amazon.com/Last-Samurai-Standing-Shogo-Imamura/dp/B0FWB4LDRF/ref=asc_df_B0FWB4LDRF?tag=bingshoppinga-20&linkCode=df0&hvadid=80745595095058&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=52879&hvlocphy=&hvtargid=pla-4584345077093979&psc=1&hvocijid=8310768817812087282-B0FWB4LDRF-&hvexpln=0",
+     "note": ""
+    },
+    {
+     "store": "Walmart",
+     "price": 15.48,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=457263351352",
+     "note": ""
+    },
+    {
+     "store": "BooksRun",
+     "price": 16.32,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=323056070182",
+     "note": ""
+    },
+    {
+     "store": "Better World Books USA",
+     "price": 17.12,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=151363132768",
+     "note": ""
+    },
+    {
+     "store": "DiscountMags",
+     "price": 18.55,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=137641900413",
+     "note": ""
+    },
+    {
+     "store": "Bookshop.org",
+     "price": 18.59,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=301727857952",
+     "note": ""
+    },
+    {
+     "store": "Comparor",
+     "price": 19.95,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=413165950031",
+     "note": ""
+    },
+    {
+     "store": "Rizzoli Bookstore",
+     "price": 19.95,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=470732611700",
+     "note": ""
+    },
+    {
+     "store": "Powell's Books",
+     "price": 19.95,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=444143728917",
+     "note": ""
+    },
+    {
+     "store": "iShook Books",
+     "price": 19.95,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=445772856737",
+     "note": ""
+    },
+    {
+     "store": "Bookstore N More",
+     "price": 22.58,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=425122810674",
+     "note": ""
+    },
+    {
+     "store": "AmericanBookWarehouse",
+     "price": 25.95,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Last+Samurai+Helen+DeWitt+book&goid=450290003002",
+     "note": ""
+    },
+    {
+     "store": "Etsy",
+     "price": 74,
+     "url": "https://www.etsy.com/listing/4532154500/the-last-samurai-by-helen-dewitt?gpla=1&gao=1&&utm_source=bing&utm_medium=cpc&utm_campaign=shopping_us_en_us_books_movies_and_music&utm_custom1=_k_0070071d0299119a98ed6dc2935f0559_k_&utm_content=bing_412372832_1307319623411419_81707540072476_pla-4585307091743500:pla-4585307091743500_c__4532154500&utm_custom2=412372832&msclkid=0070071d0299119a98ed6dc2935f0559",
+     "note": "used"
+    }
+   ]
   },
   "the-road-cormac-mccarthy": {
-   "checked": "2026-10-26T17:33:23.734Z",
-   "offers": []
+   "checked": "2026-10-26T17:45:39.420Z",
+   "offers": [
+    {
+     "store": "AbeBooks",
+     "price": 3.45,
+     "url": "https://www.abebooks.com/servlet/BookDetailsPL?bi=22718900109&dest=USA&ref_=ps_ms_370713412&cm_mmc=msn-_-comus_shopp_used_trade-_-naa-_-naa&msclkid=a7f47acdd936140e2c1b101248fe7895",
+     "note": "used"
+    },
+    {
+     "store": "Walmart",
+     "price": 4.68,
+     "url": "https://www.walmart.com/ip/The-Road-by-Cormac-McCarthy-Vintage-International-Paperback-FICTION-Literary-English-9780307455291/810039097?wmlspartner=wlpa&selectedSellerId=101094067&adid=22222222292810039097_10001113429_0000000000_569516217&wmlspartner=wmtlabs&wl0=e&wl1=o&wl2=c&wl3=72843111714422&wl4=pla-2324642460918120&wl5=100903&wl6=&wl7=&wl10=Walmart&wl11=Online&wl12=810039097_10001113429&wl14=The%20Road%20Cormac%20McCarthy%20book&veh=sem&gclid=c820f18598c419c573d99b5a090c34de&gclsrc=3p.ds&msclkid=c820f18598c419c573d99b5a090c34de",
+     "note": ""
+    },
+    {
+     "store": "eBay",
+     "price": 4.99,
+     "url": "https://us.redbrain.shop/redirect/retailer?category=261186&id=ae010bca106406743d52d8b292cd612c44026caa&keywords=THE+ROAD+by+Cormac&offerid=352414416665&provider=EBAY_PARTNER_NETWORK&rb_itemId=352414416665&rb_pgeo=US&retailer=repairmanjack7&url=aHR0cHM6Ly93d3cuZWJheS5jb20vaXRtLzM1MjQxNDQxNjY2NT92YXI9MCZta2V2dD0xJm1rY2lkPTEmbWtyaWQ9NzExLTUzMjAwLTE5MjU1LTAmY2FtcGlkPTUzMzg1OTA4MzYmdG9vbGlkPTEwMDQ0&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339059267&toolid=10044&customid=d073b224891c123e69ffd8fb18d42512&accountId=141164998&utm_source=bing&utm_campaign=605796050&campaign_id=605796050&serviceId=ebay_us_bing&trafficChannelId=ebay_us_bing&utm_medium=pla&utm_content=pla&token=d073b224891c123e69ffd8fb18d42512&msclkid=d073b224891c123e69ffd8fb18d42512&itemId=ae010bca106406743d52d8b292cd612c44026caa&pgId=4587712278152488&rb_geo=US&rb_pgeo=US&rb_plang=EN&rb_css=redbrain&loc_physical_ms=100903&utm_term=4587712278152488",
+     "note": "used"
+    },
+    {
+     "store": "Poshmark",
+     "price": 5,
+     "url": "https://poshmark.com/listing/The-Road-by-Cormac-McCarthy-paperback-book-5dac51e3152812242df4083d?gclid=8811c6e143391a6a0b98ac3ed2f1e98b&gclsrc=3p.ds&&utm_source=bdm&campaign_id=555500380&utm_campaign=555500380&ad_partner=bing&adset_id=1230354688466901&msclkid=8811c6e143391a6a0b98ac3ed2f1e98b",
+     "note": "used"
+    },
+    {
+     "store": "ThriftBooks",
+     "price": 5.59,
+     "url": "https://www.thriftbooks.com/w/the-road-by-cormac-mccarthy/247177/item/3010973/?isbn=0307476316&idiq=3010973&mkwid=|dc&pcrid=77378313662347&pkw=&pmt=be&slid=&product=3010973&plc=&pgrid=1238050402825500&ptaid=pla-4580977789773286&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20-%20Everything%20Else&utm_term=&utm_content=|dc|pcrid|77378313662347|pkw||pmt|be|product|3010973|slid||pgrid|1238050402825500|ptaid|pla-4580977789773286|&msclkid=d8a9ed7b9b6518dc453087a40aade071",
+     "note": "used"
+    },
+    {
+     "store": "Target",
+     "price": 8.98,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=34922543416",
+     "note": ""
+    },
+    {
+     "store": "Shopping FM",
+     "price": 14.08,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=389207078996",
+     "note": ""
+    },
+    {
+     "store": "Amazon",
+     "price": 16.76,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=42692175460",
+     "note": ""
+    },
+    {
+     "store": "DiscountMags",
+     "price": 18.6,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=168101440018",
+     "note": ""
+    },
+    {
+     "store": "Bookstore N More",
+     "price": 19.25,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=262934308524",
+     "note": ""
+    },
+    {
+     "store": "Powell's Books",
+     "price": 35,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=444143729319",
+     "note": ""
+    },
+    {
+     "store": "Bookmarks Retail",
+     "price": 35,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=175555650576",
+     "note": ""
+    },
+    {
+     "store": "The Folio Society UK",
+     "price": 85,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Road+Cormac+McCarthy+book&goid=516672176537",
+     "note": ""
+    },
+    {
+     "store": "Etsy",
+     "price": 104.58,
+     "url": "https://www.etsy.com/listing/4454416406/the-road-by-cormac-mccarthy-leather?gpla=1&gao=1&&utm_source=bing&utm_medium=cpc&utm_campaign=shopping_us_en_us_fs_high-books_movies_and_music&utm_custom1=_k_6fc0fc5499be19e7e0f5968b0876c9eb_k_&utm_content=bing_412372832_1302921576727383_81432662490381_pla-4585032213878084:pla-4585032213878084_c__4454416406&utm_custom2=412372832&msclkid=6fc0fc5499be19e7e0f5968b0876c9eb",
+     "note": ""
+    }
+   ]
   },
   "say-nothing-patrick-radden-keefe": {
-   "checked": "2026-10-26T17:33:23.734Z",
-   "offers": []
+   "checked": "2026-10-26T17:45:39.420Z",
+   "offers": [
+    {
+     "store": "BooksRun",
+     "price": 4.44,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=482423642213",
+     "note": ""
+    },
+    {
+     "store": "eBay",
+     "price": 5,
+     "url": "https://www.ebay.com/itm/377481939545?chn=ps&norover=1&mkevt=1&mkrid=711-213727-13078-0&mkcid=2&itemid=377481939545&targetid=4580290588543457&device=c&mktype=&googleloc=100903&poi=&campaignid=606298300&mkgroupid=1227056623109394&rlsatarget=pla-4580290588543457&abcId=10641797&merchantid=51291&msclkid=ad5b82c078a51d1a25f9e81fe96f96ed",
+     "note": "used"
+    },
+    {
+     "store": "AbeBooks",
+     "price": 8.26,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=417651939277",
+     "note": ""
+    },
+    {
+     "store": "Walmart",
+     "price": 11.39,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=409299577569",
+     "note": ""
+    },
+    {
+     "store": "Target",
+     "price": 14.99,
+     "url": "https://ad.doubleclick.net/searchads/link/click?lid=58700008955957766&ds_a_cid=405524822&ds_a_caid=23049806812&&ds_e_adid=81776322890594&ds_e_target_id=pla-2333575991432391&ds_e_product_group_id=2333575991432391&ds_e_product_id=79488338&ds_e_product_country=US&ds_e_product_language=EN&ds_e_product_channel=Online&ds_e_network=o&ds_url_v=2&ds_dest_url=https://www.target.com/p/say-nothing-by-patrick-radden-keefe-paperback/-/A-79488338?TCID=PDS-23049806812&gclid=528b8ce0113d1a50f72de63f80f7d5ef&gclsrc=3p.ds&msclkid=528b8ce0113d1a50f72de63f80f7d5ef",
+     "note": ""
+    },
+    {
+     "store": "Amazon",
+     "price": 18.34,
+     "url": "https://www.amazon.com/Say-Nothing-Murder-Northern-Ireland/dp/0008159262/ref=asc_df_0008159262?tag=bingshoppinga-20&linkCode=df0&hvadid=80333278397528&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=100903&hvtargid=pla-4583932760857857&psc=1&hvocijid=12375939404429115410-0008159262-&hvexpln=0",
+     "note": ""
+    },
+    {
+     "store": "Bookstore N More",
+     "price": 19.99,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=262934308511",
+     "note": ""
+    },
+    {
+     "store": "Macy's",
+     "price": 23,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=283704052863",
+     "note": ""
+    },
+    {
+     "store": "Bookmarks Retail",
+     "price": 23,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=420524639244",
+     "note": ""
+    },
+    {
+     "store": "LibroWorld",
+     "price": 23.23,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=288290144517",
+     "note": ""
+    },
+    {
+     "store": "ThriftBooks",
+     "price": 24.01,
+     "url": "https://www.thriftbooks.com/w/say-nothing-a-true-story-of-murder-and-memory-in-northern-ireland_patrick-radden-keefe/19497328/item/31567694/?isbn=1984883216&idiq=31567694&mkwid=|dc&pcrid=77515733999196&pkw=&pmt=be&slid=&product=31567694&plc=&pgrid=1240249369038350&ptaid=pla-4581115210056556&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20%7C%20NEW%20condition%20books&utm_term=&utm_content=|dc|pcrid|77515733999196|pkw||pmt|be|product|31567694|slid||pgrid|1240249369038350|ptaid|pla-4581115210056556|&msclkid=8dcf70901a8f1d8500db1a4f8b453793",
+     "note": ""
+    },
+    {
+     "store": "DiscountMags",
+     "price": 28.83,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=391338483852",
+     "note": ""
+    },
+    {
+     "store": "Bookshop.org",
+     "price": 28.89,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=410384271454",
+     "note": ""
+    },
+    {
+     "store": "World of Books: US",
+     "price": 30.19,
+     "url": "https://www.worldofbooks.com/products/say-nothing-book-patrick-radden-keefe-9781984883216?sku=NIN9781984883216&msclkid=1be71d953a16133b9184774aabdcf2ff&utm_source=bing&utm_medium=cpc&utm_campaign=Wob%20-%20USA%20-%20Bing%20-%20Pmax%20-%20INGRAM%20-%20EN%20-%20XX%20-%20New%20Books%20-%20Price%20Bracket%3A%20All%20-%20Feed%20Only&utm_term=2322993192540963&utm_content=New%20-%20Med",
+     "note": ""
+    },
+    {
+     "store": "The Retail Market",
+     "price": 50.49,
+     "url": "https://www.bing.com/shop/productdetails?q=Say+Nothing+Patrick+Radden+Keefe+book&goid=279223011356",
+     "note": ""
+    },
+    {
+     "store": "Etsy",
+     "price": 104.58,
+     "url": "https://www.etsy.com/listing/1892814605/say-nothing-leather-bound-hardcover-book?gpla=1&gao=1&&utm_source=bing&utm_medium=cpc&utm_campaign=shopping_us_en_us_fs_high-books_movies_and_music&utm_custom1=_k_70de47564c31165ee1f02d89ddfb232a_k_&utm_content=bing_412372832_1302921576727383_81432662490381_pla-4585032213878084:pla-4585032213878084_c__1892814605&utm_custom2=412372832&msclkid=70de47564c31165ee1f02d89ddfb232a",
+     "note": ""
+    }
+   ]
   },
   "the-warmth-of-other-suns-isabel-wilkerson": {
-   "checked": "2026-10-26T17:34:09.560Z",
-   "offers": []
+   "checked": "2026-10-26T17:45:39.420Z",
+   "offers": [
+    {
+     "store": "AbeBooks",
+     "price": 7.46,
+     "url": "https://www.abebooks.com/servlet/BookDetailsPL?bi=31726957045&dest=USA&ref_=ps_ms_370713412&cm_mmc=msn-_-comus_shopp_used_trade-_-naa-_-naa&msclkid=b1b9863717601aa2197eece886ac4f66",
+     "note": "used"
+    },
+    {
+     "store": "eBay",
+     "price": 7.97,
+     "url": "https://co.buycheapr.com/co?u=ZD1idXljaGVhcHIuY29tJms9V2FybXRoK29mK090aGVyK1N1bnMrJTNBK1RoZStFcGljK1N0b3J5K29mK0FtZXJpY2ElMjdzK0dyZWF0K01pZ3JhdGlvbitieStJc2FiZWwuK0tuJnM9Z3MmYz1lYiZwPTAmdT1odHRwcyUzQSUyRiUyRnd3dy5lYmF5LmNvbSUyRml0bSUyRjMyNzI5Nzg4MjUzMCUzRl91bCUzRFVTJTI2bWtldnQlM0QxJTI2bWtjaWQlM0QxJTI2bWtyaWQlM0Q3MTEtNTMyMDAtMTkyNTUtMCUyNmNhbXBpZCUzRDUzMzkwNDY2NDglMjZ0b29saWQlM0QxMDAwMSUyNmN1c3RvbWlkJTNEJTdCR0NMSUQlN0QmYT0wLjI0JmU9dm1zJTNBZWIlM0FwJTNBMzI3Mjk3ODgyNTMw&rpgids=e0912e91e2811f0f628b444e734db3a0%7C%7C&loc_physical_ms=100903&loc_interest_ms=&msclkid=e0912e91e2811f0f628b444e734db3a0&utm_source=bing&utm_medium=cpc&utm_campaign=PMax%20US&utm_term=2324505021064440&utm_content=PMax%20Assets",
+     "note": "used"
+    },
+    {
+     "store": "ThriftBooks",
+     "price": 10.59,
+     "url": "https://www.thriftbooks.com/w/the-warmth-of-other-suns-the-epic-story-of-americas-great-migration_isabel-wilkerson/250657/item/4244211/?isbn=0679763880&idiq=4244211&mkwid=|dc&pcrid=76897273066016&pkw=&pmt=be&slid=&product=4244211&plc=&pgrid=1230353808544773&ptaid=pla-4580496747883112&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20-%20High%20Vol%20Frontlist%20-%20%2410%20-%20%2450&utm_term=&utm_content=|dc|pcrid|76897273066016|pkw||pmt|be|product|4244211|slid||pgrid|1230353808544773|ptaid|pla-4580496747883112|&msclkid=198eb6bdede61bdc8e1cdc627c2ac959",
+     "note": "used"
+    },
+    {
+     "store": "Target",
+     "price": 10.63,
+     "url": "https://ad.doubleclick.net/searchads/link/click?lid=58700008955957766&ds_a_cid=405524822&ds_a_caid=23049806812&&ds_e_adid=81776322890594&ds_e_target_id=pla-2333575991432391&ds_e_product_group_id=2333575991432391&ds_e_product_id=13717347&ds_e_product_country=US&ds_e_product_language=EN&ds_e_product_channel=Online&ds_e_network=o&ds_url_v=2&ds_dest_url=https://www.target.com/p/the-warmth-of-other-suns-vintage-reprint-paperback-by-isabel-wilkerson/-/A-13717347?TCID=PDS-23049806812&gclid=aedec0e5285c1d43384caa3ab9907d00&gclsrc=3p.ds&msclkid=aedec0e5285c1d43384caa3ab9907d00",
+     "note": ""
+    },
+    {
+     "store": "Walmart",
+     "price": 10.63,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=316553104640",
+     "note": ""
+    },
+    {
+     "store": "BooksRun",
+     "price": 10.66,
+     "url": "https://booksrun.com/9780141995151-warmth-of-other-suns?afk=5226&utm_source=bing&utm_medium=cpc&utm_content=main_feed&utm_campaign=pmax_merchant_booksrun_low_mid&msclkid=68787f13adff10d0c04815cc3c33f8b4",
+     "note": "used"
+    },
+    {
+     "store": "Christianbook",
+     "price": 16.24,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=58078874013",
+     "note": ""
+    },
+    {
+     "store": "DiscountMags",
+     "price": 19.53,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=137641170604",
+     "note": ""
+    },
+    {
+     "store": "Peabody Book Emporium",
+     "price": 20,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=268405719240",
+     "note": ""
+    },
+    {
+     "store": "Powell's Books",
+     "price": 21,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=444143726605",
+     "note": ""
+    },
+    {
+     "store": "iShook Books",
+     "price": 21.79,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=428450680161",
+     "note": ""
+    },
+    {
+     "store": "Amazon",
+     "price": 23.3,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=167665479851",
+     "note": ""
+    },
+    {
+     "store": "Bookshop.org",
+     "price": 39.14,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=301728018374",
+     "note": ""
+    },
+    {
+     "store": "Bookstore N More",
+     "price": 40,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=262934364507",
+     "note": ""
+    },
+    {
+     "store": "Bookmarks Retail",
+     "price": 42,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Warmth+of+Other+Suns+Isabel+Wilkerson+book&goid=219079636983",
+     "note": ""
+    },
+    {
+     "store": "Etsy",
+     "price": 104.58,
+     "url": "https://www.etsy.com/listing/4454402735/the-warmth-of-other-suns-by-isabel?gpla=1&gao=1&&utm_source=bing&utm_medium=cpc&utm_campaign=shopping_us_en_us_fs_high-books_movies_and_music&utm_custom1=_k_611373b0a8a91aebde17196f3965cdc6_k_&utm_content=bing_412372832_1302921576727383_81432662490381_pla-4585032213878084:pla-4585032213878084_c__4454402735&utm_custom2=412372832&msclkid=611373b0a8a91aebde17196f3965cdc6",
+     "note": ""
+    }
+   ]
   }
  }
 }
