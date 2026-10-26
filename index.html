@@ -58,6 +58,12 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .lhead{padding-top:4px;padding-bottom:6px;border-bottom:1px solid #222225;color:var(--muted);font:700 11px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .lrow{border-radius:6px;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .lrow:hover{background:var(--tile)}
+/* click Title, Author or Year to sort by it (again to reverse, a third time or # for the usual order); the column it's sorted by turns yellow */
+.lhead [data-sort]{cursor:pointer;user-select:none;-webkit-user-select:none}
+.lhead [data-sort]:hover{color:var(--text)}
+.lhead [data-sort].on{color:var(--rank)}
+.lhead [data-sort].on::after{content:" ↑"}
+.lhead [data-sort].on.desc::after{content:" ↓"}
 .lrow .n,.lhead .n{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
 .lrow .t,.lrow .a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lrow .a{color:var(--muted)}
@@ -145,18 +151,18 @@ body.phone .views button{padding:0 10px;border-radius:8px}
 <p class="lnote hidden" id="lnone">No books match</p>
 <main class="wall" id="wall"></main>
 <main class="list hidden" id="wallList">
-  <div class="lhead"><span class="n">#</span><span>Title</span><span>Author</span><em>Year</em></div>
+  <div class="lhead"><span class="n" data-sort="">#</span><span data-sort="title">Title</span><span data-sort="author">Author</span><em data-sort="year">Year</em></div>
   <ol class="lrows" id="wallRows"></ol>
 </main>
 <main class="wall hidden" id="owned"></main>
 <main class="list plain hidden" id="ownedList">
-  <div class="lhead plain"><span class="n"></span><span>Title</span><span>Author</span><em>Year</em></div>
+  <div class="lhead plain"><span class="n"></span><span data-sort="title">Title</span><span data-sort="author">Author</span><em data-sort="year">Year</em></div>
   <ol class="lrows" id="ownedRows"></ol>
 </main>
 <p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on NYT and choose Add to Shelf.</p>
 <main class="pantheon hidden" id="pantheon"></main>
 <main class="list hidden" id="pantheonList">
-  <div class="lhead"><span class="n">#</span><span>Title</span><span>Author</span><em>Year</em></div>
+  <div class="lhead"><span class="n" data-sort="">#</span><span data-sort="title">Title</span><span data-sort="author">Author</span><em data-sort="year">Year</em></div>
   <h3 id="queueHead">Queue</h3>
   <ol class="lrows plain" id="queueRows"></ol>
   <h3 id="placedHead">Placed</h3>
@@ -327,8 +333,37 @@ function matching(list){
 }
 const rowHtml = (b, n) => `<li class="lrow" data-id="${b.id}"><span class="n">${n || ""}</span>` +
   `<span class="t">${esc(b.title)}${b.copies > 1 ? `<small>×${b.copies}</small>` : ""}</span><span class="a">${esc(b.author)}</span><em>${b.year || ""}</em><b></b></li>`;
+// each tab keeps its own sort (books.sorts): { key: "title" | "author" | "year", desc }, or none for the usual order
+const sorts = LS.get("sorts", {});
+// titles sort without a leading The, A or An; authors by surname; books with no year go last
+const sortTitle = t => fold(t).replace(/^(the|a|an)\s+/, "");
+const surname = a => { const w = fold(a).replace(/,?\s+(jr|sr|ii|iii)\.?$/, "").split(/\s+/); return w.pop() + " " + w.join(" "); };
+const SORTERS = {
+  title: (a, b) => sortTitle(a.title).localeCompare(sortTitle(b.title)),
+  author: (a, b) => surname(a.author).localeCompare(surname(b.author)) || sortTitle(a.title).localeCompare(sortTitle(b.title)),
+  year: (a, b) => (a.year || 9999) - (b.year || 9999) || sortTitle(a.title).localeCompare(sortTitle(b.title))
+};
+function sorted(list){
+  const s = sorts[view], by = s && SORTERS[s.key];
+  return by ? [...list].sort((a, b) => s.desc ? by(b, a) : by(a, b)) : list;
+}
+function sortBy(key){
+  const s = sorts[view];
+  if (!key || (s && s.key === key && s.desc)) delete sorts[view];
+  else sorts[view] = { key, desc: !!(s && s.key === key) };
+  LS.set("sorts", sorts);
+  drawAll();
+}
+document.addEventListener("click", e => { const h = e.target.closest(".lhead [data-sort]"); if (h) sortBy(h.dataset.sort); });
+function showSort(){
+  const s = sorts[view];
+  for (const h of document.querySelectorAll(".lhead [data-sort]")){
+    const on = !!s && h.dataset.sort === s.key;
+    h.classList.toggle("on", on); h.classList.toggle("desc", on && s.desc);
+  }
+}
 function fillRows(root, list, num){
-  root.innerHTML = list.map(b => rowHtml(b, num && num(b))).join("");
+  root.innerHTML = sorted(list).map(b => rowHtml(b, num && num(b))).join("");
   showMarks(root);
 }
 function renderWallList(){
@@ -580,6 +615,7 @@ function drawAll(){
   if (view === "pantheon"){ if (modes.pantheon === "list") renderPantheonList(); else renderPantheon(); }
   $("#lnone").classList.toggle("hidden", !none);
   for (const h of document.querySelectorAll(".lhead")) h.classList.toggle("hidden", none);
+  showSort();
 }
 $("#views").onclick = e => { const b = e.target.closest("button"); if (b && !barMoved && !justHeld()) setView(b.dataset.view); };
 
