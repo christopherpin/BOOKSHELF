@@ -75,7 +75,7 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .views button{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;height:33px}
 .views button::after{content:attr(data-label);height:0;overflow:hidden;visibility:hidden;font-size:14px;font-weight:700}
 .views button.on{color:var(--rank);background:#000;font-size:14px;font-weight:700}
-/* thin white lines between the groups: List Wall Owned | Pantheon */
+/* thin white lines between the groups: List Wall Shelf | Pantheon */
 .views .sep{flex:0 0 1px;align-self:stretch;margin:7px 3px;background:rgba(255,255,255,.7)}
 .views.dock-left .sep,.views.dock-right .sep{flex-basis:1px;margin:3px 10px}
 @media (max-width:520px){.views button{padding:8px 7px;font-size:11px}}
@@ -120,18 +120,18 @@ body.phone .views button{padding:0 10px;border-radius:8px}
   <p class="lnote hidden" id="lnone">No books match</p>
 </main>
 <main class="wall hidden" id="owned"></main>
-<p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on the Wall or List and choose I Own This.</p>
+<p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on the Wall or List and choose Add to Shelf.</p>
 <main class="pantheon hidden" id="pantheon"></main>
 <div class="menu hidden" id="menu">
   <button data-act="read">Mark As Read</button>
   <button data-act="want">Want To Read</button>
-  <button data-act="own">I Own This</button>
+  <button data-act="own">Add to Shelf</button>
   <button data-act="pantheon">Send To Pantheon</button>
 </div>
 <nav class="views" id="views">
   <button data-view="list" data-label="List">List</button>
   <button data-view="wall" data-label="Wall">Wall</button>
-  <button data-view="owned" data-label="Owned">Owned</button>
+  <button data-view="owned" data-label="Shelf">Shelf</button>
   <span class="sep"></span>
   <button data-view="pantheon" data-label="Pantheon">Pantheon</button>
 </nav>
@@ -200,7 +200,7 @@ const ownedIds = () => new Set(shelf.owned.map(b => b.id));
 const byId = id => BOOKS.find(b => b.id === id) || shelf.owned.find(b => b.id === id);
 
 /* ---------- covers: saved in the site (covers.js, made by tools/covers.mjs) ---------- */
-// A book without a saved cover yet (one you've just added to Owned) is looked up on Open Library, a few
+// A book without a saved cover yet (one you've just added to your Shelf) is looked up on Open Library, a few
 // at a time so it isn't flooded, and remembered in this browser (books.cover.<id>) until its cover is saved.
 const coverUrl = b => {
   if (COVERS[b.id]) return COVERS[b.id];
@@ -247,7 +247,7 @@ function addImg(tile, b, url){
   tile.appendChild(img);
 }
 
-/* ---------- the wall, and Owned: covers edge to edge ---------- */
+/* ---------- the wall, and Shelf: covers edge to edge ---------- */
 function tileHtml(b, rank){
   return `<div class="book" data-id="${b.id}" title="${esc((rank ? rank + ". " : "") + b.title + " · " + b.author + (b.year ? " (" + b.year + ")" : ""))}">` +
     `<i>${esc(b.title)}<small>${esc(b.author)}</small></i>${rank ? `<span>${rank}</span>` : ""}<b></b></div>`;
@@ -414,7 +414,7 @@ function openMenu(e){
   menuFor = id;
   menu.querySelector('[data-act="read"]').textContent = m === "read" ? "Unmark Read" : "Mark As Read";
   menu.querySelector('[data-act="want"]').textContent = m === "want" ? "Don't Want To Read" : "Want To Read";
-  menu.querySelector('[data-act="own"]').textContent = ownedIds().has(id) ? "Remove From Owned" : "I Own This";
+  menu.querySelector('[data-act="own"]').textContent = ownedIds().has(id) ? "Remove From Shelf" : "Add to Shelf";
   menu.querySelector('[data-act="pantheon"]').textContent = inPantheon(id) ? "Remove From Pantheon" : "Send To Pantheon";
   menu.classList.remove("hidden");
   const w = menu.offsetWidth, h = menu.offsetHeight;
@@ -423,7 +423,7 @@ function openMenu(e){
 }
 document.addEventListener("click", e => { if (!menu.contains(e.target)) closeMenu(); });
 document.addEventListener("contextmenu", e => { if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); } });
-// phones have no right-click: holding a book on the Wall, List or Owned opens the menu instead
+// phones have no right-click: holding a book on the Wall, List or Shelf opens the menu instead
 let hold = null;
 document.addEventListener("pointerdown", e => {
   if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow")) return;
