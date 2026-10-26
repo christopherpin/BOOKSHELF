@@ -71,16 +71,22 @@ async function save(url, file){
   return true;
 }
 
+// books nothing was found for, by this script's version: they're tried again only when the script changes
+// (a better search) or on a refresh, so a run after each shelf change takes seconds instead of half an hour
+const version = crypto.createHash("md5").update(fs.readFileSync("tools/covers.mjs")).digest("hex").slice(0, 8);
+const notFound = refresh ? {} : read("covers/missing.json", {});
 const missing = [];
 for (const b of books){
   const file = `covers/${b.id}.jpg`;
   if (fs.existsSync(file) && !refresh && !overrides[b.id]) continue;
+  if (notFound[b.id] === version && !overrides[b.id]){ missing.push(b.title + " · " + b.author); continue; }
   let done = false;
   for (const find of [async () => overrides[b.id], apple, openLibrary, google, async () => asOnSite(b)]){
     const url = await find(searchable(b)).catch(() => null);
     if (url && await save(url, file)){ console.log("✓", b.title, "←", url); done = true; break; }
   }
-  if (!done) missing.push(b.title + " · " + b.author);
+  if (!done){ missing.push(b.title + " · " + b.author); notFound[b.id] = version; }
+  else delete notFound[b.id];
   await sleep(300);
 }
 
@@ -90,6 +96,8 @@ for (const b of books){
   const file = `covers/${b.id}.jpg`;
   if (fs.existsSync(file)) COVERS[b.id] = file + "?" + crypto.createHash("md5").update(fs.readFileSync(file)).digest("hex").slice(0, 8);
 }
+for (const id of Object.keys(notFound)) if (fs.existsSync(`covers/${id}.jpg`) || !books.some(b => b.id === id)) delete notFound[id];
+fs.writeFileSync("covers/missing.json", JSON.stringify(notFound, null, 1) + "\n");
 fs.writeFileSync("covers.js", "// written by tools/covers.mjs: the saved cover for each book\nconst COVERS = " + JSON.stringify(COVERS, null, 1) + ";\n");
 console.log(`${Object.keys(COVERS).length} of ${books.length} books have covers`);
 if (missing.length) console.log("No cover found for:\n  " + missing.join("\n  "));

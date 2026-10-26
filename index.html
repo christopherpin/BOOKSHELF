@@ -250,43 +250,11 @@ const ownedIds = () => new Set(shelf.owned.map(b => b.id));
 const byId = id => BOOKS.find(b => b.id === id) || shelf.owned.find(b => b.id === id);
 
 /* ---------- covers: saved in the site (covers.js, made by tools/covers.mjs) ---------- */
-// A book without a saved cover yet (one you've just added to your Shelf) is looked up on Open Library, a few
-// at a time so it isn't flooded, and remembered in this browser (books.cover.<id>) until its cover is saved.
-const coverUrl = b => {
-  if (COVERS[b.id]) return COVERS[b.id];
-  const c = LS.get("cover." + b.id);
-  return c ? `https://covers.openlibrary.org/b/id/${c}-L.jpg` : null;
-};
-for (const b of BOOKS){ const old = LS.get("cover." + b.rank); if (old){ LS.set("cover." + b.id, old); LS.del("cover." + b.rank); } }
-async function findCover(b){
-  const q = new URLSearchParams({ title: b.title, author: b.author, fields: "cover_i", limit: "5" });
-  const r = await fetch("https://openlibrary.org/search.json?" + q);
-  if (!r.ok) throw new Error("Open Library " + r.status);
-  const hit = ((await r.json()).docs || []).find(d => d.cover_i);
-  return hit ? hit.cover_i : null;
-}
-const coverQueue = [], looking = new Set();
-let workers = 0;
-function wantCover(b){
-  if (COVERS[b.id] || LS.get("cover." + b.id) || looking.has(b.id)) return;
-  looking.add(b.id); coverQueue.push(b);
-  while (workers < 4 && coverQueue.length) work();
-}
-async function work(){
-  workers++;
-  for (let b; (b = coverQueue.shift()); ){
-    try{ const c = await findCover(b); if (c){ LS.set("cover." + b.id, c); showCover(b.id); } }
-    catch{}
-  }
-  workers--;
-}
-// a cover that just arrived goes onto every tile and Pantheon place showing that book
-function showCover(id){
-  const b = byId(id), url = b && coverUrl(b);
-  if (!url) return;
-  for (const tile of document.querySelectorAll(`.book[data-id="${id}"]`)) addImg(tile, b, url);
-  if (view === "pantheon" && modes.pantheon === "grid") renderPantheon();
-}
+// Only saved covers are shown, so a cover never changes on its own; a book whose cover isn't saved yet shows
+// its title until the next cover run saves one. (Covers used to be looked up on Open Library live and kept in
+// this browser, which could show a different edition from the saved one; those are cleared out.)
+const coverUrl = b => COVERS[b.id] || null;
+try{ for (const k of Object.keys(localStorage)) if (k.startsWith("books.cover.")) localStorage.removeItem(k); }catch{}
 function addImg(tile, b, url){
   if (tile.querySelector("img")) return;
   const img = new Image();
@@ -304,7 +272,7 @@ function tileHtml(b, rank){
 }
 function fillGrid(root, list, ranked){
   root.innerHTML = list.map(b => tileHtml(b, ranked && b.rank)).join("");
-  for (const b of list){ const url = coverUrl(b); if (url) addImg(root.querySelector(`.book[data-id="${b.id}"]`), b, url); else wantCover(b); }
+  for (const b of list){ const url = coverUrl(b); if (url) addImg(root.querySelector(`.book[data-id="${b.id}"]`), b, url); }
   showMarks(root);
 }
 const renderWall = () => fillGrid($("#wall"), BOOKS, true);
@@ -391,7 +359,7 @@ function cover(id){
   const b = byId(id), url = b && coverUrl(b);
   if (!b) return null;
   const img = document.createElement("img");
-  if (url) img.src = url; else { img.src = "data:image/svg+xml," + encodeURIComponent(titleSvg(b)); wantCover(b); }
+  if (url) img.src = url; else { img.src = "data:image/svg+xml," + encodeURIComponent(titleSvg(b)); }
   img.alt = ""; img.title = b.title + " · " + b.author; img.dataset.id = id; img.draggable = false;
   return img;
 }
