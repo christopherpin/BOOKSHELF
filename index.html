@@ -34,22 +34,30 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book[data-mark="read"]::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5);pointer-events:none}
 .empty{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--muted);pointer-events:none}
 
-/* list: one row per book, with a search bar that keeps only the books that match */
-.list{padding:0 4px 72px}
-.lbar{position:sticky;top:0;z-index:3;display:flex;justify-content:center;padding:14px 12px;background:var(--bg)}
+/* list: every tab can show its books as rows instead (right-click the tab), with rank, title, author and year in columns */
+.list{padding:4px 4px 72px}
+/* the search bar, on NYT's list and on Shelf, keeps only the books that match */
+.lbar{position:sticky;top:0;z-index:3;display:flex;justify-content:center;padding:14px 12px 10px;background:var(--bg)}
 .lbar input{width:100%;max-width:520px;font:inherit;font-size:15px;color:var(--text);background:var(--tile);border:1px solid #2a2a2e;border-radius:999px;padding:11px 18px;outline:none}
 .lbar input:focus{border-color:#3a3a40}
 .lbar input::placeholder{color:var(--muted)}
-.lrows{max-width:760px;margin:0 auto;padding:0;list-style:none}
-.lrow{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:6px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.lhead,.lrows,.list h3{max-width:960px;margin:0 auto}
+.lrows{padding:0;list-style:none}
+.lrow,.lhead{display:grid;grid-template-columns:30px minmax(0,3fr) minmax(0,2fr) 44px 22px;align-items:center;gap:14px;padding:10px 12px}
+.plain .lrow,.plain.lhead{grid-template-columns:minmax(0,3fr) minmax(0,2fr) 44px 22px}
+.plain .n{display:none}
+.lhead{padding-top:4px;padding-bottom:6px;border-bottom:1px solid #222225;color:var(--muted);font:700 11px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.lrow{border-radius:6px;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .lrow:hover{background:var(--tile)}
-.lrow .n{flex:none;min-width:26px;text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
-.lrow .t{flex:1;min-width:0}
-.lrow .t div{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.lrow .t .a{color:var(--muted);font-size:13px}
-.lrow em{flex:none;font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums}
-.lrow b{flex:none;visibility:hidden}
+.lrow .n,.lhead .n{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.lrow .t,.lrow .a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow .a{color:var(--muted)}
+.lrow small{color:var(--muted);margin-left:6px}
+.lrow em,.lhead em{font-style:normal;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.lrow b{visibility:hidden}
 .lrow[data-mark] b{visibility:visible}
+.list h3{padding:18px 12px 6px;font:700 12px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:520px){.lrow,.lhead{gap:10px;padding-left:6px;padding-right:6px;grid-template-columns:22px minmax(0,3fr) minmax(0,2fr) 36px 22px}.plain .lrow,.plain.lhead{grid-template-columns:minmax(0,3fr) minmax(0,2fr) 36px 22px}}
 .lnote{margin:28px 0;text-align:center;color:var(--muted)}
 
 /* pantheon: a numbered 1-100 grid, ten to a row, with a queue of books waiting to be placed */
@@ -71,6 +79,7 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .menu{position:fixed;z-index:40;padding:4px;border-radius:8px;background:var(--rank);box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .menu button{display:block;width:100%;text-align:left;font:600 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#000;background:none;border:0;border-radius:5px;padding:10px 14px;cursor:pointer;white-space:nowrap}
 .menu button:hover{background:rgba(0,0,0,.1)}
+.menu button.on::after{content:"✓";margin-left:14px}
 
 /* view switcher, the same bar as the iPod's */
 .views{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:20;display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(22,22,24,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
@@ -81,7 +90,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .views button{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;height:33px}
 .views button::after{content:attr(data-label);height:0;overflow:hidden;visibility:hidden;font-size:14px;font-weight:700}
 .views button.on{color:var(--rank);background:#000;font-size:14px;font-weight:700}
-/* thin white lines between the groups: List NYT Shelf | Pantheon */
+.views button{-webkit-touch-callout:none}
+/* thin white lines between the groups: NYT Shelf | Pantheon */
 .views .sep{flex:0 0 1px;align-self:stretch;margin:7px 3px;background:rgba(255,255,255,.7)}
 .views.dock-left .sep,.views.dock-right .sep{flex-basis:1px;margin:3px 10px}
 @media (max-width:520px){.views button{padding:8px 7px;font-size:11px}}
@@ -95,10 +105,13 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .views.dragging{transform:none;transition:none;cursor:grabbing;box-shadow:0 18px 40px rgba(0,0,0,.6)}
 .views.dragging button{cursor:grabbing}
 /* keep the edge under the bar clear, so nothing important hides behind it */
-body.dock-top .wall,body.dock-top .pantheon{padding-top:var(--dock)}
+body.dock-top .wall,body.dock-top .pantheon,body.dock-top .list{padding-top:var(--dock)}
 body.dock-top .lbar{padding-top:var(--dock)}
+body.dock-top .lbar:not(.hidden) ~ main{padding-top:4px}
 body.dock-left .wall,body.dock-left .pantheon,body.dock-left .list{padding-left:var(--dock)}
 body.dock-right .wall,body.dock-right .pantheon,body.dock-right .list{padding-right:var(--dock)}
+body.dock-left .lbar{padding-left:calc(var(--dock) + 12px)}
+body.dock-right .lbar{padding-right:calc(var(--dock) + 12px)}
 /* phones: the bar is fixed along the bottom on a solid black strip with its own space, and can't be moved */
 body.phone .views,body.phone .views[class*=dock-]{left:0;right:0;top:auto;bottom:0;transform:none;flex-direction:row;align-items:center;justify-content:space-evenly;
   gap:0;border-radius:0;padding:4px 2px calc(4px + env(safe-area-inset-bottom));background:#000;backdrop-filter:none;-webkit-backdrop-filter:none;touch-action:auto}
@@ -119,27 +132,43 @@ body.phone .views button{padding:0 10px;border-radius:8px}
 </style>
 </head>
 <body>
+<div class="lbar hidden" id="lbar"><input id="lq" type="search" placeholder="Search by title or author" autocomplete="off" spellcheck="false" enterkeyhint="search"></div>
+<p class="lnote hidden" id="lnone">No books match</p>
 <main class="wall" id="wall"></main>
-<main class="list hidden" id="list">
-  <div class="lbar"><input id="lq" type="search" placeholder="Search by title or author" autocomplete="off" spellcheck="false" enterkeyhint="search"></div>
-  <ol class="lrows" id="lrows"></ol>
-  <p class="lnote hidden" id="lnone">No books match</p>
+<main class="list hidden" id="wallList">
+  <div class="lhead"><span class="n">#</span><span>Title</span><span>Author</span><em>Year</em></div>
+  <ol class="lrows" id="wallRows"></ol>
 </main>
 <main class="wall hidden" id="owned"></main>
-<p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on NYT or List and choose Add to Shelf.</p>
+<main class="list plain hidden" id="ownedList">
+  <div class="lhead plain"><span class="n"></span><span>Title</span><span>Author</span><em>Year</em></div>
+  <ol class="lrows" id="ownedRows"></ol>
+</main>
+<p class="empty hidden" id="ownedNone">Books you own show up here. Right-click a book on NYT and choose Add to Shelf.</p>
 <main class="pantheon hidden" id="pantheon"></main>
+<main class="list hidden" id="pantheonList">
+  <div class="lhead"><span class="n">#</span><span>Title</span><span>Author</span><em>Year</em></div>
+  <h3 id="queueHead">Queue</h3>
+  <ol class="lrows plain" id="queueRows"></ol>
+  <h3 id="placedHead">Placed</h3>
+  <ol class="lrows" id="pantheonRows"></ol>
+  <p class="lnote hidden" id="pantheonNone">Nothing in the Pantheon yet. Right-click a book and choose Send To Pantheon.</p>
+</main>
 <div class="menu hidden" id="menu">
   <button data-act="read">Mark As Read</button>
   <button data-act="want">Want To Read</button>
   <button data-act="own">Add to Shelf</button>
   <button data-act="pantheon">Send To Pantheon</button>
 </div>
+<div class="menu hidden" id="tabmenu">
+  <button data-mode="grid">Grid</button>
+  <button data-mode="list">List</button>
+</div>
 <nav class="views" id="views">
-  <button data-view="list" data-label="List">List</button>
-  <button data-view="wall" data-label="NYT">NYT</button>
-  <button data-view="owned" data-label="Shelf">Shelf</button>
+  <button data-view="wall" data-label="NYT" title="Right-click for Grid or List">NYT</button>
+  <button data-view="owned" data-label="Shelf" title="Right-click for Grid or List">Shelf</button>
   <span class="sep"></span>
-  <button data-view="pantheon" data-label="Pantheon">Pantheon</button>
+  <button data-view="pantheon" data-label="Pantheon" title="Right-click for Grid or List">Pantheon</button>
 </nav>
 <div class="sync hidden" id="sync"></div>
 <div class="setup hidden" id="setup">
@@ -241,7 +270,7 @@ function showCover(id){
   const b = byId(id), url = b && coverUrl(b);
   if (!url) return;
   for (const tile of document.querySelectorAll(`.book[data-id="${id}"]`)) addImg(tile, b, url);
-  if (view === "pantheon") renderPantheon();
+  if (view === "pantheon" && modes.pantheon === "grid") renderPantheon();
 }
 function addImg(tile, b, url){
   if (tile.querySelector("img")) return;
@@ -264,9 +293,12 @@ function fillGrid(root, list, ranked){
   showMarks(root);
 }
 const renderWall = () => fillGrid($("#wall"), BOOKS, true);
+// Shelf, as covers or rows, keeping only the books that match the search; true when the search hides them all
 function renderOwned(){
-  fillGrid($("#owned"), shelf.owned);
+  const list = matching(shelf.owned);
+  if (modes.owned === "list") fillRows($("#ownedRows"), list); else fillGrid($("#owned"), list);
   $("#ownedNone").classList.toggle("hidden", view !== "owned" || shelf.owned.length > 0);
+  return shelf.owned.length > 0 && !list.length;
 }
 function showMarks(root = document){
   for (const el of root.querySelectorAll("[data-id]")){
@@ -277,17 +309,35 @@ function showMarks(root = document){
   }
 }
 
-/* ---------- list: rank, title, author and year, with search ---------- */
-function renderList(){
-  const words = fold($("#lq").value).split(/\s+/).filter(Boolean);
-  const list = BOOKS.filter(b => { const hay = fold(b.title + " " + b.author); return words.every(w => hay.includes(w)); });
-  $("#lrows").innerHTML = list.map(b =>
-    `<li class="lrow" data-id="${b.id}"><span class="n">${b.rank}</span>` +
-    `<div class="t"><div>${esc(b.title)}</div><div class="a">${esc(b.author)}</div></div><em>${b.year}</em><b></b></li>`).join("");
-  $("#lnone").classList.toggle("hidden", list.length > 0);
-  showMarks($("#lrows"));
+/* ---------- lists: rank, title, author and year in columns, with search ---------- */
+// each tab with a search bar keeps its own search (NYT and Shelf)
+const queries = { wall: "", owned: "" };
+function matching(list){
+  const words = fold(queries[view] || "").split(/\s+/).filter(Boolean);
+  return list.filter(b => { const hay = fold(b.title + " " + b.author); return words.every(w => hay.includes(w)); });
 }
-$("#lq").addEventListener("input", renderList);
+const rowHtml = (b, n) => `<li class="lrow" data-id="${b.id}"><span class="n">${n || ""}</span>` +
+  `<span class="t">${esc(b.title)}${b.copies > 1 ? `<small>×${b.copies}</small>` : ""}</span><span class="a">${esc(b.author)}</span><em>${b.year || ""}</em><b></b></li>`;
+function fillRows(root, list, num){
+  root.innerHTML = list.map(b => rowHtml(b, num && num(b))).join("");
+  showMarks(root);
+}
+function renderWallList(){
+  const list = matching(BOOKS);
+  fillRows($("#wallRows"), list, b => b.rank);
+  return !list.length;
+}
+function renderPantheonList(){
+  const { slots, queue } = shelf.pantheon;
+  const placed = slots.map((id, i) => id && byId(id) && { ...byId(id), place: i + 1 }).filter(Boolean);
+  const waiting = queue.map(byId).filter(Boolean);
+  fillRows($("#queueRows"), waiting);
+  fillRows($("#pantheonRows"), placed, b => b.place);
+  $("#queueHead").classList.toggle("hidden", !waiting.length);
+  $("#placedHead").classList.toggle("hidden", !waiting.length || !placed.length);
+  $("#pantheonNone").classList.toggle("hidden", placed.length + waiting.length > 0);
+}
+$("#lq").addEventListener("input", () => { queries[view] = $("#lq").value; drawAll(); });
 
 /* ---------- pantheon: your top 100, placed by hand ---------- */
 // slots: 100 places (book id or null); queue: books sent to the Pantheon but not placed yet
@@ -409,9 +459,35 @@ function togglePantheon(id){
 }
 
 /* ---------- the menu: right-click a book anywhere ---------- */
-const menu = $("#menu");
-let menuFor = null;
-function closeMenu(){ menu.classList.add("hidden"); menuFor = null; }
+const menu = $("#menu"), tabMenu = $("#tabmenu");
+let menuFor = null, tabFor = null, heldAt = 0;
+function closeMenu(){ menu.classList.add("hidden"); tabMenu.classList.add("hidden"); menuFor = tabFor = null; }
+function place(m, x, y){
+  m.classList.remove("hidden");
+  const w = m.offsetWidth, h = m.offsetHeight;
+  m.style.left = Math.max(4, Math.min(x, innerWidth - w - 4)) + "px";
+  m.style.top = Math.max(4, Math.min(y, innerHeight - h - 4)) + "px";
+}
+// right-click (or hold) a tab to show it as a grid of covers or as a list
+function openTabMenu(btn, x, y){
+  tabFor = btn.dataset.view;
+  for (const b of tabMenu.querySelectorAll("button")) b.classList.toggle("on", b.dataset.mode === modes[tabFor]);
+  const r = btn.getBoundingClientRect();
+  tabMenu.classList.remove("hidden");
+  // open beside the bar, toward the middle of the window
+  const h = tabMenu.offsetHeight, w = tabMenu.offsetWidth, d = side();
+  if (d === "bottom") place(tabMenu, r.left, r.top - h - 8);
+  else if (d === "top") place(tabMenu, r.left, r.bottom + 8);
+  else if (d === "left") place(tabMenu, r.right + 8, r.top);
+  else place(tabMenu, r.left - w - 8, r.top);
+}
+tabMenu.onclick = e => {
+  const mode = e.target.closest("button")?.dataset.mode, t = tabFor;
+  if (!mode || !t) return;
+  closeMenu();
+  modes[t] = mode; LS.set("modes", modes);
+  setView(t);
+};
 function openMenu(e){
   const el = e.target.closest(".book, .lrow, #pantheon img");
   if (!el || pdrag || Date.now() - droppedAt < 300) return;
@@ -422,19 +498,26 @@ function openMenu(e){
   menu.querySelector('[data-act="want"]').textContent = m === "want" ? "Don't Want To Read" : "Want To Read";
   menu.querySelector('[data-act="own"]').textContent = ownedIds().has(id) ? "Remove From Shelf" : "Add to Shelf";
   menu.querySelector('[data-act="pantheon"]').textContent = inPantheon(id) ? "Remove From Pantheon" : "Send To Pantheon";
-  menu.classList.remove("hidden");
-  const w = menu.offsetWidth, h = menu.offsetHeight;
-  menu.style.left = Math.max(4, Math.min(e.clientX, innerWidth - w - 4)) + "px";
-  menu.style.top = Math.max(4, Math.min(e.clientY, innerHeight - h - 4)) + "px";
+  place(menu, e.clientX, e.clientY);
 }
-document.addEventListener("click", e => { if (!menu.contains(e.target)) closeMenu(); });
-document.addEventListener("contextmenu", e => { if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); } });
-// phones have no right-click: holding a book on NYT, List or Shelf opens the menu instead
+// the tap that ends a hold shouldn't close the menu it just opened
+const justHeld = () => Date.now() - heldAt < 600;
+document.addEventListener("click", e => { if (!menu.contains(e.target) && !tabMenu.contains(e.target) && !justHeld()) closeMenu(); });
+document.addEventListener("contextmenu", e => {
+  const tab = e.target.closest("#views button");
+  if (tab){ e.preventDefault(); closeMenu(); openTabMenu(tab); }
+  else if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); }
+});
+// phones have no right-click: holding a book, or a tab, opens its menu instead
 let hold = null;
 document.addEventListener("pointerdown", e => {
-  if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow")) return;
+  if (e.pointerType === "mouse" || !e.target.closest(".book, .lrow, #views button")) return;
   const { clientX, clientY, target } = e;
-  hold = { x: clientX, y: clientY, timer: setTimeout(() => { hold = null; closeMenu(); openMenu({ target, clientX, clientY, preventDefault(){}, stopPropagation(){} }); }, 500) };
+  hold = { x: clientX, y: clientY, timer: setTimeout(() => {
+    hold = null; heldAt = Date.now(); closeMenu();
+    const tab = target.closest("#views button");
+    if (tab) openTabMenu(tab); else openMenu({ target, clientX, clientY, preventDefault(){}, stopPropagation(){} });
+  }, 500) };
 });
 const unhold = () => { if (hold){ clearTimeout(hold.timer); hold = null; } };
 addEventListener("pointermove", e => { if (hold && Math.hypot(e.clientX - hold.x, e.clientY - hold.y) > 8) unhold(); });
@@ -460,25 +543,36 @@ menu.onclick = e => {
 };
 
 /* ---------- views ---------- */
-const VIEWS = ["list", "wall", "owned", "pantheon"];
+// three tabs, each shown as a grid or a list (books.modes); the List tab of the first version is NYT as a list
+const VIEWS = ["wall", "owned", "pantheon"];
+const modes = { wall: "grid", owned: "grid", pantheon: "grid", ...LS.get("modes", {}) };
+if (LS.get("view") === "list"){ modes.wall = "list"; LS.set("modes", modes); LS.set("view", "wall"); }
 let view = VIEWS.includes(LS.get("view")) ? LS.get("view") : "wall";
+const searching = () => view === "owned" || (view === "wall" && modes.wall === "list");
 function setView(v){
   view = v; LS.set("view", v);
-  for (const x of VIEWS) $("#" + x).classList.toggle("hidden", x !== v);
+  for (const x of VIEWS){
+    $("#" + x).classList.toggle("hidden", x !== v || modes[x] !== "grid");
+    $("#" + x + "List").classList.toggle("hidden", x !== v || modes[x] !== "list");
+  }
   for (const b of document.querySelectorAll("#views button")) b.classList.toggle("on", b.dataset.view === v);
+  $("#lbar").classList.toggle("hidden", !searching());
+  $("#lq").value = queries[v] || "";
   closeMenu();
   drawAll();
-  if (v === "list" && matchMedia("(pointer: fine)").matches) $("#lq").focus({ preventScroll: true });
+  if (searching() && matchMedia("(pointer: fine)").matches) $("#lq").focus({ preventScroll: true });
 }
 // redraws whichever tab is showing; the others are drawn when they're opened
 function drawAll(){
+  let none = false;
   $("#ownedNone").classList.toggle("hidden", view !== "owned" || shelf.owned.length > 0);
-  if (view === "wall") showMarks($("#wall"));
-  if (view === "list") renderList();
-  if (view === "owned") renderOwned();
-  if (view === "pantheon") renderPantheon();
+  if (view === "wall"){ if (modes.wall === "list") none = renderWallList(); else showMarks($("#wall")); }
+  if (view === "owned") none = renderOwned();
+  if (view === "pantheon"){ if (modes.pantheon === "list") renderPantheonList(); else renderPantheon(); }
+  $("#lnone").classList.toggle("hidden", !none);
+  for (const h of document.querySelectorAll(".lhead")) h.classList.toggle("hidden", none);
 }
-$("#views").onclick = e => { const b = e.target.closest("button"); if (b && !barMoved) setView(b.dataset.view); };
+$("#views").onclick = e => { const b = e.target.closest("button"); if (b && !barMoved && !justHeld()) setView(b.dataset.view); };
 
 /* ---------- tab bar: drag it to any edge, it snaps to the nearest and remembers ---------- */
 const bar = $("#views");
