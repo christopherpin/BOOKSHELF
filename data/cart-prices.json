@@ -1,3 +1,118 @@
 {
- "books": {}
+ "updated": "2026-10-26T17:31:08.175Z",
+ "books": {
+  "the-flamethrowers-rachel-kushner": {
+   "checked": "2026-10-26T17:31:08.175Z",
+   "offers": [
+    {
+     "store": "AbeBooks",
+     "price": 4.41,
+     "url": "https://www.abebooks.com/servlet/BookDetailsPL?bi=32196339510&dest=USA&ref_=ps_ms_370713412&cm_mmc=msn-_-comus_shopp_used_trade-_-naa-_-naa&msclkid=f3c351ef411b19ae5fcd3b30cf47d47d",
+     "note": "used"
+    },
+    {
+     "store": "eBay",
+     "price": 4.52,
+     "url": "https://us.redbrain.shop/redirect/retailer?category=261186&id=52a49c590f0583cc2f3a42e5a787eb9732a2c949&keywords=The+Flamethrowers+-+Paperback&offerid=256150819836&provider=EBAY_PARTNER_NETWORK&rb_itemId=256150819836&rb_pgeo=US&retailer=second.sale&url=aHR0cHM6Ly93d3cuZWJheS5jb20vaXRtLzI1NjE1MDgxOTgzNj92YXI9MCZta2V2dD0xJm1rY2lkPTEmbWtyaWQ9NzExLTUzMjAwLTE5MjU1LTAmY2FtcGlkPTUzMzg1OTA4MzYmdG9vbGlkPTEwMDQ0&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=5339059267&toolid=10044&customid=2cc451dfae81137697c83b0020dd6d26&accountId=141164998&utm_source=bing&utm_campaign=605796050&campaign_id=605796050&serviceId=ebay_us_bing&trafficChannelId=ebay_us_bing&utm_medium=pla&utm_content=pla&token=2cc451dfae81137697c83b0020dd6d26&msclkid=2cc451dfae81137697c83b0020dd6d26&itemId=52a49c590f0583cc2f3a42e5a787eb9732a2c949&pgId=4587712278152488&rb_geo=US&rb_pgeo=US&rb_plang=EN&rb_css=redbrain&loc_physical_ms=100903&utm_term=4587712278152488",
+     "note": "used"
+    },
+    {
+     "store": "ThriftBooks",
+     "price": 5.69,
+     "url": "https://www.thriftbooks.com/w/the-flamethrowers_rachel-kushner/285855/item/7261633/?isbn=1439142009&idiq=7261633&mkwid=|dc&pcrid=77447028765180&pkw=&pmt=be&slid=&product=7261633&plc=&pgrid=1239149900900141&ptaid=pla-4581046496384036&utm_source=bing&utm_medium=cpc&utm_campaign=Shopping%20-%20High%20Vol%20Frontlist%20-%20Under%20%2410&utm_term=&utm_content=|dc|pcrid|77447028765180|pkw||pmt|be|product|7261633|slid||pgrid|1239149900900141|ptaid|pla-4581046496384036|&msclkid=088a1df7715c12049c487728ff001713",
+     "note": "used"
+    },
+    {
+     "store": "Target",
+     "price": 10.83,
+     "url": "https://ad.doubleclick.net/searchads/link/click?lid=58700008955957766&ds_a_cid=405524822&ds_a_caid=23049806812&&ds_e_adid=81776322890594&ds_e_target_id=pla-2333575991432390&ds_e_product_group_id=2333575991432390&ds_e_product_id=15103220&ds_e_product_country=US&ds_e_product_language=EN&ds_e_product_channel=Online&ds_e_network=o&ds_url_v=2&ds_dest_url=https://www.target.com/p/the-flamethrowers-by-rachel-kushner-paperback/-/A-15103220?TCID=PDS-23049806812&gclid=63d876fc66471f3ce9bd1c23e81ba7b3&gclsrc=3p.ds&msclkid=63d876fc66471f3ce9bd1c23e81ba7b3",
+     "note": ""
+    },
+    {
+     "store": "Walmart",
+     "price": 10.83,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=333858471482",
+     "note": ""
+    },
+    {
+     "store": "VitalSource",
+     "price": 11.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=235065767895",
+     "note": ""
+    },
+    {
+     "store": "Ebooks",
+     "price": 11.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=116976389645",
+     "note": ""
+    },
+    {
+     "store": "Audiobooks",
+     "price": 15,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=342561596999",
+     "note": ""
+    },
+    {
+     "store": "DiscountMags",
+     "price": 17.66,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=137642572243",
+     "note": ""
+    },
+    {
+     "store": "Powell's Books",
+     "price": 18.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=444143727168",
+     "note": ""
+    },
+    {
+     "store": "Rizzoli Bookstore",
+     "price": 18.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=470731909059",
+     "note": ""
+    },
+    {
+     "store": "Bookmarks Retail",
+     "price": 18.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=175404142131",
+     "note": ""
+    },
+    {
+     "store": "Faire",
+     "price": 18.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=298408142559",
+     "note": ""
+    },
+    {
+     "store": "iShook Books",
+     "price": 18.99,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=446096057534",
+     "note": ""
+    },
+    {
+     "store": "ReComparo",
+     "price": 19.64,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=462452578385",
+     "note": ""
+    },
+    {
+     "store": "Bookstore N More",
+     "price": 21.49,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=425122823829",
+     "note": ""
+    },
+    {
+     "store": "Amazon",
+     "price": 24.71,
+     "url": "https://www.amazon.com/Flamethrowers-Novel-Rachel-Kushner/dp/1439142009/ref=asc_df_1439142009?tag=bingshoppinga-20&linkCode=df0&hvadid=80264559055695&hvnetw=o&hvqmt=e&hvbmt=be&hvdev=c&hvlocint=&hvlocphy=100903&hvtargid=pla-4583864043963465&psc=1&hvocijid=2261776580065873752-1439142009-&hvexpln=0",
+     "note": ""
+    },
+    {
+     "store": "SolutionInn",
+     "price": 42.53,
+     "url": "https://www.bing.com/shop/productdetails?q=The+Flamethrowers+Rachel+Kushner+book&goid=530625249606",
+     "note": ""
+    }
+   ]
+  }
+ }
 }
