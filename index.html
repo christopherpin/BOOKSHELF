@@ -20,14 +20,14 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;-webkit-user-drag:none}
 .book img.in{opacity:1}
 .book span{position:absolute;top:5px;left:6px;z-index:1;color:#fff;font:700 clamp(10px,1.1vw,14px)/1 "Helvetica Neue",Helvetica,Arial,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.9)}
-/* your marks: a yellow tick for read, a white plus for want to read */
+/* your marks: a yellow tick for read, an orange exclamation point for want to read */
 .book b,.lrow b{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 system-ui,sans-serif;color:#000}
 .book b{position:absolute;top:6px;right:6px;z-index:1;box-shadow:0 1px 4px rgba(0,0,0,.6)}
 .book:not([data-mark]) > b{display:none}
 /* how many copies you own, when it's more than one */
 .book em{position:absolute;bottom:6px;right:6px;z-index:1;padding:3px 6px;border-radius:10px;background:rgba(0,0,0,.75);color:#fff;font:700 11px/1 system-ui,sans-serif;font-style:normal}
 [data-mark="read"] > b{background:var(--rank)}
-[data-mark="want"] > b{background:#fff}
+[data-mark="want"] > b{background:#ff8a00}
 /* a book you have read sits under a 50% black shade, with the yellow tick still on top */
 .book[data-mark="read"]::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5);pointer-events:none}
 .empty{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--muted);pointer-events:none}
@@ -271,7 +271,7 @@ function showMarks(root = document){
     if (!el.querySelector(":scope > b")) continue;
     const m = shelf.marks[el.dataset.id];
     if (m) el.dataset.mark = m; else delete el.dataset.mark;
-    el.querySelector(":scope > b").textContent = m === "read" ? "✓" : m === "want" ? "+" : "";
+    el.querySelector(":scope > b").textContent = m === "read" ? "✓" : m === "want" ? "!" : "";
   }
 }
 
