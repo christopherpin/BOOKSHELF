@@ -97,8 +97,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .pq img,.pslot img{cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
 .pq img.placeholder,.pslot img.placeholder{opacity:.15}
 .pslot.over,.pqueue.over{outline:2px solid var(--rank);outline-offset:-2px}
-/* cart: the books you mean to buy, in your order (drag to change it), each with its three cheapest buying options,
-   dearest on the left and cheapest on the right */
+/* cart: the books you mean to buy, in your order (drag to change it), each with Amazon's price and the two
+   cheapest other buying options, dearest first; the cheapest of all is in the accent colour */
 .cart{padding:4px 4px 72px}
 .cbar{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:14px 12px 10px}
 .cbar p{flex:1;margin:0;color:var(--muted);font-size:12px}
@@ -208,7 +208,7 @@ body.phone .views button{padding:0 10px;border-radius:8px}
   <p class="lnote hidden" id="pantheonNone">Nothing in the Pantheon yet. Right-click a book and choose Send To Pantheon.</p>
 </main>
 <main class="list cart hidden" id="cartList">
-  <div class="cbar"><button id="cartRefresh" type="button">Refresh prices</button><p id="cartInfo"></p></div>
+  <div class="cbar"><button id="cartRefresh" type="button">Check prices</button><p id="cartInfo"></p></div>
   <ol class="lrows" id="cartRows"></ol>
   <p class="lnote hidden" id="cartNone">Your cart is empty. Right-click a book and choose Send To Cart.</p>
 </main>
@@ -517,8 +517,8 @@ function togglePantheon(id){
 
 /* ---------- cart: books to buy, in your order, with prices ---------- */
 // shelf.cart is the order; prices come from data/cart-prices.json, made by tools/prices.mjs in the Prices
-// workflow: { updated, books: { id: { checked, offers: [{ store, price, url, note }] } } }. Refresh prices saves
-// data/cart-refresh.json, which sets the workflow off; a book newly sent to the cart gets its prices the same way.
+// workflow: { updated, books: { id: { checked, offers: [{ store, price, url, note }] } } }. Check prices saves
+// data/cart-refresh.json, which sets the workflow off; nothing else does, so prices are looked up only when asked.
 let prices = LS.get("prices", { books: {} }), pricePoll = null;
 function toggleCart(id){
   shelf.cart = shelf.cart.includes(id) ? shelf.cart.filter(x => x !== id) : [...shelf.cart, id];
@@ -527,33 +527,37 @@ function toggleCart(id){
 const money = n => "$" + n.toFixed(2);
 const ago = t => { const m = Math.round((Date.now() - new Date(t)) / 60000);
   return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : Math.round(m / 1440) + " d ago"; };
-// the cheapest offer from each shop, the three cheapest of those, dearest first
-function offers(id){
+// the cheapest offer from each shop: Amazon's always comes first (a search on Amazon when no Amazon price
+// was found), then the two cheapest other shops, dearest first
+const amazonSearch = b => "https://www.amazon.com/s?" + new URLSearchParams({ k: b.title + " " + b.author, i: "stripbooks" });
+function offers(b){
   const best = {};
-  for (const o of prices.books?.[id]?.offers || []) if (!best[o.store] || o.price < best[o.store].price) best[o.store] = o;
-  return Object.values(best).sort((a, b) => a.price - b.price).slice(0, 3).reverse();
+  for (const o of prices.books?.[b.id]?.offers || []) if (!best[o.store] || o.price < best[o.store].price) best[o.store] = o;
+  const all = Object.values(best).sort((x, y) => x.price - y.price);
+  const rest = [null, null, ...all.filter(o => o.store !== "Amazon").slice(0, 2).reverse()].slice(-2);
+  return { cells: [best.Amazon || { store: "Amazon", url: amazonSearch(b) }, ...rest], cheapest: all[0] };
 }
 function offerHtml(o, cheapest){
   if (!o) return `<span class="offer none">—</span>`;
   if (!/^https?:\/\//.test(o.url)) o = { ...o, url: "#" };
+  if (o.price == null) return `<a class="offer" href="${esc(o.url)}" target="_blank" rel="noopener" title="No Amazon price found · search Amazon">` +
+    `<span class="op">Search</span><span class="os">${esc(o.store)}</span></a>`;
   return `<a class="offer${cheapest ? " best" : ""}" href="${esc(o.url)}" target="_blank" rel="noopener" title="${esc(o.store + (o.note ? " · " + o.note : "") + " · " + money(o.price))}">` +
     `<span class="op">${money(o.price)}</span><span class="os">${esc(o.store)}${o.note ? " · " + esc(o.note) : ""}</span></a>`;
 }
 function renderCart(){
   const list = shelf.cart.map(byId).filter(Boolean);
   $("#cartRows").innerHTML = list.map(b => {
-    const os = offers(b.id), cells = [null, null, null].map((_, i) => os[i - (3 - os.length)]);
+    const { cells, cheapest } = offers(b);
     return `<li class="lrow" data-id="${b.id}"><span class="grip">⋮⋮</span><span class="cb"><span class="t">${esc(b.title)}</span>` +
-      `<span class="a">${esc(b.author)}${b.year ? " · " + b.year : ""}</span></span>${cells.map((o, i) => offerHtml(o, i === 2)).join("")}</li>`;
+      `<span class="a">${esc(b.author)}${b.year ? " · " + b.year : ""}</span></span>${cells.map(o => offerHtml(o, o && o === cheapest)).join("")}</li>`;
   }).join("");
   $("#cartNone").classList.toggle("hidden", list.length > 0);
-  const total = list.reduce((t, b) => t + (offers(b.id).at(-1)?.price || 0), 0);
-  const waiting = list.some(b => !prices.books?.[b.id]);
+  const total = list.reduce((t, b) => t + (offers(b).cheapest?.price || 0), 0);
   $("#cartInfo").textContent = !list.length ? "" : [list.length + (list.length > 1 ? " books" : " book"), total ? "cheapest total " + money(total) : "",
     pricePoll ? "checking prices…" : prices.updated ? "prices checked " + ago(prices.updated) : ""].filter(Boolean).join(" · ");
   $("#cartRefresh").disabled = !!pricePoll || !list.length;
-  $("#cartRefresh").textContent = pricePoll ? "Checking…" : "Refresh prices";
-  if (waiting && !pricePoll && !document.hidden) pollPrices(() => shelf.cart.every(id => !byId(id) || prices.books?.[id]), 12, 20000);
+  $("#cartRefresh").textContent = pricePoll ? "Checking…" : "Check prices";
 }
 // the latest prices, straight from the repository (the site itself takes a minute or two to catch up)
 async function loadPrices(){
@@ -576,7 +580,7 @@ function pollPrices(done, tries, every){
   if (view === "cart") renderCart();
 }
 $("#cartRefresh").onclick = async () => {
-  if (!LS.get("token")) return setup("Refreshing prices needs a GitHub token.");
+  if (!LS.get("token")) return setup("Checking prices needs a GitHub token.");
   const requested = new Date().toISOString(), path = "/contents/data/cart-refresh.json";
   pricePoll = { tries: 0 }; renderCart();
   try{
