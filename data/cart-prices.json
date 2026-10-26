@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T17:31:08.175Z",
+ "updated": "2026-10-26T17:33:23.734Z",
  "books": {
   "the-flamethrowers-rachel-kushner": {
    "checked": "2026-10-26T17:31:08.175Z",
@@ -113,6 +113,18 @@
      "note": ""
     }
    ]
+  },
+  "the-last-samurai-helen-dewitt": {
+   "checked": "2026-10-26T17:33:23.734Z",
+   "offers": []
+  },
+  "the-road-cormac-mccarthy": {
+   "checked": "2026-10-26T17:33:23.734Z",
+   "offers": []
+  },
+  "say-nothing-patrick-radden-keefe": {
+   "checked": "2026-10-26T17:33:23.734Z",
+   "offers": []
   }
  }
 }
