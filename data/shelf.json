@@ -18,7 +18,14 @@
   "tomorrow-and-tomorrow-and-tomorrow-gabrielle-zevin": "want",
   "when-we-cease-to-understand-the-world-benjamin-labatut": "want"
  },
- "owned": [],
+ "owned": [
+  {
+   "id": "the-corrections-jonathan-franzen",
+   "title": "The Corrections",
+   "author": "Jonathan Franzen",
+   "year": 2001
+  }
+ ],
  "pantheon": {
   "slots": [
    null,
