@@ -24,6 +24,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book b,.lrow b{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 13px/1 system-ui,sans-serif;color:#000}
 .book b{position:absolute;top:6px;right:6px;z-index:1;box-shadow:0 1px 4px rgba(0,0,0,.6)}
 .book:not([data-mark]) > b{display:none}
+/* how many copies you own, when it's more than one */
+.book em{position:absolute;bottom:6px;right:6px;z-index:1;padding:3px 6px;border-radius:10px;background:rgba(0,0,0,.75);color:#fff;font:700 11px/1 system-ui,sans-serif;font-style:normal}
 [data-mark="read"] > b{background:var(--rank)}
 [data-mark="want"] > b{background:#fff}
 .empty{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--muted);pointer-events:none}
@@ -164,7 +166,7 @@ const bookId = (title, author) => fold(title + " " + author).replace(/[^a-z0-9]+
 for (const b of BOOKS) b.id = bookId(b.title, b.author);
 
 /* ---------- your shelf: marks, books you own and the Pantheon ---------- */
-// shelf = { marks: { id: "read" | "want" }, owned: [{ id, title, author, year }], pantheon: { slots: [100 ids or null], queue: [ids] } }
+// shelf = { marks: { id: "read" | "want" }, owned: [{ id, title, author, year, copies? }], pantheon: { slots: [100 ids or null], queue: [ids] } }
 // It lives in data/shelf.json in the repository, so every device shows the same; this browser keeps a copy
 // (books.shelf) to draw straight away, and books.changes holds what hasn't been saved yet ("marks.<id>",
 // "owned" or "pantheon"), so nothing is lost offline or before a token is pasted.
@@ -250,7 +252,7 @@ function addImg(tile, b, url){
 /* ---------- the wall, and Shelf: covers edge to edge ---------- */
 function tileHtml(b, rank){
   return `<div class="book" data-id="${b.id}" title="${esc((rank ? rank + ". " : "") + b.title + " · " + b.author + (b.year ? " (" + b.year + ")" : ""))}">` +
-    `<i>${esc(b.title)}<small>${esc(b.author)}</small></i>${rank ? `<span>${rank}</span>` : ""}<b></b></div>`;
+    `<i>${esc(b.title)}<small>${esc(b.author)}</small></i>${rank ? `<span>${rank}</span>` : ""}${b.copies > 1 ? `<em>×${b.copies}</em>` : ""}<b></b></div>`;
 }
 function fillGrid(root, list, ranked){
   root.innerHTML = list.map(b => tileHtml(b, ranked && b.rank)).join("");

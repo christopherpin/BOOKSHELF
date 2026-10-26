@@ -30,6 +30,1566 @@
    "title": "The Sympathizer",
    "author": "Viet Thanh Nguyen",
    "year": 2015
+  },
+  {
+   "id": "anthropocene-or-capitalocene-jason-w-moore",
+   "title": "Anthropocene or Capitalocene?",
+   "author": "Jason W. Moore",
+   "year": 2016
+  },
+  {
+   "id": "towards-speculative-realism-graham-harman",
+   "title": "Towards Speculative Realism",
+   "author": "Graham Harman",
+   "year": 2010
+  },
+  {
+   "id": "in-the-garden-of-beasts-erik-larson",
+   "title": "In the Garden of Beasts",
+   "author": "Erik Larson",
+   "year": 2011
+  },
+  {
+   "id": "the-immortal-life-of-henrietta-lacks-rebecca-skloot",
+   "title": "The Immortal Life of Henrietta Lacks",
+   "author": "Rebecca Skloot",
+   "year": 2010
+  },
+  {
+   "id": "the-architecture-of-happiness-alain-de-botton",
+   "title": "The Architecture of Happiness",
+   "author": "Alain de Botton",
+   "year": 2006
+  },
+  {
+   "id": "the-thinking-hand-juhani-pallasmaa",
+   "title": "The Thinking Hand",
+   "author": "Juhani Pallasmaa",
+   "year": 2009
+  },
+  {
+   "id": "existentialism-from-dostoevsky-to-sartre-walter-kaufmann",
+   "title": "Existentialism from Dostoevsky to Sartre",
+   "author": "Walter Kaufmann",
+   "year": 1956
+  },
+  {
+   "id": "basic-writings-martin-heidegger",
+   "title": "Basic Writings",
+   "author": "Martin Heidegger",
+   "year": 1977
+  },
+  {
+   "id": "tarrasch-s-best-games-of-chess-siegbert-tarrasch",
+   "title": "Tarrasch's Best Games of Chess",
+   "author": "Siegbert Tarrasch",
+   "year": 1947
+  },
+  {
+   "id": "my-system-aron-nimzowitsch",
+   "title": "My System",
+   "author": "Aron Nimzowitsch",
+   "year": 1925
+  },
+  {
+   "id": "aestheticsequalspolitics-mark-foster-gage",
+   "title": "Aestheticsequalspolitics",
+   "author": "Mark Foster Gage",
+   "year": 2019
+  },
+  {
+   "id": "cultural-analytics-lev-manovich",
+   "title": "Cultural Analytics",
+   "author": "Lev Manovich",
+   "year": 2020
+  },
+  {
+   "id": "retrospecta-97-98-yale-school-of-architecture",
+   "title": "Retrospecta 97-98",
+   "author": "Yale School of Architecture",
+   "year": 1998
+  },
+  {
+   "id": "architecture-as-measure-neyran-turan",
+   "title": "Architecture as Measure",
+   "author": "Neyran Turan",
+   "year": 2020
+  },
+  {
+   "id": "the-tipping-point-malcolm-gladwell",
+   "title": "The Tipping Point",
+   "author": "Malcolm Gladwell",
+   "year": 2000
+  },
+  {
+   "id": "reality-modeled-after-images-michael-young",
+   "title": "Reality Modeled After Images",
+   "author": "Michael Young",
+   "year": 2021
+  },
+  {
+   "id": "winning-endgame-technique-beliavsky-mikhalchishin",
+   "title": "Winning Endgame Technique",
+   "author": "Beliavsky & Mikhalchishin",
+   "year": 1995
+  },
+  {
+   "id": "babel-r-f-kuang",
+   "title": "Babel",
+   "author": "R. F. Kuang",
+   "year": 2022
+  },
+  {
+   "id": "metamorphosis-franz-kafka",
+   "title": "Metamorphosis",
+   "author": "Franz Kafka",
+   "year": 1915
+  },
+  {
+   "id": "little-fires-everywhere-celeste-ng",
+   "title": "Little Fires Everywhere",
+   "author": "Celeste Ng",
+   "year": 2017
+  },
+  {
+   "id": "the-outsider-the-stranger-albert-camus",
+   "title": "The Outsider (The Stranger)",
+   "author": "Albert Camus",
+   "year": 1942
+  },
+  {
+   "id": "ulysses-james-joyce",
+   "title": "Ulysses",
+   "author": "James Joyce",
+   "year": 1922
+  },
+  {
+   "id": "everyday-life-in-the-modern-world-henri-lefebvre",
+   "title": "Everyday Life in the Modern World",
+   "author": "Henri Lefebvre",
+   "year": 1968
+  },
+  {
+   "id": "speaking-of-architecture-mark-foster-gage",
+   "title": "Speaking of Architecture",
+   "author": "Mark Foster Gage",
+   "year": 2019
+  },
+  {
+   "id": "stretching-to-stay-young-stacy-berman-andrea-orbeck",
+   "title": "Stretching to Stay Young",
+   "author": "Stacy Berman & Andrea Orbeck",
+   "year": 2016
+  },
+  {
+   "id": "duty-free-art-hito-steyerl",
+   "title": "Duty Free Art",
+   "author": "Hito Steyerl",
+   "year": 2017
+  },
+  {
+   "id": "how-to-play-chess-endings-eugene-znosko-borovsky",
+   "title": "How to Play Chess Endings",
+   "author": "Eugene Znosko-Borovsky",
+   "year": 1940
+  },
+  {
+   "id": "classics-of-free-thought-paul-blanshard-ed",
+   "title": "Classics of Free Thought",
+   "author": "Paul Blanshard (Ed.)",
+   "year": 1977
+  },
+  {
+   "id": "retrospecta-44-yale-school-of-architecture",
+   "title": "Retrospecta 44",
+   "author": "Yale School of Architecture",
+   "year": 2021,
+   "copies": 2
+  },
+  {
+   "id": "retrospecta-47-yale-school-of-architecture",
+   "title": "Retrospecta 47",
+   "author": "Yale School of Architecture",
+   "year": 2024,
+   "copies": 2
+  },
+  {
+   "id": "retrospecta-046-yale-school-of-architecture",
+   "title": "Retrospecta 046",
+   "author": "Yale School of Architecture",
+   "year": 2023,
+   "copies": 2
+  },
+  {
+   "id": "in-praise-of-shadows-jun-ichiro-tanizaki",
+   "title": "In Praise of Shadows",
+   "author": "Jun'ichirō Tanizaki",
+   "year": 1933
+  },
+  {
+   "id": "the-millennium-house-marco-frascari",
+   "title": "The Millennium House",
+   "author": "Marco Frascari",
+   "year": 2014
+  },
+  {
+   "id": "ways-of-seeing-john-berger",
+   "title": "Ways of Seeing",
+   "author": "John Berger",
+   "year": 1972
+  },
+  {
+   "id": "simulations-jean-baudrillard",
+   "title": "Simulations",
+   "author": "Jean Baudrillard",
+   "year": 1981
+  },
+  {
+   "id": "ways-of-curating-hans-ulrich-obrist",
+   "title": "Ways of Curating",
+   "author": "Hans Ulrich Obrist",
+   "year": 2014
+  },
+  {
+   "id": "modern-architecture-alan-colquhoun",
+   "title": "Modern Architecture",
+   "author": "Alan Colquhoun",
+   "year": 2002
+  },
+  {
+   "id": "against-architecture-denis-hollier",
+   "title": "Against Architecture",
+   "author": "Denis Hollier",
+   "year": 1989
+  },
+  {
+   "id": "life-between-buildings-jan-gehl",
+   "title": "Life Between Buildings",
+   "author": "Jan Gehl",
+   "year": 1971
+  },
+  {
+   "id": "the-poetics-of-space-gaston-bachelard",
+   "title": "The Poetics of Space",
+   "author": "Gaston Bachelard",
+   "year": 1958
+  },
+  {
+   "id": "being-digital-nicholas-negroponte",
+   "title": "Being Digital",
+   "author": "Nicholas Negroponte",
+   "year": 1995
+  },
+  {
+   "id": "icebergs-zombies-and-the-ultra-thin-matthew-soules",
+   "title": "Icebergs, Zombies, and the Ultra Thin",
+   "author": "Matthew Soules",
+   "year": 2021
+  },
+  {
+   "id": "runaway-horses-yukio-mishima",
+   "title": "Runaway Horses",
+   "author": "Yukio Mishima",
+   "year": 1969
+  },
+  {
+   "id": "the-language-of-new-media-lev-manovich",
+   "title": "The Language of New Media",
+   "author": "Lev Manovich",
+   "year": 2001
+  },
+  {
+   "id": "this-isn-t-happening-steven-hyden",
+   "title": "This Isn't Happening",
+   "author": "Steven Hyden",
+   "year": 2020
+  },
+  {
+   "id": "learning-from-las-vegas-venturi-scott-brown-izenour",
+   "title": "Learning from Las Vegas",
+   "author": "Venturi, Scott Brown, & Izenour",
+   "year": 1972
+  },
+  {
+   "id": "the-image-of-the-city-kevin-lynch",
+   "title": "The Image of the City",
+   "author": "Kevin Lynch",
+   "year": 1960
+  },
+  {
+   "id": "a-feeling-of-history-peter-zumthor-mari-lending",
+   "title": "A Feeling of History",
+   "author": "Peter Zumthor & Mari Lending",
+   "year": 2018
+  },
+  {
+   "id": "object-oriented-ontology-graham-harman",
+   "title": "Object-Oriented Ontology",
+   "author": "Graham Harman",
+   "year": 2018
+  },
+  {
+   "id": "the-living-city-frank-lloyd-wright",
+   "title": "The Living City",
+   "author": "Frank Lloyd Wright",
+   "year": 1958
+  },
+  {
+   "id": "architecture-anyone-ada-louise-huxtable",
+   "title": "Architecture, Anyone?",
+   "author": "Ada Louise Huxtable",
+   "year": 1986
+  },
+  {
+   "id": "the-graveyard-book-neil-gaiman",
+   "title": "The Graveyard Book",
+   "author": "Neil Gaiman",
+   "year": 2008
+  },
+  {
+   "id": "spring-snow-yukio-mishima",
+   "title": "Spring Snow",
+   "author": "Yukio Mishima",
+   "year": 1969
+  },
+  {
+   "id": "south-of-the-border-west-of-the-sun-haruki-murakami",
+   "title": "South of the Border, West of the Sun",
+   "author": "Haruki Murakami",
+   "year": 1992
+  },
+  {
+   "id": "towards-a-new-architecture-le-corbusier",
+   "title": "Towards a New Architecture",
+   "author": "Le Corbusier",
+   "year": 1923
+  },
+  {
+   "id": "the-death-and-life-of-great-american-cities-jane-jacobs",
+   "title": "The Death and Life of Great American Cities",
+   "author": "Jane Jacobs",
+   "year": 1961
+  },
+  {
+   "id": "delirious-new-york-rem-koolhaas",
+   "title": "Delirious New York",
+   "author": "Rem Koolhaas",
+   "year": 1978
+  },
+  {
+   "id": "histories-of-ecological-design-lydia-kallipoliti",
+   "title": "Histories of Ecological Design",
+   "author": "Lydia Kallipoliti",
+   "year": 2024,
+   "copies": 3
+  },
+  {
+   "id": "forty-posters-for-the-yale-school-of-architecture-michael-bierut",
+   "title": "Forty Posters for the Yale School of Architecture",
+   "author": "Michael Bierut",
+   "year": 2007
+  },
+  {
+   "id": "two-ideologies-peter-eisenman-leon-krier",
+   "title": "Two Ideologies",
+   "author": "Peter Eisenman / Leon Krier",
+   "year": 2004
+  },
+  {
+   "id": "exhibiting-architecture-lau-pelkonen-shamiyeh-sunwoo",
+   "title": "Exhibiting Architecture",
+   "author": "Lau, Pelkonen, Shamiyeh, & Sunwoo",
+   "year": 2014
+  },
+  {
+   "id": "understanding-media-marshall-mcluhan",
+   "title": "Understanding Media",
+   "author": "Marshall McLuhan",
+   "year": 1964
+  },
+  {
+   "id": "formulations-andrew-witt",
+   "title": "Formulations",
+   "author": "Andrew Witt",
+   "year": 2021
+  },
+  {
+   "id": "building-practice-hunker-miller",
+   "title": "Building Practice",
+   "author": "Hunker / Miller",
+   "year": 2021
+  },
+  {
+   "id": "exquisite-corpse-michael-sorkin",
+   "title": "Exquisite Corpse",
+   "author": "Michael Sorkin",
+   "year": 1991
+  },
+  {
+   "id": "prototyping-for-architects-mark-burry-jane-burry",
+   "title": "Prototyping for Architects",
+   "author": "Mark Burry & Jane Burry",
+   "year": 2016
+  },
+  {
+   "id": "zaha-hadid-the-complete-buildings-aaron-betsky",
+   "title": "Zaha Hadid: The Complete Buildings",
+   "author": "Aaron Betsky",
+   "year": 1998
+  },
+  {
+   "id": "architecture-of-cinematic-spaces-ahi-karaoghlanian",
+   "title": "Architecture of Cinematic Spaces",
+   "author": "Ahi / Karaoghlanian",
+   "year": 2020
+  },
+  {
+   "id": "arquitectura-alpina-bruno-taut",
+   "title": "Arquitectura Alpina",
+   "author": "Bruno Taut",
+   "year": 1919
+  },
+  {
+   "id": "the-architecture-of-the-city-aldo-rossi",
+   "title": "The Architecture of the City",
+   "author": "Aldo Rossi",
+   "year": 1966
+  },
+  {
+   "id": "architecture-theory-since-1968-k-michael-hays-editor",
+   "title": "Architecture Theory since 1968",
+   "author": "K. Michael Hays (Editor)",
+   "year": 1998
+  },
+  {
+   "id": "understanding-architecture-leland-m-roth",
+   "title": "Understanding Architecture",
+   "author": "Leland M. Roth",
+   "year": 1993
+  },
+  {
+   "id": "the-ten-books-on-architecture-vitruvius",
+   "title": "The Ten Books on Architecture",
+   "author": "Vitruvius",
+   "year": "c. 15 BC"
+  },
+  {
+   "id": "building-and-dwelling-richard-sennett",
+   "title": "Building and Dwelling",
+   "author": "Richard Sennett",
+   "year": 2018
+  },
+  {
+   "id": "modern-architecture-since-1900-william-j-r-curtis",
+   "title": "Modern Architecture since 1900",
+   "author": "William J. R. Curtis",
+   "year": 1982
+  },
+  {
+   "id": "toward-a-city-rozana-montiel",
+   "title": "Toward a City",
+   "author": "Rozana Montiel",
+   "year": 2021
+  },
+  {
+   "id": "espacios-comunes-rozana-montiel",
+   "title": "Espacios Comunes",
+   "author": "Rozana Montiel",
+   "year": 2018
+  },
+  {
+   "id": "meanwhile-city-milk-petra-marko",
+   "title": "Meanwhile City",
+   "author": "Milk / Petra Marko",
+   "year": 2020
+  },
+  {
+   "id": "the-organizational-complex-reinhold-martin",
+   "title": "The Organizational Complex",
+   "author": "Reinhold Martin",
+   "year": 2003
+  },
+  {
+   "id": "architectural-intelligence-molly-wright-steenson",
+   "title": "Architectural Intelligence",
+   "author": "Molly Wright Steenson",
+   "year": 2017
+  },
+  {
+   "id": "machine-learning-phil-bernstein",
+   "title": "Machine Learning",
+   "author": "Phil Bernstein",
+   "year": 2022
+  },
+  {
+   "id": "rethinking-the-modular-alexander-may",
+   "title": "Rethinking the Modular",
+   "author": "Alexander & May",
+   "year": 2016
+  },
+  {
+   "id": "design-technics-zeynep-celik-alexander-john-may",
+   "title": "Design Technics",
+   "author": "Zeynep Çelik Alexander & John May",
+   "year": 2020
+  },
+  {
+   "id": "traditional-japanese-color-palette-pie-editorial",
+   "title": "Traditional Japanese Color Palette",
+   "author": "PIE Editorial",
+   "year": 2015
+  },
+  {
+   "id": "the-god-of-small-things-arundhati-roy",
+   "title": "The God of Small Things",
+   "author": "Arundhati Roy",
+   "year": 1997
+  },
+  {
+   "id": "dune-frank-herbert",
+   "title": "Dune",
+   "author": "Frank Herbert",
+   "year": 1965
+  },
+  {
+   "id": "kafka-on-the-shore-haruki-murakami",
+   "title": "Kafka on the Shore",
+   "author": "Haruki Murakami",
+   "year": 2002
+  },
+  {
+   "id": "no-longer-human-osamu-dazai",
+   "title": "No Longer Human",
+   "author": "Osamu Dazai",
+   "year": 1948
+  },
+  {
+   "id": "in-the-flow-boris-groys",
+   "title": "In the Flow",
+   "author": "Boris Groys",
+   "year": 2016
+  },
+  {
+   "id": "psychopolitics-byung-chul-han",
+   "title": "Psychopolitics",
+   "author": "Byung-Chul Han",
+   "year": 2017
+  },
+  {
+   "id": "nausea-jean-paul-sartre",
+   "title": "Nausea",
+   "author": "Jean-Paul Sartre",
+   "year": 1938
+  },
+  {
+   "id": "inventing-the-future-nick-srnicek-alex-williams",
+   "title": "Inventing the Future",
+   "author": "Nick Srnicek & Alex Williams",
+   "year": 2015
+  },
+  {
+   "id": "signal-image-architecture-john-may",
+   "title": "Signal. Image. Architecture.",
+   "author": "John May",
+   "year": 2019
+  },
+  {
+   "id": "crime-and-punishment-fyodor-dostoevsky",
+   "title": "Crime and Punishment",
+   "author": "Fyodor Dostoevsky",
+   "year": 1866
+  },
+  {
+   "id": "the-eternal-husband-fyodor-dostoevsky",
+   "title": "The Eternal Husband",
+   "author": "Fyodor Dostoevsky",
+   "year": 1870
+  },
+  {
+   "id": "modern-architecture-kenneth-frampton",
+   "title": "Modern Architecture",
+   "author": "Kenneth Frampton",
+   "year": 1980
+  },
+  {
+   "id": "our-aesthetic-categories-sianne-ngai",
+   "title": "Our Aesthetic Categories",
+   "author": "Sianne Ngai",
+   "year": 2012
+  },
+  {
+   "id": "beautiful-data-orit-halpern",
+   "title": "Beautiful Data",
+   "author": "Orit Halpern",
+   "year": 2014
+  },
+  {
+   "id": "artificial-knowing-alison-adam",
+   "title": "Artificial Knowing",
+   "author": "Alison Adam",
+   "year": 1998
+  },
+  {
+   "id": "cultural-techniques-bernhard-siegert",
+   "title": "Cultural Techniques",
+   "author": "Bernhard Siegert",
+   "year": 2015
+  },
+  {
+   "id": "on-the-new-boris-groys",
+   "title": "On the New",
+   "author": "Boris Groys",
+   "year": 1992
+  },
+  {
+   "id": "silent-spring-rachel-carson",
+   "title": "Silent Spring",
+   "author": "Rachel Carson",
+   "year": 1962
+  },
+  {
+   "id": "mythologies-roland-barthes",
+   "title": "Mythologies",
+   "author": "Roland Barthes",
+   "year": 1957
+  },
+  {
+   "id": "slaughterhouse-five-kurt-vonnegut",
+   "title": "Slaughterhouse-Five",
+   "author": "Kurt Vonnegut",
+   "year": 1969
+  },
+  {
+   "id": "folds-bodies-blobs-greg-lynn",
+   "title": "Folds Bodies & Blobs",
+   "author": "Greg Lynn",
+   "year": 1998
+  },
+  {
+   "id": "on-accident-edward-eigen",
+   "title": "On Accident",
+   "author": "Edward Eigen",
+   "year": 2018
+  },
+  {
+   "id": "a-question-of-qualities-jeffrey-kipnis",
+   "title": "A Question of Qualities",
+   "author": "Jeffrey Kipnis",
+   "year": 2013
+  },
+  {
+   "id": "the-architecture-of-deconstruction-mark-wigley",
+   "title": "The Architecture of Deconstruction",
+   "author": "Mark Wigley",
+   "year": 1993
+  },
+  {
+   "id": "programs-and-manifestoes-on-20th-century-architecture-ulrich-conrads",
+   "title": "Programs and Manifestoes on 20th-Century Architecture",
+   "author": "Ulrich Conrads",
+   "year": 1964
+  },
+  {
+   "id": "outliers-malcolm-gladwell",
+   "title": "Outliers",
+   "author": "Malcolm Gladwell",
+   "year": 2008
+  },
+  {
+   "id": "one-hundred-years-of-solitude-gabriel-garcia-marquez",
+   "title": "One Hundred Years of Solitude",
+   "author": "Gabriel García Márquez",
+   "year": 1967
+  },
+  {
+   "id": "hear-the-wind-sing-haruki-murakami",
+   "title": "Hear the Wind Sing (聽風的歌)",
+   "author": "Haruki Murakami",
+   "year": 1979
+  },
+  {
+   "id": "1q84-book-1-2-haruki-murakami",
+   "title": "1Q84 (Book 1 & 2)",
+   "author": "Haruki Murakami",
+   "year": 2009
+  },
+  {
+   "id": "analogue-photography-andrew-zealley",
+   "title": "Analogue Photography",
+   "author": "Andrew Zealley",
+   "year": 2017
+  },
+  {
+   "id": "unknown-brutalism-architecture-in-hong-kong-fan-lok-yi-sampson-wong",
+   "title": "Unknown Brutalism: Architecture in Hong Kong",
+   "author": "Fan Lok Yi & Sampson Wong",
+   "year": 2021
+  },
+  {
+   "id": "messums-wiltshire-1-5-messums-wiltshire",
+   "title": "Messums Wiltshire 1–5",
+   "author": "Messums Wiltshire",
+   "year": 2022
+  },
+  {
+   "id": "mark-foster-gage-projects-and-provocations-mark-foster-gage",
+   "title": "Mark Foster Gage: Projects and Provocations",
+   "author": "Mark Foster Gage",
+   "year": 2018
+  },
+  {
+   "id": "space-time-and-architecture-5th-ed-sigfried-giedion",
+   "title": "Space, Time and Architecture (5th Ed)",
+   "author": "Sigfried Giedion",
+   "year": 1967,
+   "copies": 2
+  },
+  {
+   "id": "kevin-roche-architecture-as-environment-eeva-liisa-pelkonen",
+   "title": "Kevin Roche: Architecture as Environment",
+   "author": "Eeva-Liisa Pelkonen",
+   "year": 2011
+  },
+  {
+   "id": "archigram-peter-cook-ed",
+   "title": "Archigram",
+   "author": "Peter Cook (Ed.)",
+   "year": 1999
+  },
+  {
+   "id": "perfect-acts-of-architecture-jeffrey-kipnis",
+   "title": "Perfect Acts of Architecture",
+   "author": "Jeffrey Kipnis",
+   "year": 2001
+  },
+  {
+   "id": "new-japanese-architecture-shinkenchiku-sha",
+   "title": "日本新建築 (New Japanese Architecture)",
+   "author": "Shinkenchiku-sha",
+   "year": 2011
+  },
+  {
+   "id": "insight-and-on-site-douglas-mcintyre",
+   "title": "Insight and On Site",
+   "author": "Douglas & McIntyre",
+   "year": 2003
+  },
+  {
+   "id": "collage-city-colin-rowe-fred-koetter",
+   "title": "Collage City",
+   "author": "Colin Rowe & Fred Koetter",
+   "year": 1978
+  },
+  {
+   "id": "deconstructivist-architecture-johnson-wigley",
+   "title": "Deconstructivist Architecture",
+   "author": "Johnson & Wigley",
+   "year": 1988
+  },
+  {
+   "id": "inger-og-johannes-exner-thomas-bo-jensen",
+   "title": "Inger og Johannes Exner",
+   "author": "Thomas Bo Jensen",
+   "year": 2012
+  },
+  {
+   "id": "the-grammar-of-ornament-owen-jones",
+   "title": "The Grammar of Ornament",
+   "author": "Owen Jones",
+   "year": 1856
+  },
+  {
+   "id": "kcap-situation-kcap-architects",
+   "title": "KCAP Situation",
+   "author": "KCAP Architects",
+   "year": 2005
+  },
+  {
+   "id": "dorte-mandrup-arkitekter-dorte-mandrup",
+   "title": "Dorte Mandrup Arkitekter",
+   "author": "Dorte Mandrup",
+   "year": 2007
+  },
+  {
+   "id": "global-danish-architecture-4-marianne-ibler",
+   "title": "Global Danish Architecture #4",
+   "author": "Marianne Ibler",
+   "year": 2010
+  },
+  {
+   "id": "danish-ceramic-architecture-various",
+   "title": "Danish Ceramic Architecture",
+   "author": "Various",
+   "year": 2015
+  },
+  {
+   "id": "kologisk-byggeri-i-danmark-various",
+   "title": "Økologisk Byggeri i Danmark",
+   "author": "Various",
+   "year": 2002
+  },
+  {
+   "id": "portrait-of-hong-kong-fan-ho",
+   "title": "Portrait of Hong Kong",
+   "author": "Fan Ho",
+   "year": 2017
+  },
+  {
+   "id": "the-war-of-the-worlds-h-g-wells",
+   "title": "The War of the Worlds",
+   "author": "H.G. Wells",
+   "year": 1898
+  },
+  {
+   "id": "brave-new-world-aldous-huxley",
+   "title": "Brave New World",
+   "author": "Aldous Huxley",
+   "year": 1932
+  },
+  {
+   "id": "animal-farm-1984-george-orwell",
+   "title": "Animal Farm / 1984",
+   "author": "George Orwell",
+   "year": 1945
+  },
+  {
+   "id": "churchill-and-orwell-thomas-e-ricks",
+   "title": "Churchill and Orwell",
+   "author": "Thomas E. Ricks",
+   "year": 2017
+  },
+  {
+   "id": "a-history-of-western-philosophy-bertrand-russell",
+   "title": "A History of Western Philosophy",
+   "author": "Bertrand Russell",
+   "year": 1945
+  },
+  {
+   "id": "derrida-searle-deconstruction-newton-garver-seung-chong-lee",
+   "title": "Derrida/Searle: Deconstruction",
+   "author": "Newton Garver / Seung-Chong Lee",
+   "year": 1994
+  },
+  {
+   "id": "mannahatta-eric-w-sanderson",
+   "title": "Mannahatta",
+   "author": "Eric W. Sanderson",
+   "year": 2009
+  },
+  {
+   "id": "when-forms-come-alive-hayward-gallery",
+   "title": "When Forms Come Alive",
+   "author": "Hayward Gallery",
+   "year": 2024
+  },
+  {
+   "id": "architectures-of-dismantling-and-restructuring-various-lars-muller-pub",
+   "title": "Architectures of Dismantling and Restructuring",
+   "author": "Various (Lars Müller Pub)",
+   "year": 2019
+  },
+  {
+   "id": "future-cities-laboratory-indicia-03-various-lars-muller-pub",
+   "title": "Future Cities Laboratory: Indicia 03",
+   "author": "Various (Lars Müller Pub)",
+   "year": 2022
+  },
+  {
+   "id": "innovative-surface-structures-technologies-and-applications-martin-bechthold",
+   "title": "Innovative Surface Structures: Technologies and Applications",
+   "author": "Martin Bechthold",
+   "year": 2008,
+   "copies": 3
+  },
+  {
+   "id": "architecture-as-the-ethics-of-building-wang-shu",
+   "title": "Architecture as the Ethics of Building (謝王子)",
+   "author": "Wang Shu",
+   "year": 2012
+  },
+  {
+   "id": "100-buildings-architecture-now",
+   "title": "100 Buildings",
+   "author": "Architecture Now",
+   "year": 2017
+  },
+  {
+   "id": "after-art-david-joselit",
+   "title": "After Art",
+   "author": "David Joselit",
+   "year": 2012
+  },
+  {
+   "id": "alpine-architektur-bruno-taut",
+   "title": "Alpine Architektur",
+   "author": "Bruno Taut",
+   "year": 1919
+  },
+  {
+   "id": "catalogo-do-acervo-da-fundacao-athos-bulcao-athos-bulcao-foundation",
+   "title": "Catálogo do Acervo da Fundação Athos Bulcão",
+   "author": "Athos Bulcão Foundation",
+   "year": 2010
+  },
+  {
+   "id": "light-is-the-theme-louis-i-kahn-nell-e-johnson-ed",
+   "title": "Light is the Theme: Louis I. Kahn",
+   "author": "Nell E. Johnson (Ed.)",
+   "year": 1975
+  },
+  {
+   "id": "henry-moore-s-sheep-sketchbook-henry-moore",
+   "title": "Henry Moore's Sheep Sketchbook",
+   "author": "Henry Moore",
+   "year": 1980
+  },
+  {
+   "id": "complexity-and-contradiction-in-architecture-robert-venturi",
+   "title": "Complexity and Contradiction in Architecture",
+   "author": "Robert Venturi",
+   "year": 1966
+  },
+  {
+   "id": "the-architectural-sketches-of-henning-larsen-merete-ahnfeldt-mollerup",
+   "title": "The Architectural Sketches of Henning Larsen",
+   "author": "Merete Ahnfeldt-Mollerup",
+   "year": 2011
+  },
+  {
+   "id": "the-days-are-just-packed-bill-watterson",
+   "title": "The Days Are Just Packed",
+   "author": "Bill Watterson",
+   "year": 1993
+  },
+  {
+   "id": "homicidal-psycho-jungle-cat-bill-watterson",
+   "title": "Homicidal Psycho Jungle Cat",
+   "author": "Bill Watterson",
+   "year": 1994
+  },
+  {
+   "id": "the-calvin-and-hobbes-tenth-anniversary-book-bill-watterson",
+   "title": "The Calvin and Hobbes Tenth Anniversary Book",
+   "author": "Bill Watterson",
+   "year": 1995
+  },
+  {
+   "id": "curtain-walls-recent-developments-by-cesar-pelli-associates-michael-j-crosbie",
+   "title": "Curtain Walls: Recent Developments by Cesar Pelli & Associates",
+   "author": "Michael J. Crosbie",
+   "year": 2005
+  },
+  {
+   "id": "architectural-graphic-standards-student-edition-ramsey-sleeper-ed-bruce-bassler",
+   "title": "Architectural Graphic Standards (Student Edition)",
+   "author": "Ramsey/Sleeper; Ed. Bruce Bassler",
+   "year": 2008
+  },
+  {
+   "id": "architectural-theory-volume-ii-an-anthology-from-1871-2005-harry-francis-mallgrave-christina-contandriopoulos",
+   "title": "Architectural Theory: Volume II (An Anthology from 1871–2005)",
+   "author": "Harry Francis Mallgrave & Christina Contandriopoulos",
+   "year": 2008,
+   "copies": 2
+  },
+  {
+   "id": "architectural-design-ad-production-urbanism-the-meta-industrial-city-dongwoo-yim-rafael-luna",
+   "title": "Architectural Design (AD): Production Urbanism (The Meta-Industrial City)",
+   "author": "Dongwoo Yim & Rafael Luna",
+   "year": 2021,
+   "copies": 2
+  },
+  {
+   "id": "architectural-graphic-standards-11th-edition-charles-george-ramsey-harold-reeve-sleeper",
+   "title": "Architectural Graphic Standards (11th Edition)",
+   "author": "Charles George Ramsey & Harold Reeve Sleeper",
+   "year": 2007,
+   "copies": 2
+  },
+  {
+   "id": "sand-futures-justin-beal",
+   "title": "Sand Futures",
+   "author": "Justin Beal",
+   "year": 2021
+  },
+  {
+   "id": "the-power-broker-robert-caro",
+   "title": "The Power Broker",
+   "author": "Robert Caro",
+   "year": 1974
+  },
+  {
+   "id": "la-casa-come-geografia-rosario-pineirua",
+   "title": "La casa come geografia",
+   "author": "Rosario Piñeirua",
+   "year": 2023
+  },
+  {
+   "id": "lateness-peter-eisenman-with-elisa-iturbe",
+   "title": "Lateness",
+   "author": "Peter Eisenman with Elisa Iturbe",
+   "year": 2020
+  },
+  {
+   "id": "pandemiens-arkitektur-realdania",
+   "title": "Pandemiens arkitektur",
+   "author": "Realdania",
+   "year": 2021
+  },
+  {
+   "id": "49-cities-3rd-edition-workac-amale-andraos-dan-wood",
+   "title": "49 Cities (3rd Edition)",
+   "author": "WORKac (Amale Andraos & Dan Wood)",
+   "year": 2015
+  },
+  {
+   "id": "who-is-the-architect-building-diversity-collective",
+   "title": "Who is the Architect?",
+   "author": "Building Diversity (Collective)",
+   "year": 2022
+  },
+  {
+   "id": "el-croquis-208-dogma-2002-2021-pier-vittorio-aureli-martino-tattara",
+   "title": "El Croquis 208: Dogma (2002-2021)",
+   "author": "Pier Vittorio Aureli & Martino Tattara",
+   "year": 2021
+  },
+  {
+   "id": "walltalks-hebei-walltalks",
+   "title": "Walltalks: Hebei",
+   "author": "Walltalks",
+   "year": 2017
+  },
+  {
+   "id": "mutation-and-morphosis-landscape-as-aggregate-gunther-vogt",
+   "title": "Mutation and Morphosis: Landscape as Aggregate",
+   "author": "Günther Vogt",
+   "year": 2020,
+   "copies": 2
+  },
+  {
+   "id": "kitchen-sink-realism-guy-mannes-abbott",
+   "title": "Kitchen Sink Realism",
+   "author": "Guy Mannes-Abbott",
+   "year": 2021
+  },
+  {
+   "id": "architecture-s-desire-reading-the-late-avant-garde-k-michael-hays",
+   "title": "Architecture's Desire: Reading the Late Avant-Garde",
+   "author": "K. Michael Hays",
+   "year": 2010
+  },
+  {
+   "id": "marguerite-humeau-foxp2-marguerite-humeau",
+   "title": "Marguerite Humeau: FOXP2",
+   "author": "Marguerite Humeau",
+   "year": 2016
+  },
+  {
+   "id": "soane-medal-lecture-2018-from-soane-to-the-strip-denise-scott-brown",
+   "title": "Soane Medal Lecture 2018: From Soane to the Strip",
+   "author": "Denise Scott Brown",
+   "year": 2019
+  },
+  {
+   "id": "a-thousand-plateaus-gilles-deleuze-felix-guattari",
+   "title": "A Thousand Plateaus",
+   "author": "Gilles Deleuze & Félix Guattari",
+   "year": 1980
+  },
+  {
+   "id": "paprika-volume-1-folds-1-25-yale-school-of-architecture",
+   "title": "Paprika! Volume 1: Folds 1–25",
+   "author": "Yale School of Architecture",
+   "year": 2022
+  },
+  {
+   "id": "the-story-of-art-e-h-gombrich",
+   "title": "The Story of Art",
+   "author": "E.H. Gombrich",
+   "year": 1950
+  },
+  {
+   "id": "critical-theory-to-structuralism-david-ingram-ed",
+   "title": "Critical Theory to Structuralism",
+   "author": "David Ingram (Ed.)",
+   "year": 2010
+  },
+  {
+   "id": "a-portrait-of-the-artist-as-a-young-man-james-joyce",
+   "title": "A Portrait of the Artist as a Young Man",
+   "author": "James Joyce",
+   "year": 1916
+  },
+  {
+   "id": "log-54-anyone-corporation",
+   "title": "Log 54",
+   "author": "Anyone Corporation",
+   "year": 2022
+  },
+  {
+   "id": "log-53-anyone-corporation",
+   "title": "Log 53",
+   "author": "Anyone Corporation",
+   "year": 2021
+  },
+  {
+   "id": "log-51-anyone-corporation",
+   "title": "Log 51",
+   "author": "Anyone Corporation",
+   "year": 2021
+  },
+  {
+   "id": "log-50-anyone-corporation",
+   "title": "Log 50",
+   "author": "Anyone Corporation",
+   "year": 2020
+  },
+  {
+   "id": "log-49-anyone-corporation",
+   "title": "Log 49",
+   "author": "Anyone Corporation",
+   "year": 2020
+  },
+  {
+   "id": "log-48-anyone-corporation",
+   "title": "Log 48",
+   "author": "Anyone Corporation",
+   "year": 2020
+  },
+  {
+   "id": "log-46-anyone-corporation",
+   "title": "Log 46",
+   "author": "Anyone Corporation",
+   "year": 2019
+  },
+  {
+   "id": "log-45-anyone-corporation",
+   "title": "Log 45",
+   "author": "Anyone Corporation",
+   "year": 2019
+  },
+  {
+   "id": "log-43-anyone-corporation",
+   "title": "Log 43",
+   "author": "Anyone Corporation",
+   "year": 2018
+  },
+  {
+   "id": "log-36-anyone-corporation",
+   "title": "Log 36",
+   "author": "Anyone Corporation",
+   "year": 2016
+  },
+  {
+   "id": "log-32-anyone-corporation",
+   "title": "Log 32",
+   "author": "Anyone Corporation",
+   "year": 2014
+  },
+  {
+   "id": "the-complete-beatles-volume-one-various",
+   "title": "The Complete Beatles: Volume One",
+   "author": "Various",
+   "year": 1981
+  },
+  {
+   "id": "the-complete-beatles-volume-two-various",
+   "title": "The Complete Beatles: Volume Two",
+   "author": "Various",
+   "year": 1981
+  },
+  {
+   "id": "the-iliad-homer-trans-robert-fagles",
+   "title": "The Iliad",
+   "author": "Homer (Trans. Robert Fagles)",
+   "year": "8th century BC"
+  },
+  {
+   "id": "genius-loci-towards-a-phenomenology-of-architecture-christian-norberg-schulz",
+   "title": "Genius Loci: Towards a Phenomenology of Architecture",
+   "author": "Christian Norberg-Schulz",
+   "year": 1980
+  },
+  {
+   "id": "beyond-bending-block-research-group",
+   "title": "Beyond Bending",
+   "author": "Block Research Group",
+   "year": 2017
+  },
+  {
+   "id": "the-undercover-economist-tim-harford",
+   "title": "The Undercover Economist",
+   "author": "Tim Harford",
+   "year": 2005
+  },
+  {
+   "id": "why-on-earth-would-anyone-build-that-john-zukowsky",
+   "title": "Why on Earth Would Anyone Build That",
+   "author": "John Zukowsky",
+   "year": 2015
+  },
+  {
+   "id": "rich-dad-poor-dad-robert-t-kiyosaki",
+   "title": "Rich Dad Poor Dad",
+   "author": "Robert T. Kiyosaki",
+   "year": 1997
+  },
+  {
+   "id": "the-odyssey-homer-trans-robert-fagles",
+   "title": "The Odyssey",
+   "author": "Homer (Trans. Robert Fagles)",
+   "year": "8th century BC"
+  },
+  {
+   "id": "the-seven-lamps-of-architecture-john-ruskin",
+   "title": "The Seven Lamps of Architecture",
+   "author": "John Ruskin",
+   "year": 1849
+  },
+  {
+   "id": "architectural-guide-new-york-vladimir-belogolovsky",
+   "title": "Architectural Guide: New York",
+   "author": "Vladimir Belogolovsky",
+   "year": 2019
+  },
+  {
+   "id": "atlas-of-ai-kate-crawford",
+   "title": "Atlas of AI",
+   "author": "Kate Crawford",
+   "year": 2021
+  },
+  {
+   "id": "sweating-assets-arshia-eghbali",
+   "title": "Sweating Assets",
+   "author": "Arshia Eghbali",
+   "year": 2023
+  },
+  {
+   "id": "aesthetic-theory-mark-foster-gage-ed",
+   "title": "Aesthetic Theory",
+   "author": "Mark Foster Gage (Ed.)",
+   "year": 2011
+  },
+  {
+   "id": "architecture-in-the-age-of-ai-neil-leach",
+   "title": "Architecture in the Age of AI",
+   "author": "Neil Leach",
+   "year": 2021
+  },
+  {
+   "id": "breath-james-nestor",
+   "title": "Breath",
+   "author": "James Nestor",
+   "year": 2020
+  },
+  {
+   "id": "possible-minds-25-ways-of-looking-at-ai-john-brockman",
+   "title": "Possible Minds: 25 ways of looking at AI",
+   "author": "John Brockman",
+   "year": 2019
+  },
+  {
+   "id": "architecture-form-space-and-order-francis-d-k-ching",
+   "title": "Architecture: Form, Space, and Order",
+   "author": "Francis D.K. Ching",
+   "year": 2007
+  },
+  {
+   "id": "retrospecta-42-yale-school-of-architecture",
+   "title": "Retrospecta 42",
+   "author": "Yale School of Architecture",
+   "year": 2019,
+   "copies": 2
+  },
+  {
+   "id": "perspecta-28-the-yale-architectural-journal",
+   "title": "Perspecta 28",
+   "author": "The Yale Architectural Journal",
+   "year": 1997
+  },
+  {
+   "id": "ad-machine-hallucinations-refik-anadol-guest-ed",
+   "title": "AD: Machine Hallucinations",
+   "author": "Refik Anadol (Guest Ed.)",
+   "year": 2022
+  },
+  {
+   "id": "discrete-reappraising-the-digital-in-architecture-gilles-retsin-ed",
+   "title": "Discrete: Reappraising the Digital in Architecture",
+   "author": "Gilles Retsin (Ed.)",
+   "year": 2019
+  },
+  {
+   "id": "perspecta-47-money-james-andrachuk-et-al-eds",
+   "title": "Perspecta 47: Money",
+   "author": "James Andrachuk et al. (Eds.)",
+   "year": 2014
+  },
+  {
+   "id": "atlas-of-forms-eric-tabuchi",
+   "title": "Atlas of Forms",
+   "author": "Eric Tabuchi",
+   "year": 2017
+  },
+  {
+   "id": "future-shock-issue-03-various",
+   "title": "Future Shock (Issue 03)",
+   "author": "Various",
+   "year": 2022
+  },
+  {
+   "id": "architectural-graphics-5th-ed-francis-d-k-ching",
+   "title": "Architectural Graphics (5th Ed)",
+   "author": "Francis D.K. Ching",
+   "year": 2009
+  },
+  {
+   "id": "retrospecta-40-yale-school-of-architecture",
+   "title": "Retrospecta 40",
+   "author": "Yale School of Architecture",
+   "year": 2017
+  },
+  {
+   "id": "retrospecta-41-yale-school-of-architecture",
+   "title": "Retrospecta 41",
+   "author": "Yale School of Architecture",
+   "year": 2018
+  },
+  {
+   "id": "perspecta-15-yale-school-of-architecture",
+   "title": "Perspecta 15",
+   "author": "Yale School of Architecture",
+   "year": 1975
+  },
+  {
+   "id": "perspecta-18-yale-school-of-architecture",
+   "title": "Perspecta 18",
+   "author": "Yale School of Architecture",
+   "year": 1982
+  },
+  {
+   "id": "perspecta-27-yale-school-of-architecture",
+   "title": "Perspecta 27",
+   "author": "Yale School of Architecture",
+   "year": 1992
+  },
+  {
+   "id": "perspecta-32-resurfacing-modernism-yale-school-of-architecture",
+   "title": "Perspecta 32: Resurfacing Modernism",
+   "author": "Yale School of Architecture",
+   "year": 2001
+  },
+  {
+   "id": "perspecta-34-architecture-or-justice-yale-school-of-architecture",
+   "title": "Perspecta 34: Architecture or Justice",
+   "author": "Yale School of Architecture",
+   "year": 2003
+  },
+  {
+   "id": "perspecta-36-yale-school-of-architecture",
+   "title": "Perspecta 36",
+   "author": "Yale School of Architecture",
+   "year": 2005
+  },
+  {
+   "id": "perspecta-37-famous-yale-school-of-architecture",
+   "title": "Perspecta 37: Famous",
+   "author": "Yale School of Architecture",
+   "year": 2005
+  },
+  {
+   "id": "perspecta-39-re-urbanism-yale-school-of-architecture",
+   "title": "Perspecta 39: Re_Urbanism",
+   "author": "Yale School of Architecture",
+   "year": 2007
+  },
+  {
+   "id": "perspecta-41-grand-tour-yale-school-of-architecture",
+   "title": "Perspecta 41: Grand Tour",
+   "author": "Yale School of Architecture",
+   "year": 2008
+  },
+  {
+   "id": "perspecta-42-the-real-yale-school-of-architecture",
+   "title": "Perspecta 42: The Real",
+   "author": "Yale School of Architecture",
+   "year": 2010
+  },
+  {
+   "id": "perspecta-43-taboo-yale-school-of-architecture",
+   "title": "Perspecta 43: Taboo",
+   "author": "Yale School of Architecture",
+   "year": 2010
+  },
+  {
+   "id": "perspecta-44-domain-yale-school-of-architecture",
+   "title": "Perspecta 44: Domain",
+   "author": "Yale School of Architecture",
+   "year": 2011
+  },
+  {
+   "id": "perspecta-45-agency-yale-school-of-architecture",
+   "title": "Perspecta 45: Agency",
+   "author": "Yale School of Architecture",
+   "year": 2012
+  },
+  {
+   "id": "perspecta-46-error-yale-school-of-architecture",
+   "title": "Perspecta 46: Error",
+   "author": "Yale School of Architecture",
+   "year": 2013
+  },
+  {
+   "id": "perspecta-48-amnesia-yale-school-of-architecture",
+   "title": "Perspecta 48: Amnesia",
+   "author": "Yale School of Architecture",
+   "year": 2015
+  },
+  {
+   "id": "perspecta-49-quote-yale-school-of-architecture",
+   "title": "Perspecta 49: Quote",
+   "author": "Yale School of Architecture",
+   "year": 2016
+  },
+  {
+   "id": "perspecta-50-urban-divides-yale-school-of-architecture",
+   "title": "Perspecta 50: Urban Divides",
+   "author": "Yale School of Architecture",
+   "year": 2017
+  },
+  {
+   "id": "perspecta-51-medium-yale-school-of-architecture",
+   "title": "Perspecta 51: Medium",
+   "author": "Yale School of Architecture",
+   "year": 2018
+  },
+  {
+   "id": "perspecta-52-ensemble-yale-school-of-architecture",
+   "title": "Perspecta 52: Ensemble",
+   "author": "Yale School of Architecture",
+   "year": 2019
+  },
+  {
+   "id": "retrospecta-45-yale-school-of-architecture",
+   "title": "Retrospecta 45",
+   "author": "Yale School of Architecture",
+   "year": 2022
+  },
+  {
+   "id": "retrospecta-48-yale-school-of-architecture",
+   "title": "Retrospecta 48",
+   "author": "Yale School of Architecture",
+   "year": 2025
+  },
+  {
+   "id": "paul-rudolph-drawings-for-the-a-a-building-yale-school-of-architecture",
+   "title": "Paul Rudolph: Drawings for the A&A Building",
+   "author": "Yale School of Architecture",
+   "year": 1988,
+   "copies": 2
+  },
+  {
+   "id": "large-scale-data-kowloon-walled-city-ian-lambot-greg-girard",
+   "title": "Large-Scale Data: Kowloon Walled City",
+   "author": "Ian Lambot / Greg Girard",
+   "year": 1993
+  },
+  {
+   "id": "a-vintage-christmas-alcott-dickens-et-al",
+   "title": "A Vintage Christmas",
+   "author": "Alcott, Dickens, et al.",
+   "year": 2018
+  },
+  {
+   "id": "the-will-to-power-friedrich-nietzsche",
+   "title": "The Will to Power",
+   "author": "Friedrich Nietzsche",
+   "year": 1901
+  },
+  {
+   "id": "the-sokal-hoax-editors-of-lingua-franca",
+   "title": "The Sokal Hoax",
+   "author": "Editors of Lingua Franca",
+   "year": 2000
+  },
+  {
+   "id": "being-and-nothingness-jean-paul-sartre",
+   "title": "Being and Nothingness",
+   "author": "Jean-Paul Sartre",
+   "year": 1943
+  },
+  {
+   "id": "connectionism-and-the-mind-bechtel-and-abrahamsen",
+   "title": "Connectionism and the Mind",
+   "author": "Bechtel and Abrahamsen",
+   "year": 1991
+  },
+  {
+   "id": "software-takes-command-lev-manovich",
+   "title": "Software Takes Command",
+   "author": "Lev Manovich",
+   "year": 2013
+  },
+  {
+   "id": "blubberland-elizabeth-farrelly",
+   "title": "Blubberland",
+   "author": "Elizabeth Farrelly",
+   "year": 2007
+  },
+  {
+   "id": "cruising-utopia-jose-esteban-munoz",
+   "title": "Cruising Utopia",
+   "author": "José Esteban Muñoz",
+   "year": 2009
+  },
+  {
+   "id": "dubliners-james-joyce",
+   "title": "Dubliners",
+   "author": "James Joyce",
+   "year": 1914
+  },
+  {
+   "id": "brunelleschi-s-dome-ross-king",
+   "title": "Brunelleschi's Dome",
+   "author": "Ross King",
+   "year": 2000
+  },
+  {
+   "id": "fashionable-nonsense-alan-sokal-and-jean-bricmont",
+   "title": "Fashionable Nonsense",
+   "author": "Alan Sokal and Jean Bricmont",
+   "year": 1998
+  },
+  {
+   "id": "the-nicomachean-ethics-aristotle",
+   "title": "The Nicomachean Ethics",
+   "author": "Aristotle",
+   "year": "c. 340 BC"
+  },
+  {
+   "id": "introducing-continental-philosophy-christopher-kul-want",
+   "title": "Introducing Continental Philosophy",
+   "author": "Christopher Kul-Want",
+   "year": 2001
+  },
+  {
+   "id": "introducing-aesthetics-christopher-kul-want",
+   "title": "Introducing Aesthetics",
+   "author": "Christopher Kul-Want",
+   "year": 2007
+  },
+  {
+   "id": "you-are-a-badass-jen-sincero",
+   "title": "You Are a Badass",
+   "author": "Jen Sincero",
+   "year": 2013
+  },
+  {
+   "id": "discourse-on-method-meditations-rene-descartes",
+   "title": "Discourse on Method / Meditations",
+   "author": "René Descartes",
+   "year": 1637
   }
  ],
  "pantheon": {
