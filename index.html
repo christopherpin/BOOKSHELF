@@ -86,7 +86,11 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .pslot{position:relative;aspect-ratio:2/3;background:var(--tile);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .pslot span{font:700 clamp(10px,1.8vw,22px)/1 "Helvetica Neue",Helvetica,Arial,sans-serif;color:#3a3a40;user-select:none}
 .pslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pslot.filled span{position:absolute;top:5px;left:6px;z-index:1;color:#fff;font-size:clamp(9px,1.1vw,14px);text-shadow:0 1px 3px rgba(0,0,0,.9)}
+/* a placed book carries its place the way NYT covers carry their rank: big, bold, faint, on the bottom edge */
+.pslot{container-type:inline-size}
+.pslot.filled span{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;
+  color:rgba(255,255,255,.3);font:900 88cqw/.72 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-.06em}
+.pslot.filled span.w{font-size:60cqw}
 .pq img,.pslot img{cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
 .pq img.placeholder,.pslot img.placeholder{opacity:.15}
 .pslot.over,.pqueue.over{outline:2px solid var(--rank);outline-offset:-2px}
@@ -388,7 +392,7 @@ function renderPantheon(){
   slots.forEach((id, i) => {
     const slot = document.createElement("div");
     slot.className = "pslot"; slot.dataset.slot = i;
-    slot.innerHTML = `<span>${i + 1}</span>`;
+    slot.innerHTML = `<span${i > 98 ? ' class="w"' : ""}>${i + 1}</span>`;
     const img = id && cover(id);
     if (img){ slot.classList.add("filled"); slot.appendChild(img); }
     grid.appendChild(slot);
