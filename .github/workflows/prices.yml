@@ -1,17 +1,11 @@
 # Looks up prices for the books in your cart (tools/prices.mjs) and saves them to data/cart-prices.json.
-# The Refresh prices button on the Cart tab sets it off by saving data/cart-refresh.json; a change to the
-# shelf sets it off too, so a book newly sent to the cart gets prices.
+# Runs only when the Check prices button on the Cart tab saves data/cart-refresh.json (or by hand).
 name: Prices
 on:
   push:
     branches: [main]
-    paths: [data/shelf.json, data/cart-refresh.json, tools/prices.mjs, .github/workflows/prices.yml]
+    paths: [data/cart-refresh.json]
   workflow_dispatch:
-    inputs:
-      refresh:
-        description: Look up every book again, even ones already priced
-        type: boolean
-        default: false
 permissions:
   contents: write
 concurrency:
@@ -29,8 +23,6 @@ jobs:
         with:
           node-version: 20
       - run: node tools/prices.mjs
-        env:
-          REFRESH: ${{ inputs.refresh && '1' || '' }}
       - name: Commit new prices
         run: |
           git add data/cart-prices.json
