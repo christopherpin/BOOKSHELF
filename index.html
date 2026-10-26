@@ -18,12 +18,45 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book i small{font-weight:400;font-size:12px;color:#5d5d62}
 .book img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;-webkit-user-drag:none}
 .book img.in{opacity:1}
+/* your marks: a yellow tick for read, a white bookmark for want to read */
+.book b{position:absolute;top:6px;right:6px;z-index:1;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font:700 13px/1 system-ui,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.6)}
+.book[data-mark="read"] b{background:var(--rank);color:#000}
+.book[data-mark="want"] b{background:#fff;color:#000}
+.book{cursor:pointer}
+.menu{position:fixed;z-index:40;padding:4px;border-radius:8px;background:var(--rank);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.menu button{display:block;width:100%;text-align:left;font:600 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#000;background:none;border:0;border-radius:5px;padding:10px 14px;cursor:pointer;white-space:nowrap}
+.menu button:hover,.menu button.on{background:rgba(0,0,0,.1)}
+.menu .hd{padding:8px 14px 6px;max-width:220px;font:700 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.6);white-space:normal}
+/* syncing: a GitHub token, pasted once per device, lets marks save to the repository */
+.setup{position:fixed;inset:0;z-index:25;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(11,11,12,.94)}
+.setup form{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px}
+.setup input,.setup button{font:inherit;color:inherit;border-radius:999px;padding:10px 16px;border:1px solid #2a2a2e;background:var(--tile)}
+.setup button{background:var(--rank);color:#000;border-color:var(--rank);font-weight:600;cursor:pointer}
+.setup button.later{background:none;border:0;color:var(--muted);font-weight:400}
+.setup p{margin:0;color:var(--muted);font-size:12px;text-align:center}
+.setup a{color:var(--rank)}
+.sync{position:fixed;right:14px;bottom:14px;z-index:15;padding:8px 14px;border-radius:999px;background:rgba(22,22,24,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font:600 12px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--muted);cursor:pointer}
+.hidden{display:none !important}
 .book span{position:absolute;top:5px;left:6px;z-index:1;color:#fff;font:700 clamp(10px,1.1vw,14px)/1 "Helvetica Neue",Helvetica,Arial,sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.9)}
 </style>
 </head>
 <body>
 <main class="wall" id="wall"></main>
-<script src="books.js?v=2026-10-26a"></script>
+<div class="sync hidden" id="sync"></div>
+<div class="setup hidden" id="setup">
+  <form id="setupForm">
+    <input id="token" type="password" placeholder="GitHub token" autocomplete="off" spellcheck="false">
+    <button type="submit">Save and sync</button>
+    <button type="button" class="later" id="later">Not now</button>
+    <p id="setupMsg"></p>
+    <p>Your marks save to the BOOKSHELF repository, so every device shows the same. Saving needs a GitHub token, made once:
+      <a href="https://github.com/settings/personal-access-tokens/new?name=BOOKSHELF%20marks&amp;description=Lets%20the%20books%20wall%20save%20read%20and%20want%20to%20read%20marks&amp;target_name=christopherpin&amp;expires_in=none&amp;contents=write" target="_blank" rel="noopener">make one here</a>,
+      choose Only select repositories, pick BOOKSHELF, then paste it above. It stays in this browser.</p>
+  </form>
+</div>
+<script src="books.js?v=2026-10-26b"></script>
 <script>
 const $ = s => document.querySelector(s);
 const LS = {
@@ -36,8 +69,17 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", "
 function renderWall(){
   $("#wall").innerHTML = BOOKS.map(b =>
     `<div class="book" data-rank="${b.rank}" title="${esc(b.rank + ". " + b.title + " · " + b.author + " (" + b.year + ")")}">` +
-    `<i>${esc(b.title)}<small>${esc(b.author)}</small></i><span>${b.rank}</span></div>`).join("");
+    `<i>${esc(b.title)}<small>${esc(b.author)}</small></i><span>${b.rank}</span><b></b></div>`).join("");
   for (const b of BOOKS) showCover(b);
+  showMarks();
+}
+function showMarks(){
+  for (const tile of document.querySelectorAll(".book")){
+    const m = marks[tile.dataset.rank];
+    if (m) tile.dataset.mark = m; else delete tile.dataset.mark;
+    tile.querySelector("b").textContent = m === "read" ? "✓" : m === "want" ? "+" : "";
+    tile.querySelector("b").classList.toggle("hidden", !m);
+  }
 }
 function showCover(b){
   const url = coverUrl(LS.get("cover." + b.rank));
@@ -73,8 +115,125 @@ async function fillCovers(){
   await Promise.all([work(), work(), work(), work()]);
 }
 
+/* ---------- marks: read / want to read ---------- */
+// marks are { rank: "read" | "want" }. They live in data/marks.json in the repository, so every device shows
+// the same; this browser keeps a copy (books.marks) to draw straight away, and books.pending holds changes
+// not yet saved, so nothing is lost offline or before a token is pasted. Saved shortly after each change.
+const REPO = "christopherpin/bookshelf", PATH = "/contents/data/marks.json";
+let marks = LS.get("marks", {});
+let pending = LS.get("pending", {}); // rank -> mark, or null for cleared
+let sha;
+
+async function gh(path, init = {}){
+  const tok = LS.get("token");
+  const r = await fetch("https://api.github.com/repos/" + REPO + path, { ...init, cache: "no-store",
+    headers: { Accept: "application/vnd.github+json", ...(tok ? { Authorization: "Bearer " + tok } : {}) } });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok){ const e = new Error(j.message || ("GitHub error " + r.status)); e.status = r.status; throw e; }
+  return j;
+}
+const fromBase64 = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, "")), c => c.charCodeAt(0)));
+const toBase64 = s => { const b = new TextEncoder().encode(s); let out = ""; for (const c of b) out += String.fromCharCode(c); return btoa(out); };
+
+// the repository's marks, with this browser's unsaved changes laid on top
+async function pull(){
+  let remote = {};
+  try{ const j = await gh(PATH + "?ref=main"); sha = j.sha; remote = JSON.parse(fromBase64(j.content)).marks || {}; }
+  catch(e){ if (e.status !== 404) throw e; sha = undefined; }
+  for (const [k, v] of Object.entries(pending)) if (v) remote[k] = v; else delete remote[k];
+  marks = remote; LS.set("marks", marks); showMarks();
+}
+let saving = false, again = false, timer;
+function saveSoon(){ clearTimeout(timer); timer = setTimeout(save, 1200); }
+async function save(){
+  if (!Object.keys(pending).length) return status("");
+  if (!LS.get("token")) return status("Not synced · tap to set up", true);
+  if (saving){ again = true; return; }
+  saving = true; status("Saving…");
+  const sent = { ...pending };
+  try{
+    for (let tries = 0; ; tries++){
+      try{
+        await pull();
+        const body = JSON.stringify({ updated: new Date().toISOString(), marks: sortKeys(marks) }, null, 1) + "\n";
+        const j = await gh(PATH, { method: "PUT", body: JSON.stringify({ message: "Update book marks", content: toBase64(body), sha, branch: "main" }) });
+        sha = j.content && j.content.sha;
+        break;
+      } catch(e){ if (e.status !== 409 || tries > 1) throw e; } // saved from another device in between: try again on top of it
+    }
+    for (const [k, v] of Object.entries(sent)) if (pending[k] === v) delete pending[k];
+    LS.set("pending", pending); status("");
+  } catch(e){
+    if (e.status === 401 || e.status === 403 || e.status === 404){ setup(e.status === 401 ? "That token didn't work. Make a new one and paste it here." : "That token can't change BOOKSHELF. Give it BOOKSHELF under Only select repositories, with Contents set to Read and write."); status("Not synced · tap to set up", true); }
+    else status("Couldn't save · tap to retry", true);
+  } finally {
+    saving = false;
+    if (again){ again = false; saveSoon(); }
+  }
+}
+const sortKeys = o => Object.fromEntries(Object.entries(o).sort((a, b) => a[0] - b[0]));
+function setMark(rank, m){
+  if (m) marks[rank] = m; else delete marks[rank];
+  pending[rank] = m || null;
+  LS.set("marks", marks); LS.set("pending", pending);
+  showMarks(); saveSoon();
+}
+function status(text, act){
+  const el = $("#sync");
+  el.textContent = text; el.classList.toggle("hidden", !text); el.dataset.act = act ? "1" : "";
+}
+$("#sync").onclick = () => { if (!$("#sync").dataset.act) return; LS.get("token") ? save() : setup(); };
+
+function setup(msg){
+  $("#setup").classList.remove("hidden"); $("#setupMsg").textContent = msg || ""; $("#token").value = "";
+  $("#token").focus();
+}
+$("#setupForm").onsubmit = e => {
+  e.preventDefault();
+  const t = $("#token").value.trim();
+  if (!t) return;
+  LS.set("token", t); $("#setup").classList.add("hidden"); save();
+};
+$("#later").onclick = () => $("#setup").classList.add("hidden");
+
+// tap a book: a small menu to mark it
+let menu;
+function closeMenu(){ if (menu){ menu.remove(); menu = null; } }
+$("#wall").addEventListener("click", e => {
+  const tile = e.target.closest(".book");
+  if (!tile) return;
+  e.stopPropagation(); closeMenu();
+  const rank = tile.dataset.rank, b = BOOKS[rank - 1], m = marks[rank];
+  menu = document.createElement("div");
+  menu.className = "menu";
+  menu.innerHTML = `<div class="hd">${esc(b.title)}</div>` +
+    `<button data-m="read" class="${m === "read" ? "on" : ""}">${m === "read" ? "✓ " : ""}Read</button>` +
+    `<button data-m="want" class="${m === "want" ? "on" : ""}">${m === "want" ? "✓ " : ""}Want to read</button>` +
+    (m ? `<button data-m="">Clear</button>` : "");
+  document.body.appendChild(menu);
+  const r = tile.getBoundingClientRect(), w = menu.offsetWidth, h = menu.offsetHeight;
+  menu.style.left = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width / 2 - w / 2)) + "px";
+  menu.style.top = Math.max(8, Math.min(innerHeight - h - 8, r.top + r.height / 2 - h / 2)) + "px";
+  menu.onclick = ev => {
+    ev.stopPropagation();
+    const btn = ev.target.closest("button");
+    if (!btn) return;
+    setMark(rank, btn.dataset.m === m ? null : btn.dataset.m);
+    closeMenu();
+    if (!LS.get("token") && !LS.get("asked")){ LS.set("asked", true); setup(); }
+  };
+});
+document.addEventListener("click", closeMenu);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+addEventListener("scroll", closeMenu, { passive: true });
+
+// pick up marks made on other devices when coming back to this one
+async function refresh(){ try{ await pull(); } catch{} save(); }
+document.addEventListener("visibilitychange", () => { if (!document.hidden) refresh(); });
+
 renderWall();
 fillCovers();
+refresh();
 </script>
 </body>
 </html>
