@@ -35,8 +35,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book[data-mark] span{color:#000;text-shadow:none}
 /* and a thin orange frame, half the width of the gaps in the grid */
 .book[data-mark="want"]::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 2px #ff8a00;pointer-events:none}
-/* a book you have read sits under a 50% black shade, with the yellow tick still on top */
-.book[data-mark="read"]::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5);pointer-events:none}
+/* a book you have read sits under a 50% yellow wash, with the bar and tick on top */
+.book[data-mark="read"]::after{content:"";position:absolute;inset:0;background:rgba(255,212,0,.5);pointer-events:none}
 .empty{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--muted);pointer-events:none}
 
 /* list: every tab can show its books as rows instead (right-click the tab), with rank, title, author and year in columns */
