@@ -500,6 +500,15 @@ function openMenu(e){
 }
 // the tap that ends a hold shouldn't close the menu it just opened
 const justHeld = () => Date.now() - heldAt < 600;
+// clicking a book on NYT opens its write-up on the Times' list, scrolled to its title (a text fragment: the page has no per-book anchors we can rely on)
+const NYT_LIST = "https://www.nytimes.com/interactive/2024/books/best-books-21st-century.html";
+const nytUrl = b => NYT_LIST + "#:~:text=" + encodeURIComponent(b.title).replace(/-/g, "%2D");
+document.addEventListener("click", e => {
+  const el = e.target.closest("#wall .book, #wallList .lrow");
+  if (!el || e.button !== 0 || menuFor || justHeld()) return;
+  const b = byId(el.dataset.id);
+  if (b) window.open(nytUrl(b), "_blank", "noopener");
+});
 document.addEventListener("click", e => { if (!menu.contains(e.target) && !justHeld()) closeMenu(); });
 document.addEventListener("contextmenu", e => { if (e.target.closest(".book, .lrow, #pantheon img")){ closeMenu(); openMenu(e); } });
 // phones have no right-click: holding a book opens its menu instead
