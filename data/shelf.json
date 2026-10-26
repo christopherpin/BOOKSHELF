@@ -1618,7 +1618,7 @@
    "the-power-broker-robert-caro",
    "the-corrections-jonathan-franzen",
    "the-sympathizer-viet-thanh-nguyen",
-   null,
+   "the-god-of-small-things-arundhati-roy",
    null,
    null,
    null,
@@ -1716,8 +1716,6 @@
    null,
    null
   ],
-  "queue": [
-   "the-god-of-small-things-arundhati-roy"
-  ]
+  "queue": []
  }
 }
