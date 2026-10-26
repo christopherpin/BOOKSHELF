@@ -28,6 +28,8 @@ html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-
 .book em{position:absolute;bottom:6px;right:6px;z-index:1;padding:3px 6px;border-radius:10px;background:rgba(0,0,0,.75);color:#fff;font:700 11px/1 system-ui,sans-serif;font-style:normal}
 [data-mark="read"] > b{background:var(--rank)}
 [data-mark="want"] > b{background:#fff}
+/* a book you have read sits under a 50% black shade, with the yellow tick still on top */
+.book[data-mark="read"]::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.5);pointer-events:none}
 .empty{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:var(--muted);pointer-events:none}
 
 /* list: one row per book, with a search bar that keeps only the books that match */
