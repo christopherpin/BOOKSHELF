@@ -9,6 +9,9 @@
 /* the List view swaps the yellow for green (READ stays yellow) */
 body.listmode{--accent:var(--green)}
 *{box-sizing:border-box}
+/* room for a scrollbar is kept even on a page too short to scroll (Cart, an empty Shelf), so the
+   centred tab bar sits in the same place on every tab */
+html{scrollbar-gutter:stable}
 html,body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .hidden{display:none !important}
 /* the wall: the hundred books in rank order, covers edge to edge with thin gaps, like the album wall */
@@ -142,8 +145,6 @@ a.offer:hover{background:#222226}
 .views .toggle::before{content:"";position:absolute;top:3px;left:19px;width:16px;height:16px;border-radius:50%;background:#000;transition:left .2s}
 .views .toggle[aria-checked="false"]{background:var(--green)}
 .views .toggle[aria-checked="false"]::before{left:3px}
-/* Cart is always a list, so the switch rests while it's showing */
-.views .toggle.off{opacity:.35;cursor:default}
 .views .toggle:focus-visible{outline:2px solid var(--text);outline-offset:2px}
 .views.dock-left .toggle,.views.dock-right .toggle{align-self:center;margin:4px 0 6px}
 @media (max-width:520px){.views button{padding:8px 7px;font-size:11px}}
@@ -219,12 +220,12 @@ body.phone .views button{padding:0 10px;border-radius:8px}
   <button data-act="cart">Send To Cart</button>
 </div>
 <nav class="views" id="views">
+  <button data-view="cart" data-label="Cart">Cart</button>
+  <span class="sep"></span>
   <button data-view="wall" data-label="NYT">NYT</button>
   <button data-view="owned" data-label="Shelf">Shelf</button>
   <span class="sep"></span>
   <button data-view="pantheon" data-label="Pantheon">Pantheon</button>
-  <span class="sep"></span>
-  <button data-view="cart" data-label="Cart">Cart</button>
   <span class="sep"></span>
   <span class="toggle" id="mode" role="switch" tabindex="0"></span>
 </nav>
@@ -718,7 +719,7 @@ menu.onclick = e => {
 
 /* ---------- views ---------- */
 // the tabs, all shown as grids or all as lists (books.mode, set by the switch at the end), except Cart,
-// which is always a list; the List tab of the first version is NYT as a list
+// which is always a list but takes the switch's colour; the List tab of the first version is NYT as a list
 const VIEWS = ["wall", "owned", "pantheon", "cart"];
 const asList = v => mode === "list" || v === "cart";
 let mode = LS.get("mode") || (LS.get("view") === "list" || LS.get("modes", {}).wall === "list" ? "list" : "grid");
@@ -737,8 +738,8 @@ function setView(v){
     $("#" + x + "List").classList.toggle("hidden", x !== v || !asList(x));
   }
   for (const b of document.querySelectorAll("#views button")) b.classList.toggle("on", b.dataset.view === v);
-  document.body.classList.toggle("listmode", asList(v));
-  $("#mode").classList.toggle("off", v === "cart");
+  // Cart is always a list, but takes its colour from the switch like the other tabs
+  document.body.classList.toggle("listmode", mode === "list");
   $("#mode").setAttribute("aria-checked", mode === "grid");
   $("#mode").setAttribute("aria-label", mode === "grid" ? "Grid view (switch to List)" : "List view (switch to Grid)");
   $("#mode").title = mode === "grid" ? "Grid · click for List" : "List · click for Grid";
@@ -763,11 +764,11 @@ function drawAll(){
 }
 $("#views").onclick = e => {
   if (barMoved) return;
-  if (e.target.closest("#mode")) return view === "cart" || setMode(mode === "grid" ? "list" : "grid");
+  if (e.target.closest("#mode")) return setMode(mode === "grid" ? "list" : "grid");
   const b = e.target.closest("button");
   if (b) setView(b.dataset.view);
 };
-$("#mode").onkeydown = e => { if ((e.key === " " || e.key === "Enter") && view !== "cart"){ e.preventDefault(); setMode(mode === "grid" ? "list" : "grid"); } };
+$("#mode").onkeydown = e => { if (e.key === " " || e.key === "Enter"){ e.preventDefault(); setMode(mode === "grid" ? "list" : "grid"); } };
 
 /* ---------- tab bar: drag it to any edge, it snaps to the nearest and remembers ---------- */
 const bar = $("#views");
