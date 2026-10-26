@@ -1616,8 +1616,8 @@
  "pantheon": {
   "slots": [
    "the-power-broker-robert-caro",
-   null,
-   null,
+   "the-corrections-jonathan-franzen",
+   "the-sympathizer-viet-thanh-nguyen",
    null,
    null,
    null,
@@ -1717,8 +1717,6 @@
    null
   ],
   "queue": [
-   "the-sympathizer-viet-thanh-nguyen",
-   "the-corrections-jonathan-franzen",
    "the-god-of-small-things-arundhati-roy"
   ]
  }
